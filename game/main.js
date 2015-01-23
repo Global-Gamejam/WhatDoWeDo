@@ -32,12 +32,6 @@ var initWindow = function() {
 
     }
 
-    function addFrog() {
-      frog.position.x -= 50;
-      if (frog.position.x <= -1920)
-        frog.position.x = 1920;
-    }
-
     function gofull() {
       if (game.scale.isFullScreen) {
         game.scale.stopFullScreen();
@@ -48,7 +42,7 @@ var initWindow = function() {
     }
 
     function update() {
-      addFrog();
+      frog = moveFrog(frog);
       player.body.setZeroVelocity();
       if (cursors.up.isDown && game.world.height - player.position.y <= game.world.height / 2) {
         player.body.moveUp(300)
