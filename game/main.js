@@ -3,8 +3,7 @@ var initWindow = function() {
     var game = new Phaser.Game(1920, 1080, Phaser.CANVAS, '', { preload: preload, create: create, render:render, update:update});
     var player;
     var cursors;
-    var background1;
-    var background2;
+    var frog;
 
     function preload () {
       preloadRessource(game);
@@ -15,6 +14,9 @@ var initWindow = function() {
       logo.anchor.setTo(0.5, 0.5);
 
       background1 = game.add.sprite(0, 0, 'background');
+
+      frog = game.add.sprite(1920, 0, 'frog1');
+
       game.world.setBounds(0, 0, 10000, 1080);
       game.physics.startSystem(Phaser.Physics.P2JS);
       //game.physics.p2.gravity .y = 1500;
@@ -27,6 +29,13 @@ var initWindow = function() {
 
       game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
       game.input.onDown.add(gofull, this);
+
+    }
+
+    function addFrog() {
+      frog.position.x -= 50;
+      if (frog.position.x <= -1920)
+        frog.position.x = 1920;
     }
 
     function gofull() {
@@ -39,6 +48,7 @@ var initWindow = function() {
     }
 
     function update() {
+      addFrog();
       player.body.setZeroVelocity();
       if (cursors.up.isDown && game.world.height - player.position.y <= game.world.height / 2) {
         player.body.moveUp(300)
