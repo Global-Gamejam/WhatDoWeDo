@@ -16,7 +16,7 @@ var initWindow = function() {
       game.world.setBounds(0, 0, 10000, 1080);
       game.physics.startSystem(Phaser.Physics.P2JS);
       //game.physics.p2.gravity .y = 1500;
-      player = game.add.sprite(10, game.world.centerY, 'player');
+      player = game.add.sprite(200, game.world.height - 200, 'player');
       game.physics.p2.enable(player);
 
       cursors = game.input.keyboard.createCursorKeys();
@@ -37,7 +37,7 @@ var initWindow = function() {
 
     function update() {
       player.body.setZeroVelocity();
-      if (cursors.up.isDown) {
+      if (cursors.up.isDown && game.world.height - player.position.y <= game.world.height / 2) {
         player.body.moveUp(300)
       }
       else if (cursors.down.isDown) {
