@@ -12,16 +12,27 @@ var initWindow = function() {
       var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'player');
       logo.anchor.setTo(0.5, 0.5);
 
-      game.add.tileSprite(0, 0, 1920, 1920, 'background');
-      game.world.setBounds(0, 0, 1920 * 2, 600);
+      game.add.tileSprite(0, 0, 10000, 1080, 'background');
+      game.world.setBounds(0, 0, 10000, 1080);
       game.physics.startSystem(Phaser.Physics.P2JS);
       //game.physics.p2.gravity .y = 1500;
-      player = game.add.sprite(game.world.centerX, game.world.centerY, 'player');
+      player = game.add.sprite(10, game.world.centerY, 'player');
       game.physics.p2.enable(player);
+
       cursors = game.input.keyboard.createCursorKeys();
       game.camera.follow(player);
-      game.camera.deadzone = new Phaser.Rectangle(100, 100, 400, 400);
-      //game.stage.scale.startFullScreen();
+
+      game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+      game.input.onDown.add(gofull, this);
+    }
+
+    function gofull() {
+      if (game.scale.isFullScreen) {
+        game.scale.stopFullScreen();
+      }
+      else {
+        game.scale.startFullScreen(false);
+      }
     }
 
     function update() {
@@ -41,10 +52,7 @@ var initWindow = function() {
     }
 
     function render() {
-      var zone = game.camera.deadzone;
-
       game.context.fillStyle = 'rgba(255,0,0,0.6)';
-      game.context.fillRect(zone.x, zone.y, zone.width, zone.height);
       game.debug.cameraInfo(game.camera, 32, 32);
       game.debug.spriteCoords(player, 32, 500);
     }
