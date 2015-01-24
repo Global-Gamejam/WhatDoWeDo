@@ -69,7 +69,7 @@ var catchDeplacementPlayer = function(game, cursors) {
   player.body.setZeroVelocity();
 
   if (cursors.up.isDown &&
-     game.world.height - (player.position.y + player.height / 2) <= game.world.height / 2) {
+     game.world.height - (player.position.y + player.height / 2) <= game.world.height / 2 - 100) {
     movePlayerUp();
   }
   else if (cursors.down.isDown) {
