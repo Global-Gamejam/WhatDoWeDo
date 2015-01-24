@@ -8,9 +8,9 @@ var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   enemies.enableBody = true;
   enemies.physicsBodyType = Phaser.Physics.P2JS;
 
-  for (var i = 0; i < 4; i++)
+  for (var i = 0; i < 1; i++)
   {
-    enemie[i] = enemies.create(300 + (i * 100), game.world.height - 200, 'player');
+    enemie[i] = enemies.create(1000 + (i * 100), game.world.height - 200, 'monster1');
     enemie[i].body.setRectangle(40, 40);
     enemie[i].body.setCollisionGroup(enemiesCollisionGroup);
     enemie[i].body.collides( playerCollisionGroup);

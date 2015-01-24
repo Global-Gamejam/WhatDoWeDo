@@ -1,0 +1,28 @@
+{"frames": [
+
+{
+	"filename": "player2.png",
+	"frame": {"x":2,"y":2,"w":253,"h":428},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":253,"h":428},
+	"sourceSize": {"w":253,"h":429}
+},
+{
+	"filename": "player3.png",
+	"frame": {"x":257,"y":2,"w":250,"h":420},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":420},
+	"sourceSize": {"w":250,"h":420}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "playerAnimation.png",
+	"format": "RGBA8888",
+	"size": {"w":509,"h":432},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:dc7b761873f86e6e5b7ecd2a51b95563:92e516749e0a72c5f653e55d7e013467:b966f5ef5ce3194fc929f0ea84aebe3a$"
+}
+}

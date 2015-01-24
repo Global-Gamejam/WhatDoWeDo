@@ -1,12 +1,16 @@
 var player;
 var bullets;
+var state;
+var isAnimated;
 
 var fireRate = 750;
 var nextFire = 500;
 
 var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   player = game.add.sprite(200, game.world.height - 200, 'player');
-  player.rotation = 90;
+
+
+
   game.physics.p2.enable(player, false);
   player.body.setCircle(28);
   player.body.fixedRotation = true;
@@ -32,8 +36,7 @@ var updateBullet = function(game) {
 }
 
 var targetPlayer = function(game) {
-  player.rotation = game.physics.arcade.angleToPointer(player);
-
+  //player.rotation = game.physics.arcade.angleToPointer(player);
 
   if (game.time.now > nextFire && bullets.countDead() > 0) {
     nextFire = game.time.now + fireRate;
@@ -48,10 +51,19 @@ var targetPlayer = function(game) {
   }
 }
 
-var movePlayerUp = function() {player.body.moveUp(300);}
-var movePlayerDown = function() {player.body.moveDown(300);}
-var movePlayerLeft = function() {player.body.moveLeft(300);}
-var movePlayerRight = function() {player.body.moveRight(300);}
+var movePlayerUp = function() {player.body.moveUp(500);}
+var movePlayerDown = function() {player.body.moveDown(700);}
+var movePlayerLeft = function() {player.body.moveLeft(700);}
+var movePlayerRight = function() {player.body.moveRight(500);}
+
+var animationPlayer = function() {
+  if (!isAnimated) {
+    player.loadTexture('playerAnimation');
+    player.animations.add('run');
+    player.animations.play('run', 6, true);
+    isAnimated = true;
+  }
+}
 
 var catchDeplacementPlayer = function(game, cursors) {
   player.body.setZeroVelocity();
@@ -68,5 +80,14 @@ var catchDeplacementPlayer = function(game, cursors) {
   }
   else if (cursors.right.isDown) {
     movePlayerRight();
+  }
+
+  if (!cursors.up.isDown && !cursors.down.isDown &&
+     !cursors.left.isDown && !cursors.right.isDown) {
+       player.loadTexture('player');
+       isAnimated = false;
+  }
+  else {
+    animationPlayer();
   }
 }
