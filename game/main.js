@@ -1,7 +1,6 @@
 var initWindow = function() {
   window.onload = function() {
     var game = new Phaser.Game(1920, 1080, Phaser.CANVAS, '', { preload: preload, create: create, render:render, update:update});
-    var player;
     var cursors;
 
     function preload () {
@@ -19,7 +18,8 @@ var initWindow = function() {
       game.world.setBounds(0, 0, 10000, 1080);
       game.physics.startSystem(Phaser.Physics.P2JS);
       //game.physics.p2.gravity .y = 1500;
-      player = game.add.sprite(200, game.world.height - 200, 'player');
+
+      initPLayer(game);
       game.physics.p2.enable(player);
 
       cursors = game.input.keyboard.createCursorKeys();
@@ -42,7 +42,7 @@ var initWindow = function() {
 
     function update() {
       moveFrog();
-      movePlayer(player, game, cursors);
+      movePlayer(game, cursors);
     }
 
     function render() {
