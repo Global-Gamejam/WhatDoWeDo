@@ -7,6 +7,7 @@ var kindAnimal;
 var isJumping;
 var fireRate = 750;
 var nextFire = 500;
+var timer;
 
 var speedX = 1000, speedY = 700;
 
@@ -59,19 +60,26 @@ var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
     }
   }
   else {
-    if (kindAnimal == 2) {
-      timer = game.time.create(false);
-      timer.start();
-      timer.loop(1500, resetStatSpec, this);
-      speedX = speedY = 2000;
-    }
     if (kindAnimal == 1) {
-      isJumping = true;
-      console.log("jump !");
-      player.body.velocity.y = -200;
+      console.log("animal 1");
+      player.body.reset(player.position.x, player.position.y);
+
       timer = game.time.create(false);
       timer.start();
-      timer.loop(500, resetJump, this);
+      timer.loop(2500, resetStatSpec, this);
+      speedX = speedY = 2000;
+      isJumping = true
+
+      player.loadTexture('rouladeAnimation');
+      player.animations.add('rouladeAnimation');
+      player.animations.play('rouladeAnimation', 6, true);
+
+      if (player.scale.x == 1) {
+        player.body.moveRight(1000);
+      }
+      else if (player.scale.x == -1) {
+        player.body.moveLeft(1000);
+      }
     }
   }
 }
@@ -84,15 +92,17 @@ var resetJump = function() {
 var resetStatSpec = function() {
   speedX = 1000;
   speedY = 700;
+  isJumping = false;
+  timer.stop();
 }
 
 var collidesSpiritAnimal = function(b1, b2) {
   player.body.reset(b2.sprite.x, b2.sprite.y);
-  if (b2.sprite.key == "animal1") {
+  if (b2.sprite.key == "animal0") {
     kindAnimal = 1;
   }
   b2.sprite.kill();
-  player.loadTexture('animal1');
+  player.loadTexture('animal0');
   isAnimal = true;
 }
 
@@ -120,9 +130,10 @@ var animationPlayer = function() {
 }
 
 var catchDeplacementPlayer = function(game, cursors) {
-  if (!isJumping) {
-    player.body.setZeroVelocity();
+  if (isJumping) {
+    return ;
   }
+  player.body.setZeroVelocity();
   if (cursors.up.isDown &&
      game.world.height - (player.position.y + player.height / 2) <= game.world.height / 2 - 100) {
     movePlayerUp();
