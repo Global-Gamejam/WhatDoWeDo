@@ -54,6 +54,7 @@ var initWindow = function() {
 
     function update() {
       //targetPlayer(game);
+      updateBullet(game);
       moveFrog(player, game);
       movePlayer(game, cursors);
       // moveEnemies(game, cursors);

@@ -1,8 +1,8 @@
 var player;
-var bullet;
+var bullets;
 
 var fireRate = 750;
-var nextFire = 5;
+var nextFire = 500;
 
 var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   player = game.add.sprite(200, game.world.height - 200, 'player');
@@ -14,11 +14,21 @@ var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
 
   bullets = game.add.group();
   bullets.enableBody = true;
-  bullets.physicsBodyType = Phaser.Physics.ARCADE;
+  bullets.physicsBodyType = Phaser.Physics.P2JS;
 
-  bullets.createMultiple(50, 'bullet');
+  bullets.createMultiple(5, 'bullet');
   bullets.setAll('checkWorldBounds', true);
   bullets.setAll('outOfBoundsKill', true);
+}
+
+var updateBullet = function(game) {
+  bullets.children.forEach(function(currentBullet) {
+    if (currentBullet.position.y > game.height || currentBullet.position.y < 0 ||
+       currentBullet.position.x > player.position.x + game.width ||
+       currentBullet.position.x < player.position.x - game.width) {
+         currentBullet.kill();
+       }
+  });
 }
 
 var targetPlayer = function(game) {
@@ -26,10 +36,14 @@ var targetPlayer = function(game) {
 
   if (game.time.now > nextFire && bullets.countDead() > 0) {
     nextFire = game.time.now + fireRate;
-    var bullet = bullets.getFirstDead();
 
+    var bullet = bullets.getFirstExists(false);
+
+    if (bullet) {
+      bullet.revive();
+    }
     bullet.reset(player.x - 8, player.y - 8);
-    game.physics.arcade.moveToPointer(bullet, 300);
+    game.physics.arcade.moveToPointer(bullet, 1200);
   }
 }
 
