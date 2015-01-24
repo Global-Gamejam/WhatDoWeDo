@@ -50,13 +50,14 @@ var initWindow = function() {
       game.input.onDown.add(gofull, this);
     }
 
-    function spiritHitsAnimal(body1, body2) {
-      console.log("hit spirit");
-    }
-
     function hitEnemies(body1, body2) {
-      console.log("hit hitEnemies");
+      console.log(body2);
+      if (player.isAnimal) {
+      }
+      //body2.destroy();
+      //body1.destroy();
 
+      console.log("hit hitEnemies");
     }
 
     function gofull() {
