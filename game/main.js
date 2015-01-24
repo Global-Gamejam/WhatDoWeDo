@@ -11,6 +11,10 @@ var initWindow = function() {
       var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'player');
       logo.anchor.setTo(0.5, 0.5);
 
+      var enemies = game.add.sprite(game.world.centerX, game.world.centerY, 'player');
+      enemies.anchor.setTo(0.5, 0.5);
+
+
       background1 = game.add.sprite(0, 0, 'background');
 
       initFrog(game);
@@ -18,9 +22,17 @@ var initWindow = function() {
       game.world.setBounds(0, 0, 10000, 1080);
       game.physics.startSystem(Phaser.Physics.P2JS);
       //game.physics.p2.gravity .y = 1500;
+      game.physics.p2.setImpactEvents(true);
+      game.physics.p2.restitution = 0.8;
+      game.physics.p2.updateBoundsCollisionGroup();
 
-      initPLayer(game);
-      game.physics.p2.enable(player);
+      var enemiesCollisionGroup = game.physics.p2.createCollisionGroup();
+      var playerCollisionGroup = game.physics.p2.createCollisionGroup();
+
+
+      initPLayer(game, playerCollisionGroup, enemiesCollisionGroup);
+      initEnemies(game, playerCollisionGroup, enemiesCollisionGroup);
+      player.body.collides(enemiesCollisionGroup, hitEnemies, this);
 
       cursors = game.input.keyboard.createCursorKeys();
       background1.fixedToCamera = true;
@@ -28,6 +40,10 @@ var initWindow = function() {
 
       game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
       game.input.onDown.add(gofull, this);
+    }
+
+    function hitEnemies(body1, body2) {
+        // Perdre de la vie etc ...
     }
 
     function gofull() {
@@ -42,6 +58,8 @@ var initWindow = function() {
     function update() {
       moveFrog();
       movePlayer(game, cursors);
+
+      // moveEnemies(game, cursors);
     }
 
     function render() {
