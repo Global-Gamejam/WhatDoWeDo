@@ -24,6 +24,7 @@ var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
     enemie[i].body.collideWorldBounds = true;
     enemie[i].body.setCollisionGroup(enemiesCollisionGroup);
     enemie[i].body.collides(playerCollisionGroup);
+    enemie[i].body.allowGravity = false;
   }
 }
 

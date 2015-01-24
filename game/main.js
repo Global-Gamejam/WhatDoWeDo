@@ -24,7 +24,8 @@ var initWindow = function() {
       game.physics.p2.setImpactEvents(true);
       game.physics.p2.restitution = 0.1;
       game.physics.p2.updateBoundsCollisionGroup();
-      //game.physics.arcade.gravity.y = 300;
+      game.physics.arcade.enableBody(this);
+      game.physics.arcade.gravity.y = 500;
 
       enemiesCollisionGroup = game.physics.p2.createCollisionGroup();
       playerCollisionGroup = game.physics.p2.createCollisionGroup();
