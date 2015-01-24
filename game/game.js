@@ -1,5 +1,6 @@
 var preloadRessource = function(game) {
   game.load.image('player','ressources/t.png');
+  game.load.image('bullet','ressources/t.png');
   game.load.image('background','ressources/background.png');
   game.load.image('frog1','ressources/frog/frog1.png');
   game.load.image('frog2','ressources/frog/frog2.png');
@@ -21,9 +22,9 @@ var spriteFrog2;
 var spriteFrog3;
 
 var initFrog = function(game) {
-  spriteFrog1 = game.add.sprite(0, -200, 'frog1');
-  spriteFrog2 = game.add.sprite(game.width, -200, 'frog2');
-  spriteFrog3 = game.add.sprite(Math.floor(Math.random() * game.width) + 400, -200, 'frog3');
+  spriteFrog1 = game.add.sprite(0, -300, 'frog1');
+  spriteFrog2 = game.add.sprite(game.width, -300, 'frog2');
+  spriteFrog3 = game.add.sprite(Math.floor(Math.random() * game.width) + 400, -300, 'frog3');
 }
 
 var moveFrog = function(player, game) {

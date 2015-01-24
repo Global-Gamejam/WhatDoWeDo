@@ -48,21 +48,11 @@ var initWindow = function() {
     }
 
     function gofull() {
-      if (game.scale.isFullScreen) {
-        game.scale.stopFullScreen();
-      }
-      else {
-        game.scale.startFullScreen(false);
-      }
+      game.scale.startFullScreen(false);
+      targetPlayer(game);
     }
 
     function update() {
-    //  player.rotation = game.physics.arcade.angleToPointer(player);
-      if (game.input.activePointer.isDown) {
-        console.log("fire");
-        //fire();
-      }
-
       //targetPlayer(game);
       moveFrog(player, game);
       movePlayer(game, cursors);
