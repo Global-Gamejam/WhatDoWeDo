@@ -35,20 +35,27 @@ var updateBullet = function(game) {
   });
 }
 
-var targetPlayer = function(game) {
-  //player.rotation = game.physics.arcade.angleToPointer(player);
-
+var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
   if (game.time.now > nextFire && bullets.countDead() > 0) {
     nextFire = game.time.now + fireRate;
-
     var bullet = bullets.getFirstExists(false);
 
     if (bullet) {
       bullet.revive();
     }
     bullet.reset(player.x - 8, player.y - 8);
+    bullet.body.clearShapes();
     game.physics.arcade.moveToPointer(bullet, 1200);
+    bullet.body.setCircle(30);
+    bullet.body.setCollisionGroup(bulletCollisionGroup);
+    bullet.body.collides(animalCollisionGroup, collidesSpiritAnimal, this);
   }
+}
+
+var collidesSpiritAnimal = function(b1, b2) {
+  console.log("spirit touched");
+  player.body.reset(b2.sprite.x, b2.sprite.y);
+  b2.sprite.kill();
 }
 
 var movePlayerUp = function() {player.body.moveUp(700);}
@@ -69,7 +76,7 @@ var catchDeplacementPlayer = function(game, cursors) {
   player.body.setZeroVelocity();
 
   if (cursors.up.isDown &&
-     game.world.height - (player.position.y + player.height / 2) <= game.world.height / 2) {
+     game.world.height - (player.position.y + player.height / 2) <= game.world.height / 2 - 100) {
     movePlayerUp();
   }
   else if (cursors.down.isDown) {
