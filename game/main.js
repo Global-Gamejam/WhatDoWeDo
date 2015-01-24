@@ -64,8 +64,6 @@ var initWindow = function() {
       game.context.fillStyle = 'rgba(255,0,0,0.6)';
       game.debug.cameraInfo(game.camera, 32, 32);
       game.debug.spriteCoords(player, 32, 500);
-
-
     }
   };
 }
