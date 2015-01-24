@@ -25,14 +25,20 @@ var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   }
 }
 
-var moveEnemies = function(game, cursors) {
+var moveEnemies = function(game, cursors, player) {
  // AI
- for (var i = 0; i < 1; i++)
+ for (var i = 0; i < enemie.length; i++)
  {
    if ( (Math.floor(Math.random() * 25)) == 1)
    {
-     enemie[0].body.moveDown( (player.y -  enemie[0].y) );
-     enemie[0].body.moveRight( (player.x -  enemie[0].x));
+     if (player.position.x < enemie[i].body.sprite.position.x) {
+       enemie[i].body.sprite.scale.x = 1;
+     }
+     else {
+       enemie[i].body.sprite.scale.x = -1;
+     }
+     enemie[i].body.moveDown( (player.y -  enemie[i].y) );
+     enemie[i].body.moveRight( (player.x -  enemie[i].x));
    }
  }
 }
