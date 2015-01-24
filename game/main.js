@@ -19,7 +19,7 @@ var initWindow = function() {
       logo.anchor.setTo(0.5, 0.5);
 
       background1 = game.add.sprite(0, 0, 'background');
-      game.world.setBounds(0, 0, 10000, 1080);
+      game.world.setBounds(0, 0, 10000, 1080 / 2);
       game.physics.startSystem(Phaser.Physics.P2JS);
       game.physics.p2.setImpactEvents(true);
       game.physics.p2.restitution = 0.1;

@@ -24,7 +24,6 @@ var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   bullets.createMultiple(5, 'bullet');
   bullets.setAll('checkWorldBounds', true);
   bullets.setAll('outOfBoundsKill', true);
-  console.log("call ini");
   isAnimal = false;
 }
 
@@ -56,7 +55,6 @@ var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
 }
 
 var collidesSpiritAnimal = function(b1, b2) {
-  console.log("spirit touched");
   player.body.reset(b2.sprite.x, b2.sprite.y);
 
   b2.sprite.kill();
@@ -87,7 +85,6 @@ var animationPlayer = function() {
 
 var catchDeplacementPlayer = function(game, cursors) {
   player.body.setZeroVelocity();
-  console.log(isAnimal);
   if (cursors.up.isDown &&
      game.world.height - (player.position.y + player.height / 2) <= game.world.height / 2 - 100) {
     movePlayerUp();

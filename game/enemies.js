@@ -7,6 +7,9 @@ var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
 
   enemies.enableBody = true;
   enemies.physicsBodyType = Phaser.Physics.P2JS;
+  enemies.setAll('checkWorldBounds', true);
+  enemies.setAll('outOfBoundsKill', false);
+
 
   for (var i = 0; i < 1; i++)
   {
@@ -14,11 +17,9 @@ var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
 
     enemie[i].body.clearShapes();
     enemie[i].body.loadPolygon('physicsData', 'monster1');
-
+    enemie[i].body.mass = 10000;
     enemie[i].body.fixedRotation = true;
-
-
-    // enemie[i].body.setRectangle(40, 40);
+    enemie[i].body.collideWorldBounds = true;
     enemie[i].body.setCollisionGroup(enemiesCollisionGroup);
     enemie[i].body.collides(playerCollisionGroup);
   }
