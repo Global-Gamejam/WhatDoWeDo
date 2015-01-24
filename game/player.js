@@ -11,6 +11,7 @@ var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
 
   //  The ship will collide with the pandas, and when it strikes one the hitPanda callback will fire, causing it to alpha out a bit
   //  When pandas collide with each other, nothing happens to them.
+  // player.body.collides(enemiesCollisionGroup, hitEnemies, this);
 
 }
 
