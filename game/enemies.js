@@ -19,7 +19,7 @@ var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
 
 var moveEnemies = function(game, cursors) {
  // AI
- for (var i = 0; i < 4; i++)
+ for (var i = 0; i < 1; i++)
  {
   //  console.log(Math.floor(Math.random() * 10));
   if ( (Math.floor(Math.random() * 25)) == 1)
