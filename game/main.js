@@ -39,6 +39,13 @@ var initWindow = function() {
     }
 
     function update() {
+    //  player.rotation = game.physics.arcade.angleToPointer(player);
+      if (game.input.activePointer.isDown) {
+        console.log("fire");
+        //fire();
+      }
+
+      //targetPlayer(game);
       moveFrog(player, game);
       movePlayer(game, cursors);
     }
@@ -47,8 +54,6 @@ var initWindow = function() {
       game.context.fillStyle = 'rgba(255,0,0,0.6)';
       game.debug.cameraInfo(game.camera, 32, 32);
       game.debug.spriteCoords(player, 32, 500);
-
-
     }
   };
 }

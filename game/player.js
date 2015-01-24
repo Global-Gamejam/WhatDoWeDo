@@ -2,6 +2,14 @@ var player;
 
 var initPLayer = function(game) {
   player = game.add.sprite(200, game.world.height - 200, 'player');
+  player.rotation = 90;
+}
+
+var targetPlayer = function(game) {
+  player.rotation = game.physics.arcade.angleToPointer(player);
+  if (game.input.activePointer.isDown) {
+    //fire();
+  }
 }
 
 var movePlayer = function(game, cursors) {
