@@ -3,7 +3,6 @@ var initWindow = function() {
     var game = new Phaser.Game(1920, 1080, Phaser.CANVAS, '', { preload: preload, create: create, render:render, update:update});
     var player;
     var cursors;
-    var frog;
 
     function preload () {
       preloadRessource(game);
@@ -15,7 +14,7 @@ var initWindow = function() {
 
       background1 = game.add.sprite(0, 0, 'background');
 
-      frog = game.add.sprite(1920, 0, 'frog1');
+      initFrog(game);
 
       game.world.setBounds(0, 0, 10000, 1080);
       game.physics.startSystem(Phaser.Physics.P2JS);
@@ -42,20 +41,8 @@ var initWindow = function() {
     }
 
     function update() {
-      frog = moveFrog(frog);
-      player.body.setZeroVelocity();
-      if (cursors.up.isDown && game.world.height - player.position.y <= game.world.height / 2) {
-        player.body.moveUp(300)
-      }
-      else if (cursors.down.isDown) {
-        player.body.moveDown(300);
-      }
-      if (cursors.left.isDown) {
-        player.body.velocity.x = -300;
-      }
-      else if (cursors.right.isDown) {
-        player.body.moveRight(300);
-      }
+      moveFrog();
+      movePlayer(player, game, cursors);
     }
 
     function render() {

@@ -6,7 +6,7 @@ var preloadRessource = function(game) {
   game.load.image('frog3','ressources/frog3.png');
 }
 
-
+// frog management
 var frogRessources = ['frog1', 'frog2', 'frog3'];
 var spriteFrog1;
 var spriteFrog2;
@@ -21,7 +21,7 @@ var initFrog = function(game) {
 var moveFrog = function() {
   spriteFrog1.position.x -= 20;
   spriteFrog2.position.x -= 10;
-  spriteFrog3.position.x -= 20;
+  spriteFrog3.position.x -= 15;
   if (spriteFrog1.position.x <= -1920) {
     spriteFrog1.loadTexture(frogRessources[Math.floor(Math.random() * 3)]);
     spriteFrog1.position.x = 1920;
