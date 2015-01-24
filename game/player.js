@@ -8,6 +8,8 @@ var kindAnimal;
 var fireRate = 750;
 var nextFire = 500;
 
+var speedX = 1000, speedY = 700;
+
 var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   player = game.add.sprite(200, game.world.height - 200, 'player');
 
@@ -53,13 +55,26 @@ var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
       bullet.body.setCircle(30);
       bullet.body.setCollisionGroup(bulletCollisionGroup);
       bullet.body.collides(animalCollisionGroup, collidesSpiritAnimal, this);
-    }    
+    }
   }
+  else {
+    if (kindAnimal == 1) {
+      timer = game.time.create(false);
+      timer.start();
+      timer.loop(1500, resetStatSpec, this);
+      speedX = speedY = 2000;
+    }
+  }
+}
+
+var resetStatSpec = function() {
+  speedX = 1000;
+  speedY = 700;
 }
 
 var collidesSpiritAnimal = function(b1, b2) {
   player.body.reset(b2.sprite.x, b2.sprite.y);
-  if (b2.sprite.key == "monster1") {
+  if (b2.sprite.key == "animal1") {
     kindAnimal = 1;
   }
   b2.sprite.kill();
@@ -67,10 +82,10 @@ var collidesSpiritAnimal = function(b1, b2) {
   isAnimal = true;
 }
 
-var movePlayerUp = function() {player.body.moveUp(700);}
-var movePlayerDown = function() {player.body.moveDown(1000);}
-var movePlayerLeft = function() {player.body.moveLeft(1000);}
-var movePlayerRight = function() {player.body.moveRight(700);}
+var movePlayerUp = function() {player.body.moveUp(speedY);}
+var movePlayerDown = function() {player.body.moveDown(speedY);}
+var movePlayerLeft = function() {player.body.moveLeft(speedX);}
+var movePlayerRight = function() {player.body.moveRight(speedX);}
 
 var animationPlayer = function() {
   if (!isAnimated && !isAnimal) {
