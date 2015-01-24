@@ -5,7 +5,6 @@ var isAnimated;
 var isAnimal;
 var kindAnimal;
 var isJumping;
-
 var fireRate = 750;
 var nextFire = 500;
 
