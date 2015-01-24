@@ -16,9 +16,6 @@ var initWindow = function() {
 
 
       background1 = game.add.sprite(0, 0, 'background');
-
-      initFrog(game);
-
       game.world.setBounds(0, 0, 10000, 1080);
       game.physics.startSystem(Phaser.Physics.P2JS);
       //game.physics.p2.gravity .y = 1500;
@@ -29,10 +26,14 @@ var initWindow = function() {
       var enemiesCollisionGroup = game.physics.p2.createCollisionGroup();
       var playerCollisionGroup = game.physics.p2.createCollisionGroup();
 
+      initFrog(game);
+      initFloor(game);
 
       initPLayer(game, playerCollisionGroup, enemiesCollisionGroup);
       initEnemies(game, playerCollisionGroup, enemiesCollisionGroup);
       player.body.collides(enemiesCollisionGroup, hitEnemies, this);
+
+      game.physics.p2.enable(player);
 
       cursors = game.input.keyboard.createCursorKeys();
       background1.fixedToCamera = true;
@@ -56,9 +57,8 @@ var initWindow = function() {
     }
 
     function update() {
-      moveFrog();
+      moveFrog(player, game);
       movePlayer(game, cursors);
-
       // moveEnemies(game, cursors);
     }
 
