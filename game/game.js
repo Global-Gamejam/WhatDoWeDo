@@ -9,9 +9,9 @@ var preloadRessource = function(game) {
 
 // floor management
 var initFloor = function(game) {
-  // for (var index = 0; index < game.world.bounds.width; index += game.width) {
-  //   game.add.sprite(index, game.world.bounds.height / 2, 'sol');
-  // }
+  for (var index = 0; index < game.world.bounds.width; index += game.width) {
+    game.add.sprite(index, game.world.bounds.height / 2, 'sol');
+  }
 }
 
 // frog management
@@ -22,21 +22,21 @@ var spriteFrog3;
 
 var initFrog = function(game) {
   spriteFrog1 = game.add.sprite(0, -200, 'frog1');
-  spriteFrog2 = game.add.sprite(1920, -200, 'frog2');
-  spriteFrog3 = game.add.sprite(Math.floor(Math.random() * 1920) + 400, -200, 'frog3');
+  spriteFrog2 = game.add.sprite(game.width, -200, 'frog2');
+  spriteFrog3 = game.add.sprite(Math.floor(Math.random() * game.width) + 400, -200, 'frog3');
 }
 
-var moveFrog = function(player) {
+var moveFrog = function(player, game) {
   spriteFrog1.position.x -= 20;
   spriteFrog2.position.x -= 10;
   spriteFrog3.position.x -= 15;
-  if (spriteFrog1.position.x <= player.position.x - 1920 - (1920 / 2)) {
-    spriteFrog1.position.x = player.position.x + 1920;
+  if (spriteFrog1.position.x <= player.position.x - game.width - (game.width / 2)) {
+    spriteFrog1.position.x = player.position.x + game.width;
   }
-  if (spriteFrog2.position.x <= player.position.x - 1920 - (1920 / 2)) {
-    spriteFrog2.position.x = player.position.x + 1920;
+  if (spriteFrog2.position.x <= player.position.x - game.width - (game.width / 2)) {
+    spriteFrog2.position.x = player.position.x + game.width;
   }
-  if (spriteFrog3.position.x <= player.position.x - 1920 - (1920 / 2)) {
-    spriteFrog3.position.x = player.position.x + 1920;
+  if (spriteFrog3.position.x <= player.position.x - game.width - (game.width / 2)) {
+    spriteFrog3.position.x = player.position.x + game.width;
   }
 }

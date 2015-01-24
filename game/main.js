@@ -39,7 +39,7 @@ var initWindow = function() {
     }
 
     function update() {
-      moveFrog(player);
+      moveFrog(player, game);
       movePlayer(game, cursors);
     }
 
