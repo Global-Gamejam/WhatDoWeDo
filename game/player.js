@@ -2,6 +2,7 @@ var player;
 var bullets;
 var state;
 var isAnimated;
+var isAnimal;
 
 var fireRate = 750;
 var nextFire = 500;
@@ -23,6 +24,8 @@ var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   bullets.createMultiple(5, 'bullet');
   bullets.setAll('checkWorldBounds', true);
   bullets.setAll('outOfBoundsKill', true);
+  console.log("call ini");
+  isAnimal = false;
 }
 
 var updateBullet = function(game) {
@@ -55,7 +58,12 @@ var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
 var collidesSpiritAnimal = function(b1, b2) {
   console.log("spirit touched");
   player.body.reset(b2.sprite.x, b2.sprite.y);
+
   b2.sprite.kill();
+
+  player.loadTexture('animal1');
+
+  isAnimal = true;
 }
 
 var movePlayerUp = function() {player.body.moveUp(700);}
@@ -64,17 +72,22 @@ var movePlayerLeft = function() {player.body.moveLeft(1000);}
 var movePlayerRight = function() {player.body.moveRight(700);}
 
 var animationPlayer = function() {
-  if (!isAnimated) {
-    player.loadTexture('playerAnimation');
-    player.animations.add('run');
-    player.animations.play('run', 6, true);
+  if (!isAnimated && !isAnimal) {
+    if (!isAnimal) {
+      player.loadTexture('playerAnimation');
+      player.animations.add('run');
+      player.animations.play('run', 6, true);
+    }
+    else {
+      play.loadTexture('animal1');
+    }
     isAnimated = true;
   }
 }
 
 var catchDeplacementPlayer = function(game, cursors) {
   player.body.setZeroVelocity();
-
+  console.log(isAnimal);
   if (cursors.up.isDown &&
      game.world.height - (player.position.y + player.height / 2) <= game.world.height / 2 - 100) {
     movePlayerUp();
@@ -93,10 +106,20 @@ var catchDeplacementPlayer = function(game, cursors) {
 
   if (!cursors.up.isDown && !cursors.down.isDown &&
      !cursors.left.isDown && !cursors.right.isDown) {
-       player.loadTexture('player');
+       if (!isAnimal) {
+         player.loadTexture('player');
+       }
+       else {
+         player.loadTexture('animal1');
+       }
        isAnimated = false;
   }
   else {
-    animationPlayer();
+    if (!isAnimal) {
+      animationPlayer();
+    }
+    else {
+      player.loadTexture('animal1');
+    }
   }
 }
