@@ -54,7 +54,7 @@ var initWindow = function() {
     }
 
     function update() {
-      updateBullet(game);
+      //updateBullet(game);
       moveFrog(player, game);
       catchDeplacementPlayer(game, cursors);
       //moveEnemies(game, cursors);

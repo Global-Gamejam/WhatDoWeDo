@@ -8,6 +8,7 @@ var nextFire = 500;
 
 var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   player = game.add.sprite(200, game.world.height - 200, 'player');
+  player.scale.setTo(0.6, 0.6);
 
   game.physics.p2.enable(player, false);
   player.body.setCircle(28);
@@ -49,10 +50,10 @@ var targetPlayer = function(game) {
   }
 }
 
-var movePlayerUp = function() {player.body.moveUp(500);}
-var movePlayerDown = function() {player.body.moveDown(700);}
-var movePlayerLeft = function() {player.body.moveLeft(700);}
-var movePlayerRight = function() {player.body.moveRight(500);}
+var movePlayerUp = function() {player.body.moveUp(700);}
+var movePlayerDown = function() {player.body.moveDown(1000);}
+var movePlayerLeft = function() {player.body.moveLeft(1000);}
+var movePlayerRight = function() {player.body.moveRight(700);}
 
 var animationPlayer = function() {
   if (!isAnimated) {
@@ -67,7 +68,7 @@ var catchDeplacementPlayer = function(game, cursors) {
   player.body.setZeroVelocity();
 
   if (cursors.up.isDown &&
-     game.world.height - player.position.y <= game.world.height / 2) {
+     game.world.height - (player.position.y + player.height / 2) <= game.world.height / 2) {
     movePlayerUp();
   }
   else if (cursors.down.isDown) {
