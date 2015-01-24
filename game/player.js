@@ -8,7 +8,6 @@ var nextFire = 500;
 
 var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   player = game.add.sprite(200, game.world.height - 200, 'player');
-  player.scale.setTo(0.6, 0.6);
 
   game.physics.p2.enable(player, false);
   player.body.setCircle(28);

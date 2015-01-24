@@ -1,28 +1,36 @@
 {"frames": [
 
 {
-	"filename": "player2.png",
-	"frame": {"x":2,"y":2,"w":253,"h":428},
+	"filename": "personnage-droite-marche-1.png",
+	"frame": {"x":2,"y":258,"w":150,"h":255},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":1,"w":253,"h":428},
-	"sourceSize": {"w":253,"h":429}
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":255},
+	"sourceSize": {"w":151,"h":255}
 },
 {
-	"filename": "player3.png",
-	"frame": {"x":257,"y":2,"w":250,"h":420},
+	"filename": "personnage-droite-marche-2.png",
+	"frame": {"x":2,"y":515,"w":150,"h":255},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":420},
-	"sourceSize": {"w":250,"h":420}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":255},
+	"sourceSize": {"w":151,"h":255}
+},
+{
+	"filename": "personnage-droite-marche-3.png",
+	"frame": {"x":2,"y":2,"w":151,"h":254},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":151,"h":254},
+	"sourceSize": {"w":151,"h":255}
 }],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "playerAnimation.png",
 	"format": "RGBA8888",
-	"size": {"w":509,"h":432},
+	"size": {"w":155,"h":772},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:dc7b761873f86e6e5b7ecd2a51b95563:92e516749e0a72c5f653e55d7e013467:b966f5ef5ce3194fc929f0ea84aebe3a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:3744eb2497a27cb54916a05f341e8b51:fe6be96bacf97d4c29220d9415f2d177:b966f5ef5ce3194fc929f0ea84aebe3a$"
 }
 }
