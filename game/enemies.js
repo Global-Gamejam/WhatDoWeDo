@@ -1,5 +1,6 @@
 var enemies;
 var enemie = new Array;
+var enemiepos = new Array;
 
 var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
 
@@ -7,31 +8,59 @@ var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
 
   enemies.enableBody = true;
   enemies.physicsBodyType = Phaser.Physics.P2JS;
+  enemies.setAll('checkWorldBounds', true);
+  enemies.setAll('outOfBoundsKill', false);
 
-  for (var i = 0; i < 1; i++)
+
+  for (var i = 0; i < 5; i++)
   {
-    enemie[i] = enemies.create(1000 + (i * 100), game.world.height - 200, 'monster1');
+    enemiepos[i] = (i * 1000) + 3000;
 
+    enemie[i] = enemies.create(enemiepos[i], game.world.height - 200, 'monster1');
     enemie[i].body.clearShapes();
     enemie[i].body.loadPolygon('physicsData', 'monster1');
-
+    enemie[i].body.mass = 10000;
     enemie[i].body.fixedRotation = true;
-
-
-    // enemie[i].body.setRectangle(40, 40);
+    enemie[i].body.collideWorldBounds = true;
     enemie[i].body.setCollisionGroup(enemiesCollisionGroup);
     enemie[i].body.collides(playerCollisionGroup);
+    enemie[i].body.allowGravity = false;
+
+    enemie[i].loadTexture('monster1Animation');
+    enemie[i].animations.add('run');
+    enemie[i].animations.play('run', 6, true);
+
   }
 }
 
-var moveEnemies = function(game, cursors) {
+var moveEnemies = function(game, cursors, player) {
  // AI
- for (var i = 0; i < 1; i++)
+
+ for (var i = 0; i < enemie.length; i++)
  {
-   if ( (Math.floor(Math.random() * 25)) == 1)
+   if ( (Math.floor(Math.random() * 10)) == 1)
    {
-     enemie[0].body.moveDown( (player.y -  enemie[0].y) );
-     enemie[0].body.moveRight( (player.x -  enemie[0].x));
+
+//     console.log(enemie[i] );
+
+
+      if (player.position.x < enemie[i].body.sprite.position.x) {
+        enemie[i].body.sprite.scale.x = 1;
+      }
+      else {
+        enemie[i].body.sprite.scale.x = -1;
+      }
+
+
+     if ((player.x > (enemiepos[i] - 1000) && player.x < (enemiepos[i] + 1000)) || enemiepos[i] == 0)
+     {
+
+       enemiepos[i] = 0;
+       enemie[i].body.moveDown( (player.y -  enemie[i].y) );
+       enemie[i].body.moveRight( (player.x -  enemie[i].x));
+    }
+
+
    }
  }
 }

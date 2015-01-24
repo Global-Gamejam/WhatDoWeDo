@@ -1,6 +1,9 @@
 var preloadRessource = function(game) {
   game.load.image('player','ressources/player/player1.png');
   game.load.atlasJSONHash('playerAnimation', 'ressources/player/playerAnimation.png', 'ressources/player/playerAnimation.json');
+  game.load.atlasJSONHash('monster1Animation', 'ressources/monster/monster1Animation.png', 'ressources/monster/monster1Animation.json');
+  game.load.atlasJSONHash('animal1Animation', 'ressources/animals/animal1Animation.png', 'ressources/animals/animal1Animation.json');
+  game.load.atlasJSONHash('rouladeAnimation', 'ressources/animals/rouladeAnimation.png', 'ressources/animals/rouladeAnimation.json');
   game.load.image('bullet','ressources/t.png');
   game.load.image('background','ressources/background.png');
   game.load.image('frog1','ressources/frog/frog1.png');
@@ -8,7 +11,11 @@ var preloadRessource = function(game) {
   game.load.image('frog3','ressources/frog/frog3.png');
   game.load.image('sol','ressources/sol.png');
   game.load.image('monster1','ressources/monster/monster1.png');
+  game.load.image('animal0','ressources/animals/pangolin.png');
   game.load.image('animal1','ressources/animals/pangolin.png');
+  game.load.image('animal2','ressources/animals/pangolin.png');
+  game.load.image('animal3','ressources/animals/pangolin.png');
+  game.load.image('animal4','ressources/animals/pangolin.png');
   game.load.physics('physicsData', 'ressources/sprites.json');
 }
 

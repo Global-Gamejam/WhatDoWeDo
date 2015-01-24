@@ -1,30 +1,46 @@
 var initWindow = function() {
-  window.onload = function() {
-    var game = new Phaser.Game(1920, 1080, Phaser.CANVAS, '', { preload: preload, create: create, render:render, update:update});
+  window.onload =  function() {
+
+    var P2Game = {};
+    var hit = 0;
+
+
+    P2Game.StateA = function (game) {
+
     var cursors;
     var upKey;
+    var rkey;
+
 
     var enemiesCollisionGroup;
     var playerCollisionGroup;
     var bulletCollisionGroup;
     var animalCollisionGroup;
+  };
 
-    function preload () {
+  P2Game.StateA.prototype = {
+
+    preload: function () {
       preloadRessource(game);
       game.time.advancedTiming = true;
-    }
+    },
 
-    function create () {
+
+
+  create: function () {
       var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'player');
+
       logo.anchor.setTo(0.5, 0.5);
 
+      hit = 0;
       background1 = game.add.sprite(0, 0, 'background');
-      game.world.setBounds(0, 0, 10000, 1080);
+      game.world.setBounds(0, 0, 10000, 1080 / 2);
       game.physics.startSystem(Phaser.Physics.P2JS);
       game.physics.p2.setImpactEvents(true);
       game.physics.p2.restitution = 0.1;
       game.physics.p2.updateBoundsCollisionGroup();
-      //game.physics.arcade.gravity.y = 300;
+      game.physics.arcade.enableBody(this);
+      game.physics.arcade.gravity.y = 500;
 
       enemiesCollisionGroup = game.physics.p2.createCollisionGroup();
       playerCollisionGroup = game.physics.p2.createCollisionGroup();
@@ -34,6 +50,8 @@ var initWindow = function() {
       initFrog(game);
       initFloor(game);
       initAnimals(game, bulletCollisionGroup, animalCollisionGroup);
+
+      rkey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
       initPLayer(game, playerCollisionGroup, enemiesCollisionGroup);
       initEnemies(game, playerCollisionGroup, enemiesCollisionGroup);
@@ -47,13 +65,70 @@ var initWindow = function() {
 
       game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
       game.input.onDown.add(gofull, this);
-    }
+    },
 
-    function spiritHitsAnimal(body1, body2) {
-      console.log("hit spirit");
-    }
+    spiritHitsAnimal: function (body1, body2) {
+        console.log("hit spirit");
+    },
 
-    function hitEnemies(body1, body2) {
+    update: function () {
+            updateBullet(game);
+      moveFrog(player, game);
+      catchDeplacementPlayer(game, cursors);
+      moveEnemies(game, cursors, player);
+      moveAnimals(game, player);
+
+      if ( rkey.justPressed(/*optional duration*/))
+      {
+        this.state.start('StateA');
+      }
+    },
+
+    render: function () {
+      game.debug.text( game.time.fps, 10, 30 );
+      game.context.fillStyle = 'rgba(255,0,0,0.6)';
+      game.debug.cameraInfo(game.camera, 32, 32);
+      game.debug.spriteCoords(player, 32, 500);
+    }
+};
+
+
+    var game = new Phaser.Game(1920, 1080, Phaser.CANVAS, 'phaser-example');
+    game.state.add('StateA', P2Game.StateA);
+    game.state.start('StateA');
+
+   function hitEnemies (body1, body2) {
+      console.log("hit hitEnemies");
+      hit += 1;
+      console.log(hit);
+
+      // if (hit == 3)
+      // {
+      //   var text = "-Tu est MORT !-\n";
+      //   var style = { font: "120px Arial", fill: "#ff0044", align: "center" };
+      //   var t = game.add.text(player.x - 300,player.y - 500, text, style);
+      //   setTimeout(function () {
+      //     game.state.start('StateA');
+      //   }, 1000);
+      //
+      // }
+
+      body2.sprite.kill();
+
+      // enemies.forEach(function(i) {
+      //   if (i.x == body2.x && i.y == body2.y) {
+      //     console.log("find");
+      //     //i.kill();
+      //     return ;
+      //   }
+      // });
+
+      //body2.kill();
+      // body2.x = -10000;
+      // body2.y = -10000;
+      // body2.static = true;
+      //body2.sprite.alpha = 0;
+      //body2.y = 0;
     }
 
     function gofull() {
@@ -61,19 +136,6 @@ var initWindow = function() {
       targetPlayer(game, animalCollisionGroup, bulletCollisionGroup);
     }
 
-    function update() {
-      updateBullet(game);
-      moveFrog(player, game);
-      catchDeplacementPlayer(game, cursors);
-      moveEnemies(game, cursors);
-      moveAnimals(game, player);
-    }
 
-    function render() {
-      game.debug.text( game.time.fps, 10, 30 );
-      game.context.fillStyle = 'rgba(255,0,0,0.6)';
-      game.debug.cameraInfo(game.camera, 32, 32);
-      game.debug.spriteCoords(player, 32, 500);
-    }
   };
 }
