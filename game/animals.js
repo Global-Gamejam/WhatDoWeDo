@@ -29,11 +29,13 @@ var moveAnimals = function(game, player) {
     animal[i].body.setZeroVelocity();
 
     if (animal[i].position.y >= player.position.y - 100 && animal[i].position.y <= player.position.y + 100) {
-      if (animal[i].position.x < player.position.x && player.position.x - animal[i].position.x <= 400) {
-        animal[i].body.moveLeft(800);
+      if (animal[i].position.x < player.position.x && player.position.x - animal[i].position.x <= 500) {
+        animal[i].body.sprite.scale.x = -1;
+        animal[i].body.moveLeft(1000);
       }
-      if (animal[i].position.x > player.position.x && animal[i].position.x - player.position.x <= 400) {
-        animal[i].body.moveRight(800);
+      if (animal[i].position.x > player.position.x && animal[i].position.x - player.position.x <= 500) {
+        animal[i].body.sprite.scale.x = 1;
+        animal[i].body.moveRight(1000);
       }
     }
   }

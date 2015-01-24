@@ -25,6 +25,11 @@ var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
     enemie[i].body.setCollisionGroup(enemiesCollisionGroup);
     enemie[i].body.collides(playerCollisionGroup);
     enemie[i].body.allowGravity = false;
+
+    enemie[i].loadTexture('monster1Animation');
+    enemie[i].animations.add('run');
+    enemie[i].animations.play('run', 6, true);
+
   }
 }
 
