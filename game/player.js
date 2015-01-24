@@ -54,6 +54,8 @@ var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
 
 var collidesSpiritAnimal = function(b1, b2) {
   console.log("spirit touched");
+  player.body.reset(b2.sprite.x, b2.sprite.y);
+  b2.sprite.kill();
 }
 
 var movePlayerUp = function() {player.body.moveUp(700);}
