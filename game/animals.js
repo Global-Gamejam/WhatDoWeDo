@@ -13,6 +13,6 @@ var initAnimals = function(game) {
 var moveAnimals = function(game, player) {
   if (!animals) return;
   animals.forEach(function(currentAimal) {
-    if (currentAimal.position.x)
+    //if (currentAimal.position.x)
   });
 }

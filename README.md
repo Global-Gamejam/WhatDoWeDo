@@ -8,4 +8,4 @@ How to run it ?!
 
 Link
 ====
- http://global-gamejam.github.io/WhatDoWeDo
+ http://global-gamejam.github.io/WhatDoWeDo/game
