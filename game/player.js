@@ -102,14 +102,18 @@ var movePlayerLeft = function() {player.body.moveLeft(speedX);}
 var movePlayerRight = function() {player.body.moveRight(speedX);}
 
 var animationPlayer = function() {
-  if (!isAnimated && !isAnimal) {
-    if (!isAnimal) {
+  if (!isAnimated) {
+    if (isAnimal == false) {
       player.loadTexture('playerAnimation');
       player.animations.add('run');
       player.animations.play('run', 6, true);
     }
     else {
-      play.loadTexture('animal1');
+      console.log("animal");
+      player.body.reset(player.position.x, player.position.y);
+      player.loadTexture('animal1Animation');
+      player.animations.add('runAni');
+      player.animations.play('runAni', 6, true);
     }
     isAnimated = true;
   }
@@ -146,11 +150,6 @@ var catchDeplacementPlayer = function(game, cursors) {
        isAnimated = false;
   }
   else {
-    if (!isAnimal) {
-      animationPlayer();
-    }
-    else {
-      player.loadTexture('animal1');
-    }
+    animationPlayer();
   }
 }

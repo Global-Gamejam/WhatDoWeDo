@@ -1,0 +1,60 @@
+{"frames": [
+
+{
+	"filename": "marche-1.png",
+	"frame": {"x":2,"y":763,"w":243,"h":147},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":243,"h":147},
+	"sourceSize": {"w":246,"h":151}
+},
+{
+	"filename": "marche-2.png",
+	"frame": {"x":2,"y":155,"w":246,"h":150},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":246,"h":150},
+	"sourceSize": {"w":249,"h":153}
+},
+{
+	"filename": "marche-3.png",
+	"frame": {"x":2,"y":307,"w":246,"h":150},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":246,"h":150},
+	"sourceSize": {"w":249,"h":153}
+},
+{
+	"filename": "marche-4.png",
+	"frame": {"x":2,"y":459,"w":246,"h":150},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":3,"w":246,"h":150},
+	"sourceSize": {"w":249,"h":153}
+},
+{
+	"filename": "marche-5.png",
+	"frame": {"x":2,"y":611,"w":246,"h":150},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":3,"w":246,"h":150},
+	"sourceSize": {"w":249,"h":153}
+},
+{
+	"filename": "marche-6.png",
+	"frame": {"x":2,"y":2,"w":246,"h":151},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":246,"h":151},
+	"sourceSize": {"w":249,"h":153}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "animal1Animation.png",
+	"format": "RGBA8888",
+	"size": {"w":250,"h":912},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:167a44523569aaa1ccb96720c5fa4655:336a4dd96c1803ed430c02e7498af3c7:da4a4563b9cc1d80ddd42c21d9950a90$"
+}
+}
