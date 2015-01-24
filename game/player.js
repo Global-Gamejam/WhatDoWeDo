@@ -3,6 +3,7 @@ var bullets;
 var state;
 var isAnimated;
 var isAnimal;
+var kindAnimal;
 
 var fireRate = 750;
 var nextFire = 500;
@@ -38,29 +39,31 @@ var updateBullet = function(game) {
 }
 
 var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
-  if (game.time.now > nextFire && bullets.countDead() > 0) {
-    nextFire = game.time.now + fireRate;
-    var bullet = bullets.getFirstExists(false);
+  if (!isAnimal) {
+    if (game.time.now > nextFire && bullets.countDead() > 0) {
+      nextFire = game.time.now + fireRate;
+      var bullet = bullets.getFirstExists(false);
 
-    if (bullet) {
-      bullet.revive();
-    }
-    bullet.reset(player.x - 8, player.y - 8);
-    bullet.body.clearShapes();
-    game.physics.arcade.moveToPointer(bullet, 1200);
-    bullet.body.setCircle(30);
-    bullet.body.setCollisionGroup(bulletCollisionGroup);
-    bullet.body.collides(animalCollisionGroup, collidesSpiritAnimal, this);
+      if (bullet) {
+        bullet.revive();
+      }
+      bullet.reset(player.x - 8, player.y - 8);
+      bullet.body.clearShapes();
+      game.physics.arcade.moveToPointer(bullet, 1200);
+      bullet.body.setCircle(30);
+      bullet.body.setCollisionGroup(bulletCollisionGroup);
+      bullet.body.collides(animalCollisionGroup, collidesSpiritAnimal, this);
+    }    
   }
 }
 
 var collidesSpiritAnimal = function(b1, b2) {
   player.body.reset(b2.sprite.x, b2.sprite.y);
-
+  if (b2.sprite.key == "monster1") {
+    kindAnimal = 1;
+  }
   b2.sprite.kill();
-
   player.loadTexture('animal1');
-
   isAnimal = true;
 }
 
