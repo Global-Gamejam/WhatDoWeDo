@@ -50,18 +50,13 @@ var initWindow = function() {
     }
 
     function gofull() {
-      if (game.scale.isFullScreen) {
-        game.scale.stopFullScreen();
-      }
-      else {
-        game.scale.startFullScreen(false);
-      }
+      game.scale.startFullScreen(false);
+      targetPlayer(game);
     }
 
     function update() {
 
-
-
+      //targetPlayer(game);
       moveFrog(player, game);
       movePlayer(game, cursors);
       moveEnemies(game, cursors);
