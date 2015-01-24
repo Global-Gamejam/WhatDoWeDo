@@ -5,6 +5,8 @@ var initWindow = function() {
 
     function preload () {
       preloadRessource(game);
+      game.time.advancedTiming = true;
+
     }
 
     function create () {
@@ -20,7 +22,7 @@ var initWindow = function() {
       game.physics.startSystem(Phaser.Physics.P2JS);
       //game.physics.p2.gravity .y = 1500;
       game.physics.p2.setImpactEvents(true);
-      game.physics.p2.restitution = 0.8;
+      game.physics.p2.restitution = 0.1;
       game.physics.p2.updateBoundsCollisionGroup();
 
       var enemiesCollisionGroup = game.physics.p2.createCollisionGroup();
@@ -48,21 +50,23 @@ var initWindow = function() {
     }
 
     function gofull() {
-      if (game.scale.isFullScreen) {
-        game.scale.stopFullScreen();
-      }
-      else {
-        game.scale.startFullScreen(false);
-      }
+      game.scale.startFullScreen(false);
+      targetPlayer(game);
     }
 
     function update() {
+
+      //targetPlayer(game);
+      updateBullet(game);
       moveFrog(player, game);
       movePlayer(game, cursors);
-      // moveEnemies(game, cursors);
+      moveEnemies(game, cursors);
     }
 
     function render() {
+
+      game.debug.text( game.time.fps, 10, 30 );
+
       game.context.fillStyle = 'rgba(255,0,0,0.6)';
       game.debug.cameraInfo(game.camera, 32, 32);
       game.debug.spriteCoords(player, 32, 500);

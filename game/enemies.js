@@ -1,4 +1,5 @@
 var enemies;
+var enemie = new Array;
 
 var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
 
@@ -9,13 +10,27 @@ var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
 
   for (var i = 0; i < 4; i++)
   {
-    var enemie = enemies.create(300 + (i * 100), game.world.height - 200, 'player');
-    enemie.body.setRectangle(40, 40);
-    enemie.body.setCollisionGroup(enemiesCollisionGroup);
-    enemie.body.collides([enemiesCollisionGroup, playerCollisionGroup]);
+    enemie[i] = enemies.create(300 + (i * 100), game.world.height - 200, 'player');
+    enemie[i].body.setRectangle(40, 40);
+    enemie[i].body.setCollisionGroup(enemiesCollisionGroup);
+    enemie[i].body.collides( playerCollisionGroup);
   }
 }
 
 var moveEnemies = function(game, cursors) {
  // AI
+ for (var i = 0; i < 4; i++)
+ {
+  //  console.log(Math.floor(Math.random() * 10));
+  if ( (Math.floor(Math.random() * 25)) == 1)
+  {
+    enemie[i].body.moveDown( (player.y -  enemie[i].y) );
+    enemie[i].body.moveRight( (player.x -  enemie[i].x));
+  }
+
+
+    // enemie[i].position = player.y - enemie[i].y;
+    // enemie[i].position = player.x -  enemie[i].x;
+  }
+
 }
