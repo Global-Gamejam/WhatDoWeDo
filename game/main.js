@@ -12,14 +12,13 @@ var initWindow = function() {
       logo.anchor.setTo(0.5, 0.5);
 
       background1 = game.add.sprite(0, 0, 'background');
-
-      initFrog(game);
-
       game.world.setBounds(0, 0, 10000, 1080);
       game.physics.startSystem(Phaser.Physics.P2JS);
-      //game.physics.p2.gravity .y = 1500;
 
+      initFrog(game);
+      initFloor(game);
       initPLayer(game);
+
       game.physics.p2.enable(player);
 
       cursors = game.input.keyboard.createCursorKeys();
@@ -40,7 +39,7 @@ var initWindow = function() {
     }
 
     function update() {
-      moveFrog();
+      moveFrog(player);
       movePlayer(game, cursors);
     }
 
@@ -48,6 +47,8 @@ var initWindow = function() {
       game.context.fillStyle = 'rgba(255,0,0,0.6)';
       game.debug.cameraInfo(game.camera, 32, 32);
       game.debug.spriteCoords(player, 32, 500);
+
+
     }
   };
 }
