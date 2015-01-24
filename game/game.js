@@ -8,6 +8,9 @@ var preloadRessource = function(game) {
   game.load.image('frog3','ressources/frog/frog3.png');
   game.load.image('sol','ressources/sol.png');
   game.load.image('monster1','ressources/monster/monster1.png');
+
+  game.load.physics('physicsData', 'ressources/sprites.json');
+
 }
 
 // floor management
