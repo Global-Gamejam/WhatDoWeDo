@@ -35,7 +35,7 @@ var updateBullet = function(game) {
   });
 }
 
-var targetPlayer = function(game) {
+var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
   //player.rotation = game.physics.arcade.angleToPointer(player);
 
   if (game.time.now > nextFire && bullets.countDead() > 0) {
@@ -48,7 +48,13 @@ var targetPlayer = function(game) {
     }
     bullet.reset(player.x - 8, player.y - 8);
     game.physics.arcade.moveToPointer(bullet, 1200);
+    bullet.body.setCollisionGroup(bulletCollisionGroup);
+    bullet.body.collides(animalCollisionGroup, collidesSpiritAnimal, this);
   }
+}
+
+var collidesSpiritAnimal = function(b1, b2) {
+  console.log("spirit touched");
 }
 
 var movePlayerUp = function() {player.body.moveUp(700);}

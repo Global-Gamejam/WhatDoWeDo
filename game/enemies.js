@@ -20,7 +20,7 @@ var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
 
     // enemie[i].body.setRectangle(40, 40);
     enemie[i].body.setCollisionGroup(enemiesCollisionGroup);
-    enemie[i].body.collides( playerCollisionGroup);
+    enemie[i].body.collides(playerCollisionGroup);
   }
 }
 

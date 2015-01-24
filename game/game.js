@@ -17,7 +17,6 @@ var initFloor = function(game) {
   floors = game.add.group();
   for (var index = 0; index < game.world.bounds.width; index += game.width) {
     floors.create(index, game.world.bounds.height / 2, 'sol');
-    //game.add.sprite(index, game.world.bounds.height / 2, 'sol');
   }
 }
 

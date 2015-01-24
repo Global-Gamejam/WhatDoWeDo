@@ -4,10 +4,14 @@ var initWindow = function() {
     var cursors;
     var upKey;
 
+    var enemiesCollisionGroup;
+    var playerCollisionGroup;
+    var bulletCollisionGroup;
+    var animalCollisionGroup;
+
     function preload () {
       preloadRessource(game);
       game.time.advancedTiming = true;
-
     }
 
     function create () {
@@ -22,12 +26,14 @@ var initWindow = function() {
       game.physics.p2.updateBoundsCollisionGroup();
       //game.physics.arcade.gravity.y = 300;
 
-      var enemiesCollisionGroup = game.physics.p2.createCollisionGroup();
-      var playerCollisionGroup = game.physics.p2.createCollisionGroup();
+      enemiesCollisionGroup = game.physics.p2.createCollisionGroup();
+      playerCollisionGroup = game.physics.p2.createCollisionGroup();
+      bulletCollisionGroup = game.physics.p2.createCollisionGroup();
+      animalCollisionGroup = game.physics.p2.createCollisionGroup();
 
       initFrog(game);
       initFloor(game);
-      initAnimals(game);
+      initAnimals(game, bulletCollisionGroup, animalCollisionGroup);
 
       initPLayer(game, playerCollisionGroup, enemiesCollisionGroup);
       initEnemies(game, playerCollisionGroup, enemiesCollisionGroup);
@@ -43,12 +49,16 @@ var initWindow = function() {
       game.input.onDown.add(gofull, this);
     }
 
+    function spiritHitsAnimal(body1, body2) {
+
+    }
+
     function hitEnemies(body1, body2) {
     }
 
     function gofull() {
       game.scale.startFullScreen(false);
-      targetPlayer(game);
+      targetPlayer(game, animalCollisionGroup, bulletCollisionGroup);
     }
 
     function update() {

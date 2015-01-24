@@ -5,7 +5,7 @@ function Animals() {
 
 var animals;
 
-var initAnimals = function(game) {
+var initAnimals = function(game, bulletCollisionGroup, animalCollisionGroup) {
   animals = game.add.group();
   animals.enableBody = true;
   animals.physicsBodyType = Phaser.Physics.P2JS;
@@ -15,6 +15,8 @@ var initAnimals = function(game) {
   currentAimal = animals.create(1500, game.world.bounds.height / 2 + 200, 'animal1');
   currentAimal.body.fixedRotation = true;
   currentAimal.body.clearShapes();
+  currentAimal.body.setCollisionGroup(animalCollisionGroup);
+  currentAimal.body.collides(bulletCollisionGroup);
 }
 
 var moveAnimals = function(game, player) {
