@@ -4,10 +4,12 @@ var preloadRessource = function(game) {
   game.load.image('frog1','ressources/frog1.png');
   game.load.image('frog2','ressources/frog2.png');
   game.load.image('frog3','ressources/frog3.png');
+  game.load.image('frog4','ressources/frog4.png');
+  game.load.image('frog5','ressources/frog5.png');
 }
 
 // frog management
-var frogRessources = ['frog1', 'frog2', 'frog3'];
+var frogRessources = ['frog1', 'frog2', 'frog3', 'frog4', 'frog5'];
 var spriteFrog1;
 var spriteFrog2;
 var spriteFrog3;
@@ -23,15 +25,15 @@ var moveFrog = function() {
   spriteFrog2.position.x -= 10;
   spriteFrog3.position.x -= 15;
   if (spriteFrog1.position.x <= -1920) {
-    spriteFrog1.loadTexture(frogRessources[Math.floor(Math.random() * 3)]);
+    spriteFrog1.loadTexture(frogRessources[Math.floor(Math.random() * frogRessources.length)]);
     spriteFrog1.position.x = 1920;
   }
   if (spriteFrog2.position.x <= -1920) {
-    spriteFrog2.loadTexture(frogRessources[Math.floor(Math.random() * 3)]);
+    spriteFrog2.loadTexture(frogRessources[Math.floor(Math.random() * frogRessources.length)]);
     spriteFrog2.position.x = 1920;
   }
   if (spriteFrog3.position.x <= -1920) {
-    spriteFrog3.loadTexture(frogRessources[Math.floor(Math.random() * 3)]);
+    spriteFrog3.loadTexture(frogRessources[Math.floor(Math.random() * frogRessources.length)]);
     spriteFrog3.position.x = Math.floor(Math.random() * 400) + 1920;
   }
 }
