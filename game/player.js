@@ -1,10 +1,10 @@
 var player;
 
 var initPLayer = function(game) {
-
+  player = game.add.sprite(200, game.world.height - 200, 'player');
 }
 
-var movePlayer = function(player, game, cursors) {
+var movePlayer = function(game, cursors) {
   player.body.setZeroVelocity();
   if (cursors.up.isDown && game.world.height - player.position.y <= game.world.height / 2) {
     player.body.moveUp(300)
