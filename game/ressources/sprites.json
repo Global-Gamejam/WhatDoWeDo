@@ -1,0 +1,67 @@
+{
+  "monster1": [
+    {
+      "density": 2,
+      "friction": 0,
+      "bounce": 0,
+      "filter": {
+        "categoryBits": 1,
+        "maskBits": 65535
+      },
+      "shape": [
+        116,
+        213,
+        208,
+        260,
+        400,
+        401,
+        126,
+        402
+      ]
+    },
+    {
+      "density": 2,
+      "friction": 0,
+      "bounce": 0,
+      "filter": {
+        "categoryBits": 1,
+        "maskBits": 65535
+      },
+      "shape": [
+        400,
+        401,
+        208,
+        260,
+        390,
+        277,
+        479,
+        335,
+        456,
+        392
+      ]
+    }
+  ],
+  "player1": [
+    {
+      "density": 2,
+      "friction": 0.1,
+      "bounce": 0,
+      "filter": {
+        "categoryBits": 1,
+        "maskBits": 65535
+      },
+      "shape": [
+        211,
+        213,
+        148,
+        325,
+        84,
+        294,
+        93,
+        145,
+        200,
+        93
+      ]
+    }
+  ]
+}

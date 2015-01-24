@@ -11,7 +11,14 @@ var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   for (var i = 0; i < 1; i++)
   {
     enemie[i] = enemies.create(1000 + (i * 100), game.world.height - 200, 'monster1');
-    enemie[i].body.setRectangle(40, 40);
+
+    enemie[i].body.clearShapes();
+    enemie[i].body.loadPolygon('physicsData', 'monster1');
+
+    enemie[i].body.fixedRotation = true;
+
+
+    // enemie[i].body.setRectangle(40, 40);
     enemie[i].body.setCollisionGroup(enemiesCollisionGroup);
     enemie[i].body.collides( playerCollisionGroup);
   }

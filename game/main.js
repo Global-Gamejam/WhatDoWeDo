@@ -31,9 +31,16 @@ var initWindow = function() {
       initFrog(game);
       initFloor(game);
 
+
+
+
+
       initPLayer(game, playerCollisionGroup, enemiesCollisionGroup);
       initEnemies(game, playerCollisionGroup, enemiesCollisionGroup);
       player.body.collides(enemiesCollisionGroup, hitEnemies, this);
+
+      
+
 
       game.physics.p2.enable(player);
 
@@ -54,7 +61,7 @@ var initWindow = function() {
     }
 
     function update() {
-      //updateBullet(game);
+      updateBullet(game);
       moveFrog(player, game);
       catchDeplacementPlayer(game, cursors);
       //moveEnemies(game, cursors);
@@ -65,6 +72,8 @@ var initWindow = function() {
       game.context.fillStyle = 'rgba(255,0,0,0.6)';
       game.debug.cameraInfo(game.camera, 32, 32);
       game.debug.spriteCoords(player, 32, 500);
+
+
     }
   };
 }

@@ -10,7 +10,9 @@ var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   player = game.add.sprite(200, game.world.height - 200, 'player');
 
   game.physics.p2.enable(player, false);
-  player.body.setCircle(28);
+  player.body.clearShapes();
+  player.body.loadPolygon('physicsData', 'player1');
+
   player.body.fixedRotation = true;
   player.body.setCollisionGroup(playerCollisionGroup);
 
