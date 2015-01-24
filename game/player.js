@@ -1,12 +1,14 @@
 var player;
 var bullets;
+var state;
+var isAnimated;
 
 var fireRate = 750;
 var nextFire = 500;
 
 var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   player = game.add.sprite(200, game.world.height - 200, 'player');
-  player.rotation = 90;
+
   game.physics.p2.enable(player, false);
   player.body.setCircle(28);
   player.body.fixedRotation = true;
@@ -24,16 +26,15 @@ var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
 var updateBullet = function(game) {
   bullets.children.forEach(function(currentBullet) {
     if (currentBullet.position.y > game.height || currentBullet.position.y < 0 ||
-       currentBullet.position.x > player.position.x + game.width ||
-       currentBullet.position.x < player.position.x - game.width) {
+       currentBullet.position.x > player.position.x + game.width / 4 ||
+       currentBullet.position.x < player.position.x - game.width / 4) {
          currentBullet.kill();
        }
   });
 }
 
 var targetPlayer = function(game) {
-  player.rotation = game.physics.arcade.angleToPointer(player);
-
+  //player.rotation = game.physics.arcade.angleToPointer(player);
 
   if (game.time.now > nextFire && bullets.countDead() > 0) {
     nextFire = game.time.now + fireRate;
@@ -48,18 +49,45 @@ var targetPlayer = function(game) {
   }
 }
 
-var movePlayer = function(game, cursors) {
+var movePlayerUp = function() {player.body.moveUp(700);}
+var movePlayerDown = function() {player.body.moveDown(1000);}
+var movePlayerLeft = function() {player.body.moveLeft(1000);}
+var movePlayerRight = function() {player.body.moveRight(700);}
+
+var animationPlayer = function() {
+  if (!isAnimated) {
+    player.loadTexture('playerAnimation');
+    player.animations.add('run');
+    player.animations.play('run', 6, true);
+    isAnimated = true;
+  }
+}
+
+var catchDeplacementPlayer = function(game, cursors) {
   player.body.setZeroVelocity();
-  if (cursors.up.isDown && game.world.height - player.position.y <= game.world.height / 2) {
-    player.body.moveUp(300)
+
+  if (cursors.up.isDown &&
+     game.world.height - (player.position.y + player.height / 2) <= game.world.height / 2) {
+    movePlayerUp();
   }
   else if (cursors.down.isDown) {
-    player.body.moveDown(300);
+    movePlayerDown();
   }
   if (cursors.left.isDown) {
-    player.body.velocity.x = -300;
+    movePlayerLeft();
+    player.scale.x = -1;
   }
   else if (cursors.right.isDown) {
-    player.body.moveRight(300);
+    movePlayerRight();
+    player.scale.x = 1;
+  }
+
+  if (!cursors.up.isDown && !cursors.down.isDown &&
+     !cursors.left.isDown && !cursors.right.isDown) {
+       player.loadTexture('player');
+       isAnimated = false;
+  }
+  else {
+    animationPlayer();
   }
 }

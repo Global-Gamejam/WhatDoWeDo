@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "personnage-droite-marche-1.png",
+	"frame": {"x":2,"y":258,"w":150,"h":255},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":255},
+	"sourceSize": {"w":151,"h":255}
+},
+{
+	"filename": "personnage-droite-marche-2.png",
+	"frame": {"x":2,"y":515,"w":150,"h":255},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":255},
+	"sourceSize": {"w":151,"h":255}
+},
+{
+	"filename": "personnage-droite-marche-3.png",
+	"frame": {"x":2,"y":2,"w":151,"h":254},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":151,"h":254},
+	"sourceSize": {"w":151,"h":255}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "playerAnimation.png",
+	"format": "RGBA8888",
+	"size": {"w":155,"h":772},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3744eb2497a27cb54916a05f341e8b51:fe6be96bacf97d4c29220d9415f2d177:b966f5ef5ce3194fc929f0ea84aebe3a$"
+}
+}

@@ -2,6 +2,7 @@ var initWindow = function() {
   window.onload = function() {
     var game = new Phaser.Game(1920, 1080, Phaser.CANVAS, '', { preload: preload, create: create, render:render, update:update});
     var cursors;
+    var upKey;
 
     function preload () {
       preloadRessource(game);
@@ -16,14 +17,13 @@ var initWindow = function() {
       var enemies = game.add.sprite(game.world.centerX, game.world.centerY, 'player');
       enemies.anchor.setTo(0.5, 0.5);
 
-
       background1 = game.add.sprite(0, 0, 'background');
       game.world.setBounds(0, 0, 10000, 1080);
       game.physics.startSystem(Phaser.Physics.P2JS);
-      //game.physics.p2.gravity .y = 1500;
       game.physics.p2.setImpactEvents(true);
       game.physics.p2.restitution = 0.1;
       game.physics.p2.updateBoundsCollisionGroup();
+      game.physics.arcade.gravity.y = 300;
 
       var enemiesCollisionGroup = game.physics.p2.createCollisionGroup();
       var playerCollisionGroup = game.physics.p2.createCollisionGroup();
@@ -46,7 +46,6 @@ var initWindow = function() {
     }
 
     function hitEnemies(body1, body2) {
-        // Perdre de la vie etc ...
     }
 
     function gofull() {
@@ -55,18 +54,14 @@ var initWindow = function() {
     }
 
     function update() {
-
-      //targetPlayer(game);
-      updateBullet(game);
+      //updateBullet(game);
       moveFrog(player, game);
-      movePlayer(game, cursors);
-      moveEnemies(game, cursors);
+      catchDeplacementPlayer(game, cursors);
+      //moveEnemies(game, cursors);
     }
 
     function render() {
-
       game.debug.text( game.time.fps, 10, 30 );
-
       game.context.fillStyle = 'rgba(255,0,0,0.6)';
       game.debug.cameraInfo(game.camera, 32, 32);
       game.debug.spriteCoords(player, 32, 500);
