@@ -24,8 +24,8 @@ var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
 var updateBullet = function(game) {
   bullets.children.forEach(function(currentBullet) {
     if (currentBullet.position.y > game.height || currentBullet.position.y < 0 ||
-       currentBullet.position.x > player.position.x + game.width ||
-       currentBullet.position.x < player.position.x - game.width) {
+       currentBullet.position.x > player.position.x + game.width / 4 ||
+       currentBullet.position.x < player.position.x - game.width / 4) {
          currentBullet.kill();
        }
   });
@@ -48,18 +48,25 @@ var targetPlayer = function(game) {
   }
 }
 
-var movePlayer = function(game, cursors) {
+var movePlayerUp = function() {player.body.moveUp(300);}
+var movePlayerDown = function() {player.body.moveDown(300);}
+var movePlayerLeft = function() {player.body.moveLeft(300);}
+var movePlayerRight = function() {player.body.moveRight(300);}
+
+var catchDeplacementPlayer = function(game, cursors) {
   player.body.setZeroVelocity();
-  if (cursors.up.isDown && game.world.height - player.position.y <= game.world.height / 2) {
-    player.body.moveUp(300)
+
+  if (cursors.up.isDown &&
+     game.world.height - player.position.y <= game.world.height / 2) {
+    movePlayerUp();
   }
   else if (cursors.down.isDown) {
-    player.body.moveDown(300);
+    movePlayerDown();
   }
   if (cursors.left.isDown) {
-    player.body.velocity.x = -300;
+    movePlayerLeft();
   }
   else if (cursors.right.isDown) {
-    player.body.moveRight(300);
+    movePlayerRight();
   }
 }

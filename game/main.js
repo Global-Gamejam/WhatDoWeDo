@@ -41,10 +41,12 @@ var initWindow = function() {
 
       game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
       game.input.onDown.add(gofull, this);
+
+      key1 = game.input.keyboard.addKey(Phaser.Keyboard.Z);
+      key1.onDown.add(movePlayerUp, this);
     }
 
     function hitEnemies(body1, body2) {
-        // Perdre de la vie etc ...
     }
 
     function gofull() {
@@ -55,7 +57,7 @@ var initWindow = function() {
     function update() {
       updateBullet(game);
       moveFrog(player, game);
-      movePlayer(game, cursors);
+      catchDeplacementPlayer(game, cursors);
       moveEnemies(game, cursors);
     }
 
