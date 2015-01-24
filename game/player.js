@@ -36,16 +36,14 @@ var updateBullet = function(game) {
 }
 
 var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
-  //player.rotation = game.physics.arcade.angleToPointer(player);
-
   if (game.time.now > nextFire && bullets.countDead() > 0) {
     nextFire = game.time.now + fireRate;
-
     var bullet = bullets.getFirstExists(false);
 
     if (bullet) {
       bullet.revive();
     }
+    bullet.body.clearShapes();
     bullet.reset(player.x - 8, player.y - 8);
     game.physics.arcade.moveToPointer(bullet, 1200);
     bullet.body.setCollisionGroup(bulletCollisionGroup);

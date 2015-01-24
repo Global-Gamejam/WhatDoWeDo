@@ -50,7 +50,7 @@ var initWindow = function() {
     }
 
     function spiritHitsAnimal(body1, body2) {
-
+      console.log("hit spirit");
     }
 
     function hitEnemies(body1, body2) {
