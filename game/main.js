@@ -2,6 +2,7 @@ var initWindow = function() {
   window.onload = function() {
     var game = new Phaser.Game(1920, 1080, Phaser.CANVAS, '', { preload: preload, create: create, render:render, update:update});
     var cursors;
+    var upKey;
 
     function preload () {
       preloadRessource(game);
@@ -41,9 +42,6 @@ var initWindow = function() {
 
       game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
       game.input.onDown.add(gofull, this);
-
-      key1 = game.input.keyboard.addKey(Phaser.Keyboard.Z);
-      key1.onDown.add(movePlayerUp, this);
     }
 
     function hitEnemies(body1, body2) {
