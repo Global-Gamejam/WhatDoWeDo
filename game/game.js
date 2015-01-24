@@ -10,8 +10,10 @@ var preloadRessource = function(game) {
 
 // floor management
 var initFloor = function(game) {
+  floors = game.add.group();
   for (var index = 0; index < game.world.bounds.width; index += game.width) {
-    game.add.sprite(index, game.world.bounds.height / 2, 'sol');
+    floors.create(index, game.world.bounds.height / 2, 'sol');
+    //game.add.sprite(index, game.world.bounds.height / 2, 'sol');
   }
 }
 
