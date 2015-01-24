@@ -43,9 +43,10 @@ var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
     if (bullet) {
       bullet.revive();
     }
-    bullet.body.clearShapes();
     bullet.reset(player.x - 8, player.y - 8);
+    bullet.body.clearShapes();
     game.physics.arcade.moveToPointer(bullet, 1200);
+    bullet.body.setCircle(30);
     bullet.body.setCollisionGroup(bulletCollisionGroup);
     bullet.body.collides(animalCollisionGroup, collidesSpiritAnimal, this);
   }

@@ -15,6 +15,7 @@ var initAnimals = function(game, bulletCollisionGroup, animalCollisionGroup) {
   currentAimal = animals.create(1500, game.world.bounds.height / 2 + 200, 'animal1');
   currentAimal.body.fixedRotation = true;
   currentAimal.body.clearShapes();
+  currentAimal.body.setRectangle(100, 100);
   currentAimal.body.setCollisionGroup(animalCollisionGroup);
   currentAimal.body.collides(bulletCollisionGroup);
 }
