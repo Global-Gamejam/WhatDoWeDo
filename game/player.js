@@ -1,8 +1,12 @@
 var player;
 
-var initPLayer = function(game) {
+var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   player = game.add.sprite(200, game.world.height - 200, 'player');
   player.rotation = 90;
+  game.physics.p2.enable(player, false);
+  player.body.setCircle(28);
+  player.body.fixedRotation = true;
+  player.body.setCollisionGroup(playerCollisionGroup);
 }
 
 var targetPlayer = function(game) {
