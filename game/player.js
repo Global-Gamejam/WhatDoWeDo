@@ -1,7 +1,17 @@
 var player;
 
-var initPLayer = function(game) {
+var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   player = game.add.sprite(200, game.world.height - 200, 'player');
+  game.physics.p2.enable(player, false);
+  player.body.setCircle(28);
+  player.body.fixedRotation = true;
+
+
+  player.body.setCollisionGroup(playerCollisionGroup);
+
+  //  The ship will collide with the pandas, and when it strikes one the hitPanda callback will fire, causing it to alpha out a bit
+  //  When pandas collide with each other, nothing happens to them.
+
 }
 
 var movePlayer = function(game, cursors) {
