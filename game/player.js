@@ -4,6 +4,7 @@ var state;
 var isAnimated;
 var isAnimal;
 var kindAnimal;
+var isJumping;
 
 var fireRate = 750;
 var nextFire = 500;
@@ -16,10 +17,10 @@ var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   game.physics.p2.enable(player, false);
   player.body.clearShapes();
   player.body.loadPolygon('physicsData', 'player1');
-
+  player.enableBody = true;
   player.body.fixedRotation = true;
   player.body.setCollisionGroup(playerCollisionGroup);
-
+  // player.body.allowGravity = true;
   bullets = game.add.group();
   bullets.enableBody = true;
   bullets.physicsBodyType = Phaser.Physics.P2JS;
@@ -28,6 +29,7 @@ var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   bullets.setAll('checkWorldBounds', true);
   bullets.setAll('outOfBoundsKill', true);
   isAnimal = false;
+  isJumping = false;
 }
 
 var updateBullet = function(game) {
@@ -58,13 +60,26 @@ var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
     }
   }
   else {
-    if (kindAnimal == 1) {
+    if (kindAnimal == 2) {
       timer = game.time.create(false);
       timer.start();
       timer.loop(1500, resetStatSpec, this);
       speedX = speedY = 2000;
     }
+    if (kindAnimal == 1) {
+      isJumping = true;
+      console.log("jump !");
+      player.body.velocity.y = -200;
+      timer = game.time.create(false);
+      timer.start();
+      timer.loop(500, resetJump, this);
+    }
   }
+}
+
+var resetJump = function() {
+  player.body.velocity.y = 200;
+  player.body.setZeroVelocity();
 }
 
 var resetStatSpec = function() {
@@ -102,7 +117,9 @@ var animationPlayer = function() {
 }
 
 var catchDeplacementPlayer = function(game, cursors) {
-  player.body.setZeroVelocity();
+  if (!isJumping) {
+    player.body.setZeroVelocity();
+  }
   if (cursors.up.isDown &&
      game.world.height - (player.position.y + player.height / 2) <= game.world.height / 2 - 100) {
     movePlayerUp();
