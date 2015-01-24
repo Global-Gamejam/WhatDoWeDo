@@ -67,7 +67,7 @@ var initWindow = function() {
       updateBullet(game);
       moveFrog(player, game);
       catchDeplacementPlayer(game, cursors);
-      moveEnemies(game, cursors);
+      moveEnemies(game, cursors, player);
       moveAnimals(game, player);
     }
 
