@@ -34,6 +34,7 @@ var updateBullet = function(game) {
 var targetPlayer = function(game) {
   player.rotation = game.physics.arcade.angleToPointer(player);
 
+
   if (game.time.now > nextFire && bullets.countDead() > 0) {
     nextFire = game.time.now + fireRate;
 
