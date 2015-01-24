@@ -4,6 +4,7 @@ function Animals() {
 }
 
 var animals;
+var animal = new Array;
 
 var initAnimals = function(game, bulletCollisionGroup, animalCollisionGroup) {
   animals = game.add.group();
@@ -11,26 +12,29 @@ var initAnimals = function(game, bulletCollisionGroup, animalCollisionGroup) {
   animals.physicsBodyType = Phaser.Physics.P2JS;
   animals.setAll('checkWorldBounds', true);
   animals.setAll('outOfBoundsKill', true);
-
-  currentAimal = animals.create(1500, game.world.bounds.height / 2 + 200, 'animal1');
-  currentAimal.body.fixedRotation = true;
-  currentAimal.body.clearShapes();
-  currentAimal.body.setRectangle(100, 100);
-  currentAimal.body.setCollisionGroup(animalCollisionGroup);
-  currentAimal.body.collides(bulletCollisionGroup);
+  for (var i = 0; i < 1; i++)
+  {
+    animal[i] = animals.create(1500, game.world.bounds.height / 2 + 50 + (i * 80) , 'animal' + String(i));
+    animal[i].body.fixedRotation = true;
+    animal[i].body.clearShapes();
+    animal[i].body.setRectangle(100, 100);
+    animal[i].body.setCollisionGroup(animalCollisionGroup);
+    animal[i].body.collides(bulletCollisionGroup);
+  }
 }
 
 var moveAnimals = function(game, player) {
-  animals.forEach(function(currentAimal) {
-    currentAimal.body.setZeroVelocity();
+  for (var i = 0; i < 1; i++)
+  {
+    animal[i].body.setZeroVelocity();
 
-    if (currentAimal.position.y >= player.position.y - 100 && currentAimal.position.y <= player.position.y + 100) {
-      if (currentAimal.position.x < player.position.x && player.position.x - currentAimal.position.x <= 400) {
-        currentAimal.body.moveLeft(800);
+    if (animal[i].position.y >= player.position.y - 100 && animal[i].position.y <= player.position.y + 100) {
+      if (animal[i].position.x < player.position.x && player.position.x - animal[i].position.x <= 400) {
+        animal[i].body.moveLeft(800);
       }
-      if (currentAimal.position.x > player.position.x && currentAimal.position.x - player.position.x <= 400) {
-        currentAimal.body.moveRight(800);
+      if (animal[i].position.x > player.position.x && animal[i].position.x - player.position.x <= 400) {
+        animal[i].body.moveRight(800);
       }
     }
-  });
+  }
 }

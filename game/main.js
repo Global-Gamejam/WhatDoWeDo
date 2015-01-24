@@ -54,6 +54,8 @@ var initWindow = function() {
     }
 
     function hitEnemies(body1, body2) {
+      console.log("hit hitEnemies");
+
     }
 
     function gofull() {

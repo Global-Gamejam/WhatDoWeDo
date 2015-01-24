@@ -8,7 +8,12 @@ var preloadRessource = function(game) {
   game.load.image('frog3','ressources/frog/frog3.png');
   game.load.image('sol','ressources/sol.png');
   game.load.image('monster1','ressources/monster/monster1.png');
+  game.load.image('animal0','ressources/animals/pangolin.png');
   game.load.image('animal1','ressources/animals/pangolin.png');
+  game.load.image('animal2','ressources/animals/pangolin.png');
+  game.load.image('animal3','ressources/animals/pangolin.png');
+  game.load.image('animal4','ressources/animals/pangolin.png');
+
   game.load.physics('physicsData', 'ressources/sprites.json');
 }
 
