@@ -5,7 +5,7 @@ var timerBoss;
 var projectils;
 var powerup;
 
-var initBoss = function(game, playerCollisionGroup, powerupCollisionGroup) {
+var initBoss = function(game, playerCollisionGroup, powerupCollisionGroup, powerBossCollisionGroup) {
   boss = game.add.sprite(1920 - 500, 1080 - (1080 /3), 'boss');
   game.physics.p2.enableBody(boss, false);
 
@@ -31,7 +31,7 @@ var initBoss = function(game, playerCollisionGroup, powerupCollisionGroup) {
   powerup.animations.play('runBossUP', 6, true);
   powerup.enableBody = true;
   game.physics.p2.enableBody(powerup, false);
-  
+
   powerup.physicsBodyType = Phaser.Physics.P2JS;
   powerup.body.setCircle(100);
   powerup.body.setCollisionGroup(powerupCollisionGroup);
@@ -40,11 +40,14 @@ var initBoss = function(game, playerCollisionGroup, powerupCollisionGroup) {
   power = 0;
 }
 
-var collisionPowerUp = function(b1, b2) {
-  console.log("ok");
+var collisionPowerPlayer = function(b1, b2) {
+  console.log("collision");
 }
 
-var generatePower = function(game) {
+var collisionPowerUp = function(b1, b2) {
+}
+
+var generatePower = function(game,  powerBossCollisionGroup, collisionPowerPlayer) {
   var bullet = projectils.getFirstExists(false);
 
   if (bullet) {
@@ -59,19 +62,21 @@ var generatePower = function(game) {
     bullet.body.moveRight(Math.floor(Math.random() * 400) + 900);
   }
   bullet.body.clearShapes();
+  bullet.body.setCollisionGroup(powerBossCollisionGroup);
+  bullet.body.collides(playerCollisionGroup, collisionPowerPlayer, this);
   bullet.body.move
 }
 
-var powerFunction = function(game) {
+var powerFunction = function(game, powerBossCollisionGroup, collisionPowerPlayer) {
   timerBoss = game.time.create(false);
   timerBoss.start();
   timerBoss.loop(2500, resetPower, this);
 
-  generatePower(game);
-  generatePower(game);
-  generatePower(game);
-  generatePower(game);
-  generatePower(game);
+  generatePower(game,  powerBossCollisionGroup, collisionPowerPlayer);
+  generatePower(game,  powerBossCollisionGroup, collisionPowerPlayer);
+  generatePower(game,  powerBossCollisionGroup, collisionPowerPlayer);
+  generatePower(game,  powerBossCollisionGroup, collisionPowerPlayer);
+  generatePower(game,  powerBossCollisionGroup, collisionPowerPlayer);
   //bullet.body.setCircle(100);
 }
 
@@ -81,14 +86,14 @@ var resetPower = function() {
 }
 
 
-var updateMovementBoss = function(game, player) {
+var updateMovementBoss = function(game, player, powerBossCollisionGroup, collisionPowerPlayer) {
   boss.body.setZeroVelocity();
   if (power == 0 && boss.scale.x == 1) {
     boss.body.moveLeft(500);
     if (boss.position.x - 100 <= 0) {
       boss.scale.x = -1;
       power = 1;
-      powerFunction(game);
+      powerFunction(game,  powerBossCollisionGroup, collisionPowerPlayer);
       console.log("power left");
     }
   }
@@ -97,7 +102,7 @@ var updateMovementBoss = function(game, player) {
     if (boss.position.x + 100 >= 1920) {
       boss.scale.x = 1;
       power = 1;
-      powerFunction(game);
+      powerFunction(game,  powerBossCollisionGroup, collisionPowerPlayer);
       console.log("power right");
     }
   }

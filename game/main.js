@@ -35,21 +35,22 @@ var initWindow = function() {
         animalCollisionGroup = game.physics.p2.createCollisionGroup();
         obstacleCollisionGroup = game.physics.p2.createCollisionGroup();
         powerupCollisionGroup = game.physics.p2.createCollisionGroup();
+        powerBossCollisionGroup = game.physics.p2.createCollisionGroup();
 
         cursors = game.input.keyboard.createCursorKeys();
 
         initFrog(game);
         game.add.sprite(0, game.world.bounds.height / 2, 'sol2');
         initPLayer(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
-        player.body.collides([powerupCollisionGroup]);
-        initBoss(game, playerCollisionGroup, powerupCollisionGroup);
+        player.body.collides([powerupCollisionGroup, powerBossCollisionGroup]);
+        initBoss(game, playerCollisionGroup, powerupCollisionGroup, powerBossCollisionGroup);
       },
 
       update: function () {
         // updateBullet(game);
         moveFrog(player, game);
         catchDeplacementPlayer(game, cursors);
-        updateMovementBoss(game, player);
+        updateMovementBoss(game, player,  powerBossCollisionGroup, collisionPowerPlayer);
         // moveEnemies(game, cursors, player);
         // moveAnimals(game, player);
         // checkObstacles(game);
