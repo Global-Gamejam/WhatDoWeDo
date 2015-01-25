@@ -118,6 +118,11 @@ var initWindow = function() {
       if (isAnimal && isJumping) {
 
         // body2.body.reset(player.position.x, player.position.y);
+
+        console.log(body2.sprite.key);
+        // console.log(body2.kind);
+
+if (body2.sprite.key = "monster1Animation")
         body2.sprite.loadTexture('deadmonster1');
         body2.sprite.animations.add('runAni1');
         body2.sprite.animations.play('runAni1', 4, true);
