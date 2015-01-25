@@ -24,6 +24,9 @@ var preloadRessource = function(game) {
   game.load.image('fleche','ressources/menu/fleche.png');
   game.load.image('frontBack1','ressources/frontBack1.png');
 
+  game.load.image('fiss1','ressources/obstacle/fiss1.png');
+  game.load.image('fiss2','ressources/obstacle/fiss2.png');
+  game.load.image('fiss3','ressources/obstacle/fiss3.png');
 
   game.load.image('frog1','ressources/frog/frog1.png');
   game.load.image('frog2','ressources/frog/frog2.png');
@@ -70,10 +73,22 @@ var initObstacle = function(game, obstacleCollisionGroup, playerCollisionGroup, 
   }
 }
 
-var checkObstacles = function() {
+var emitter;
+var checkObstacles = function(game) {
+  index = 0;
   obstacles.forEach(function(currentObstacle) {
     if (currentObstacle.position.y < 500) {
-      currentObstacle.destroy();
+      if (currentObstacle.body) {
+        console.log("add particule ok");
+        emitter = game.add.emitter(currentObstacle.position.x, currentObstacle.position.y, 50);
+        emitter.makeParticles('fiss1');
+        emitter.lifespan = 1400;
+        emitter.start(true, 700, null, 15);
+      }
+      //currentObstacle.position.x = currentObstacle.position.y = -1000;
+      currentObstacle.kill();
+      obstacles.splice(index,index + 1);
+      index++;
     }
   });
 }

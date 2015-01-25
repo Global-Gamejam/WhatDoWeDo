@@ -90,7 +90,7 @@ var initWindow = function() {
         catchDeplacementPlayer(game, cursors);
         moveEnemies(game, cursors, player);
         moveAnimals(game, player);
-        checkObstacles();
+        checkObstacles(game);
 
         if ( rkey.justPressed(/*optional duration*/))
         {
