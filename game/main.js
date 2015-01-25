@@ -59,7 +59,7 @@ var initWindow = function() {
         rkey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
 
-      initPLayer(game, playerCollisionGroup, enemiesCollisionGroup);
+      initPLayer(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
       initEnemies(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
       player.body.collides(enemiesCollisionGroup, hitEnemies, this);
 

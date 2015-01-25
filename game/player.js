@@ -11,7 +11,7 @@ var timer;
 
 var speedX = 1000, speedY = 700;
 
-var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
+var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup) {
   player = game.add.sprite(200, game.world.height - 200, 'player');
 
   game.physics.p2.enable(player, false);
@@ -20,6 +20,7 @@ var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   //player.enableBody = true;
   player.body.fixedRotation = true;
   player.body.setCollisionGroup(playerCollisionGroup);
+  player.body.collides([obstacleCollisionGroup]);
   // player.body.allowGravity = true;
   bullets = game.add.group();
   bullets.enableBody = true;
