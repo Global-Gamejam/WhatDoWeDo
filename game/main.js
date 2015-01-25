@@ -301,7 +301,7 @@ var initWindow = function() {
     function introfunc (event) {
       game.scale.startFullScreen(false);
       music.pause();
-      game.state.start('StateB');
+      game.state.start('StateA');
     }
 
     // function credits (event) {
@@ -322,7 +322,7 @@ var initWindow = function() {
         setTimeout(function () {
           music.pause();
           game.state.start('StateA');
-        }, 500);        
+        }, 500);
       }
     }
 

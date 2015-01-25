@@ -23,7 +23,7 @@ var initBoss = function(game, playerCollisionGroup, powerupCollisionGroup, power
   projectils.physicsBodyType = Phaser.Physics.P2JS;
 
   projectils.createMultiple(100, 'projectile');
-  projectils.setAll('checkWorldBounds', true);
+  projectils.setAll('checkWorldBounds', false);
   projectils.setAll('outOfBoundsKill', true);
 
   powerup = game.add.sprite(1920 - 500, 1080 - (1080 /3), 't');
@@ -69,9 +69,9 @@ var generatePower = function(game,  powerBossCollisionGroup, collisionPowerPlaye
     bullet.reset(100, 1080 - Math.floor(Math.random() * (1080 / 2) - 20));
     bullet.body.moveRight(Math.floor(Math.random() * 400) + 900);
   }
-  game.physics.p2.enableBody(bullet, false);
+  game.physics.p2.enableBody(bullet, true);
   bullet.body.clearShapes();
-  bullet.body.setCircle(100);
+  bullet.body.setCircle(25);
   bullet.body.setCollisionGroup(powerBossCollisionGroup);
   bullet.body.collides(playerCollisionGroup);
   bullet.body.move
