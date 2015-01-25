@@ -9,6 +9,8 @@ var preloadRessource = function(game) {
   game.load.atlasJSONHash('animal2Animation', 'ressources/animals/sanglierAnimation.png', 'ressources/animals/sanglierAnimation.json');
   game.load.atlasJSONHash('rouladeAnimation', 'ressources/animals/rouladeAnimation.png', 'ressources/animals/rouladeAnimation.json');
   game.load.atlasJSONHash('deadmonster1', 'ressources/monster/deadmonster.png', 'ressources/monster/deadmonster.json');
+  game.load.atlasJSONHash('bossAnimation', 'ressources/monster/boss/bossAnimation.png', 'ressources/monster/boss/bossAnimation.json');
+  game.load.image('boss','ressources/monster/boss/mort-1.png');
   game.load.image('bullet','ressources/spirit.png');
   game.load.image('front1','ressources/front1.png');
   game.load.image('front2','ressources/front2.png');
@@ -16,22 +18,18 @@ var preloadRessource = function(game) {
   game.load.image('menu','ressources/menu/menu.png');
   game.load.image('credit','ressources/menu/credits.png');
   game.load.image('fleche','ressources/menu/fleche.png');
-
-
   game.load.image('button1','ressources/menu/button1.png');
   game.load.image('button2','ressources/menu/button2.png');
-
   game.load.image('fleche','ressources/menu/fleche.png');
   game.load.image('frontBack1','ressources/frontBack1.png');
-
   game.load.image('fiss1','ressources/obstacle/fiss1.png');
   game.load.image('fiss2','ressources/obstacle/fiss2.png');
   game.load.image('fiss3','ressources/obstacle/fiss3.png');
-
   game.load.image('frog1','ressources/frog/frog1.png');
   game.load.image('frog2','ressources/frog/frog2.png');
   game.load.image('frog3','ressources/frog/frog3.png');
   game.load.image('sol','ressources/sol.png');
+  game.load.image('sol2','ressources/sol2.png');
   game.load.image('obstacle1','ressources/obstacle/barrières.png');
   game.load.image('obstacle2','ressources/obstacle/carton fermé.png');
   game.load.image('obstacle3','ressources/obstacle/carton.png');

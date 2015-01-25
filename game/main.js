@@ -36,14 +36,17 @@ var initWindow = function() {
         cursors = game.input.keyboard.createCursorKeys();
 
         initFrog(game);
-        initFloor(game);
+        game.add.sprite(0, game.world.bounds.height / 2, 'sol2');
+        //initFloor(game);
         initPLayer(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
+        initBoss(game);
       },
 
       update: function () {
         // updateBullet(game);
         moveFrog(player, game);
         catchDeplacementPlayer(game, cursors);
+        updateMovementBoss(game, player);
         // moveEnemies(game, cursors, player);
         // moveAnimals(game, player);
         // checkObstacles(game);
