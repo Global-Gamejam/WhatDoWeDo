@@ -96,11 +96,15 @@ var resetStatSpec = function() {
 }
 
 var collidesSpiritAnimal = function(b1, b2) {
+  speedX = 1000;
+  speedY = 700;
   player.body.reset(b2.sprite.x, b2.sprite.y);
   if (b2.sprite.key == "animal0") {
     kindAnimal = 0;
   }
   else if (b2.sprite.key == "animal1") {
+    speedX = 2000;
+    speedY = 1400;
     kindAnimal = 1;
   }
   else if (b2.sprite.key == "animal2") {

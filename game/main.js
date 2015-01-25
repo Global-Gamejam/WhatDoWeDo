@@ -86,10 +86,6 @@ var initWindow = function() {
     },
 
     render: function () {
-      game.debug.text( game.time.fps, 10, 30 );
-      game.context.fillStyle = 'rgba(255,0,0,0.6)';
-      game.debug.cameraInfo(game.camera, 32, 32);
-      game.debug.spriteCoords(player, 32, 500);
     }
 };
 
@@ -126,7 +122,7 @@ if (body2.sprite.key = "monster1Animation")
         body2.sprite.loadTexture('deadmonster1');
         body2.sprite.animations.add('runAni1');
         body2.sprite.animations.play('runAni1', 4, true);
-
+        resetStatSpec();
         setTimeout(function () {
           body2.sprite.kill();
         }, 900);
