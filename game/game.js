@@ -25,6 +25,9 @@ var preloadRessource = function(game) {
   game.load.image('animal2','ressources/animals/sanglier.png');
   game.load.image('animal3','ressources/animals/pangolin.png');
   game.load.image('animal4','ressources/animals/pangolin.png');
+  game.load.image('gameOver','ressources/gameOver.png');
+  game.load.image('tuto','ressources/tuto.png');
+  game.load.image('croiss','ressources/croise.png');
   game.load.physics('physicsData', 'ressources/lapin.json');
 }
 

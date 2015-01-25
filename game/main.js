@@ -10,6 +10,7 @@ var initWindow = function() {
     var cursors;
     var upKey;
     var rkey;
+    var tuto;
 
 
     var enemiesCollisionGroup;
@@ -26,7 +27,6 @@ var initWindow = function() {
     },
 
 
-
   create: function () {
       var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'player');
 
@@ -34,6 +34,9 @@ var initWindow = function() {
 
       hit = 0;
       background1 = game.add.sprite(0, 0, 'background');
+      tuto = game.add.sprite(0, 0, 'tuto');
+
+      tuto = game.add.sprite(0, 0, 'tuto');
       game.world.setBounds(0, 0, 10000, 1080 / 2);
       game.physics.startSystem(Phaser.Physics.P2JS);
       game.physics.p2.setImpactEvents(true);
@@ -72,6 +75,10 @@ var initWindow = function() {
         console.log("hit spirit");
     },
 
+
+    actionOnClick: function() {
+      tuto.kill();
+    },
     update: function () {
       updateBullet(game);
       moveFrog(player, game);
@@ -101,9 +108,10 @@ var initWindow = function() {
 
       if (hit == 3)
       {
-        var text = "-Tu est MORT !-\n";
-        var style = { font: "120px Arial", fill: "#ff0044", align: "center" };
-        var t = game.add.text(player.x - 300,player.y - 500, text, style);
+        game.add.sprite(player.position.x - 1920 / 2, 0, 'gameOver');
+        // var text = "-Tu est MORT !-\n";
+        // var style = { font: "120px Arial", fill: "#ff0044", align: "center" };
+        // var t = game.add.text(player.x - 300,player.y - 500, text, style);
         setTimeout(function () {
           game.state.start('StateA');
         }, 1000);
@@ -136,6 +144,10 @@ if (body2.sprite.key = "monster1Animation")
       targetPlayer(game, animalCollisionGroup, bulletCollisionGroup);
     }
 
+    function actionOnClick() {
+      console.log("click button");
+      tuto.kill();
+    }
 
   };
 }
