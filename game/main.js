@@ -65,6 +65,7 @@ var initWindow = function() {
 
       game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
       game.input.onDown.add(gofull, this);
+      initFront(game);
     },
 
     spiritHitsAnimal: function (body1, body2) {

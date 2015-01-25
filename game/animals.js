@@ -20,6 +20,7 @@ var initAnimals = function(game, bulletCollisionGroup, animalCollisionGroup) {
     animal[i].body.setRectangle(100, 100);
     animal[i].body.setCollisionGroup(animalCollisionGroup);
     animal[i].body.collides(bulletCollisionGroup);
+    animal[i].body.mass = 1000000;
   }
 }
 

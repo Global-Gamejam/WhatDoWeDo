@@ -5,6 +5,8 @@ var preloadRessource = function(game) {
   game.load.atlasJSONHash('animal1Animation', 'ressources/animals/animal1Animation.png', 'ressources/animals/animal1Animation.json');
   game.load.atlasJSONHash('rouladeAnimation', 'ressources/animals/rouladeAnimation.png', 'ressources/animals/rouladeAnimation.json');
   game.load.image('bullet','ressources/t.png');
+  game.load.image('front1','ressources/front1.png');
+  game.load.image('front2','ressources/front2.png');
   game.load.image('background','ressources/background.png');
   game.load.image('frog1','ressources/frog/frog1.png');
   game.load.image('frog2','ressources/frog/frog2.png');
@@ -17,6 +19,15 @@ var preloadRessource = function(game) {
   game.load.image('animal3','ressources/animals/pangolin.png');
   game.load.image('animal4','ressources/animals/pangolin.png');
   game.load.physics('physicsData', 'ressources/sprites.json');
+}
+
+var initFront = function(game) {
+  front = game.add.group();
+  var i = 0;
+  for (var index = 0; index < game.world.bounds.width; index += game.width) {
+    front.create(index, 0, (i % 2 == 0) ? 'front1' : 'front2');
+    i++;
+  }
 }
 
 // floor management
