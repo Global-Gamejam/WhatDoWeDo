@@ -129,13 +129,13 @@ var initWindow = function() {
           emitter.start(false, 5000, 20);
 
 
-          var start = game.add.sprite(247, 415, 'button2');
+          var start = game.add.sprite(250, 415, 'button2');
           start.anchor.set(0.5);
           start.inputEnabled = true;
           start.events.onInputDown.add(startgame, this);
 
 
-          var credits = game.add.sprite(278, 500, 'button1');
+          var credits = game.add.sprite(280, 500, 'button1');
           credits.anchor.set(0.5);
           credits.inputEnabled = true;
           credits.events.onInputDown.add(startcredit, this);
@@ -182,25 +182,35 @@ var initWindow = function() {
       back = game.add.sprite(0, 0, 'menu');
 
 
-      var start = game.add.sprite(247, 415, 'button2');
+      var start = game.add.sprite(250, 415, 'button2');
       start.anchor.set(0.5);
       start.inputEnabled = true;
       start.events.onInputDown.add(startgame, this);
 
 
-      var credits = game.add.sprite(278, 500, 'button1');
+      var credits = game.add.sprite(280, 500, 'button1');
       credits.anchor.set(0.5);
       credits.inputEnabled = true;
       credits.events.onInputDown.add(startcredit, this);
     }
 
     function startgame (event) {
-      game.scale.startFullScreen(false);
-      game.state.start('StateA');
+      game.add.sprite(0, 0, 'intro');
+
+      var intro = game.add.sprite(1770, 960, 'fleche2');
+      intro.anchor.set(0.5);
+      intro.inputEnabled = true;
+      intro.events.onInputDown.add(introfunc, event);
 
 
     }
 
+
+    function introfunc (event) {
+      game.scale.startFullScreen(false);
+
+      game.state.start('StateA');
+    }
 
     // function credits (event) {
     //   game.state.start('StateA');

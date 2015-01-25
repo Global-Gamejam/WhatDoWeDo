@@ -15,14 +15,16 @@ var preloadRessource = function(game) {
   game.load.image('background','ressources/background.png');
   game.load.image('menu','ressources/menu/menu.png');
   game.load.image('credit','ressources/menu/credits.png');
-  game.load.image('fleche','ressources/menu/fleche.png');
+  game.load.image('intro','ressources/menu/intro.png');
 
 
   game.load.image('button1','ressources/menu/button1.png');
   game.load.image('button2','ressources/menu/button2.png');
-
   game.load.image('fleche','ressources/menu/fleche.png');
-  game.load.image('frontBack1','ressources/frontBack1.png');
+  game.load.image('fleche2','ressources/menu/fleche2.png');
+
+  // game.load.audio('menu', ['ressources/audio/menu.mp3']);
+
 
 
   game.load.image('frog1','ressources/frog/frog1.png');
@@ -53,20 +55,20 @@ var initObstacle = function(game, obstacleCollisionGroup, playerCollisionGroup, 
   indexObstacle = 0;
   for (var index = game.width; index < game.world.bounds.width; index += game.width) {
     //if (Math.floor(Math.random() * 2) == 0) {
-      ob = Math.floor(Math.random() * 3);
+    ob = Math.floor(Math.random() * 3);
 
-      currentObstacle = game.add.sprite(index, 800, 'obstacle' + (ob + 1));
-      game.physics.p2.enableBody(currentObstacle, true);
-      currentObstacle.body.fixedRotation = true;
-      currentObstacle.body.setCollisionGroup(obstacleCollisionGroup);
-      console.log(currentObstacle.body);
-      currentObstacle.body.mass = 100;
-      currentObstacle.body.allowGravity = false;
+    currentObstacle = game.add.sprite(index, 800, 'obstacle' + (ob + 1));
+    game.physics.p2.enableBody(currentObstacle, false);
+    currentObstacle.body.fixedRotation = true;
+    currentObstacle.body.setCollisionGroup(obstacleCollisionGroup);
+    console.log(currentObstacle.body);
+    currentObstacle.body.mass = 100;
+    currentObstacle.body.allowGravity = false;
 
-      currentObstacle.body.collides([playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup]);
-      obstacles[indexObstacle] = currentObstacle;
-      indexObstacle += 1;
-          //}
+    currentObstacle.body.collides([playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup]);
+    obstacles[indexObstacle] = currentObstacle;
+    indexObstacle += 1;
+    //}
   }
 }
 
@@ -87,18 +89,18 @@ var initFront = function(game) {
   }
 }
 
+var initFrontBack = function(game) {
+  front = game.add.group();
+  for (var index = 0; index < game.world.bounds.width; index += game.width) {
+    front.create(index, 0, 'frontBack1');
+  }
+}
+
 // floor management
 var initFloor = function(game) {
   floors = game.add.group();
   for (var index = 0; index < game.world.bounds.width; index += game.width) {
     floors.create(index, game.world.bounds.height / 2, 'sol');
-  }
-}
-
-var initFrontBack = function(game) {
-  front = game.add.group();
-  for (var index = 0; index < game.world.bounds.width; index += game.width) {
-    front.create(index, 0, 'frontBack1');
   }
 }
 
