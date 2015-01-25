@@ -56,7 +56,7 @@ var initObstacle = function(game, obstacleCollisionGroup, playerCollisionGroup, 
       ob = Math.floor(Math.random() * 3);
 
       currentObstacle = game.add.sprite(index, 800, 'obstacle' + (ob + 1));
-      game.physics.p2.enableBody(currentObstacle, true);
+      game.physics.p2.enableBody(currentObstacle, false);
       currentObstacle.body.fixedRotation = true;
       currentObstacle.body.setCollisionGroup(obstacleCollisionGroup);
       console.log(currentObstacle.body);
