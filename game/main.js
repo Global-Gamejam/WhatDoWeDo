@@ -211,6 +211,7 @@ var initWindow = function() {
 
     var game = new Phaser.Game(1920, 1080, Phaser.CANVAS, 'phaser-example');
     game.state.add('StateB', P2Game.StateB);
+    game.state.add('StateA', P2Game.StateA);
     game.state.add('MENU', P2Game.MENU);
 
     game.state.start('MENU');
@@ -260,7 +261,7 @@ var initWindow = function() {
     function introfunc (event) {
       game.scale.startFullScreen(false);
 
-      game.state.start('StateA');
+      game.state.start('StateB');
     }
 
     // function credits (event) {

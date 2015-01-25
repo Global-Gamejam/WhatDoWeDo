@@ -6,6 +6,7 @@ var preloadRessource = function(game) {
   game.load.atlasJSONHash('monsterAnimation2', 'ressources/monster/monster3Animation.png', 'ressources/monster/monster3Animation.json');
   game.load.atlasJSONHash('monsterAnimation3', 'ressources/monster/monster4Animation.png', 'ressources/monster/monster4Animation.json');
 
+  game.load.atlasJSONHash('bossAnimation', 'ressources/monster/boss/bossAnimation.png', 'ressources/monster/boss/bossAnimation.json');
   game.load.atlasJSONHash('animal0Animation', 'ressources/animals/animal1Animation.png', 'ressources/animals/animal1Animation.json');
   game.load.atlasJSONHash('animal1Animation', 'ressources/animals/lapinAnimation.png', 'ressources/animals/lapinAnimation.json');
   game.load.atlasJSONHash('animal2Animation', 'ressources/animals/sanglierAnimation.png', 'ressources/animals/sanglierAnimation.json');
@@ -42,6 +43,7 @@ var preloadRessource = function(game) {
   game.load.image('frog2','ressources/frog/frog2.png');
   game.load.image('frog3','ressources/frog/frog3.png');
   game.load.image('sol','ressources/sol.png');
+  game.load.image('sol2','ressources/sol2.png');
   game.load.image('obstacle1','ressources/obstacle/barrières.png');
   game.load.image('obstacle2','ressources/obstacle/carton fermé.png');
   game.load.image('obstacle3','ressources/obstacle/carton.png');
