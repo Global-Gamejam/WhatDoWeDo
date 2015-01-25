@@ -5,18 +5,67 @@ var initWindow = function() {
     var hit = 0;
     var credit = true;
 
-    P2Game.StateA = function (game) {
 
+    P2Game.StateB = function (game) {
+      var cursors;
+    };
+
+    P2Game.StateB.prototype = {
+      preload: function () {
+        preloadRessource(game);
+        game.time.advancedTiming = true;
+      },
+
+      create: function () {
+        background1 = game.add.sprite(0, 0, 'background');
+        game.world.setBounds(0, 0, 1920, 1080 / 2);
+        game.physics.startSystem(Phaser.Physics.P2JS);
+        game.physics.p2.setImpactEvents(true);
+        game.physics.p2.restitution = 0.1;
+        game.physics.p2.updateBoundsCollisionGroup();
+        game.physics.arcade.enableBody(this);
+        game.physics.arcade.gravity.y = 500;
+
+
+        enemiesCollisionGroup = game.physics.p2.createCollisionGroup();
+        playerCollisionGroup = game.physics.p2.createCollisionGroup();
+        bulletCollisionGroup = game.physics.p2.createCollisionGroup();
+        animalCollisionGroup = game.physics.p2.createCollisionGroup();
+        obstacleCollisionGroup = game.physics.p2.createCollisionGroup();
+
+        cursors = game.input.keyboard.createCursorKeys();
+
+        initFrog(game);
+        game.add.sprite(0, game.world.bounds.height / 2, 'sol2');
+        //initFloor(game);
+        initPLayer(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
+        initBoss(game);
+      },
+
+      update: function () {
+        // updateBullet(game);
+        moveFrog(player, game);
+        catchDeplacementPlayer(game, cursors);
+        updateMovementBoss(game, player);
+        // moveEnemies(game, cursors, player);
+        // moveAnimals(game, player);
+        // checkObstacles(game);
+      },
+      render: function () {
+      }
+    };
+
+    P2Game.StateA = function (game) {
       var cursors;
       var upKey;
       var rkey;
       var tuto;
 
-    var enemiesCollisionGroup;
-    var playerCollisionGroup;
-    var bulletCollisionGroup;
-    var animalCollisionGroup;
-    var obstacleCollisionGroup;
+      var enemiesCollisionGroup;
+      var playerCollisionGroup;
+      var bulletCollisionGroup;
+      var animalCollisionGroup;
+      var obstacleCollisionGroup;
   };
 
     P2Game.StateA.prototype = {
@@ -46,35 +95,35 @@ var initWindow = function() {
         game.physics.arcade.gravity.y = 500;
 
 
-      enemiesCollisionGroup = game.physics.p2.createCollisionGroup();
-      playerCollisionGroup = game.physics.p2.createCollisionGroup();
-      bulletCollisionGroup = game.physics.p2.createCollisionGroup();
-      animalCollisionGroup = game.physics.p2.createCollisionGroup();
-      obstacleCollisionGroup = game.physics.p2.createCollisionGroup();
+        enemiesCollisionGroup = game.physics.p2.createCollisionGroup();
+        playerCollisionGroup = game.physics.p2.createCollisionGroup();
+        bulletCollisionGroup = game.physics.p2.createCollisionGroup();
+        animalCollisionGroup = game.physics.p2.createCollisionGroup();
+        obstacleCollisionGroup = game.physics.p2.createCollisionGroup();
 
-      initFrog(game);
-      initFloor(game);
-      initAnimals(game, bulletCollisionGroup, animalCollisionGroup);
+        initFrog(game);
+        initFloor(game);
+        initAnimals(game, bulletCollisionGroup, animalCollisionGroup);
 
-      rkey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-
-
-      initPLayer(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
-      initEnemies(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
-      player.body.collides(enemiesCollisionGroup, hitEnemies, this);
-
-      game.physics.p2.enable(player);
-
-      cursors = game.input.keyboard.createCursorKeys();
-      background1.fixedToCamera = true;
-      game.camera.follow(player);
+        rkey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
 
-      game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-      game.input.onDown.add(gofull, this);
-      initObstacle(game, obstacleCollisionGroup, playerCollisionGroup, enemiesCollisionGroup);
-      initFront(game);
-    },
+        initPLayer(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
+        initEnemies(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
+        player.body.collides(enemiesCollisionGroup, hitEnemies, this);
+
+        game.physics.p2.enable(player);
+
+        cursors = game.input.keyboard.createCursorKeys();
+        background1.fixedToCamera = true;
+        game.camera.follow(player);
+
+
+        game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+        game.input.onDown.add(gofull, this);
+        initObstacle(game, obstacleCollisionGroup, playerCollisionGroup, enemiesCollisionGroup);
+        initFront(game);
+      },
 
       spiritHitsAnimal: function (body1, body2) {
         console.log("hit spirit");
@@ -161,7 +210,7 @@ var initWindow = function() {
 
 
     var game = new Phaser.Game(1920, 1080, Phaser.CANVAS, 'phaser-example');
-    game.state.add('StateA', P2Game.StateA);
+    game.state.add('StateB', P2Game.StateB);
     game.state.add('MENU', P2Game.MENU);
 
     game.state.start('MENU');
@@ -201,6 +250,8 @@ var initWindow = function() {
       intro.anchor.set(0.5);
       intro.inputEnabled = true;
       intro.events.onInputDown.add(introfunc, event);
+      // game.scale.startFullScreen(false);
+      // game.state.start('StateB');
 
 
     }
@@ -237,7 +288,7 @@ var initWindow = function() {
         // var style = { font: "120px Arial", fill: "#ff0044", align: "center" };
         // var t = game.add.text(player.x - 300,player.y - 500, text, style);
         setTimeout(function () {
-          game.state.start('StateA');
+          game.state.start('StateB');
         }, 1000);
 
       }

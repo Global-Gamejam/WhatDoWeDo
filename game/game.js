@@ -10,6 +10,7 @@ var preloadRessource = function(game) {
   game.load.atlasJSONHash('animal1Animation', 'ressources/animals/lapinAnimation.png', 'ressources/animals/lapinAnimation.json');
   game.load.atlasJSONHash('animal2Animation', 'ressources/animals/sanglierAnimation.png', 'ressources/animals/sanglierAnimation.json');
   game.load.atlasJSONHash('rouladeAnimation', 'ressources/animals/rouladeAnimation.png', 'ressources/animals/rouladeAnimation.json');
+
   game.load.atlasJSONHash('deadmonster0', 'ressources/monster/deadmonster0.png', 'ressources/monster/deadmonster0.json');
   game.load.atlasJSONHash('deadmonster1', 'ressources/monster/deadmonster1.png', 'ressources/monster/deadmonster1.json');
   game.load.atlasJSONHash('deadmonster2', 'ressources/monster/deadmonster2.png', 'ressources/monster/deadmonster2.json');

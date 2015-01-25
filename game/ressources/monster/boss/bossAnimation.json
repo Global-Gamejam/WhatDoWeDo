@@ -1,0 +1,92 @@
+{"frames": [
+
+{
+	"filename": "archange-1.png",
+	"frame": {"x":1131,"y":1212,"w":501,"h":556},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":64,"w":501,"h":556},
+	"sourceSize": {"w":584,"h":636}
+},
+{
+	"filename": "archange-10.png",
+	"frame": {"x":2,"y":1235,"w":562,"h":532},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":78,"w":562,"h":532},
+	"sourceSize": {"w":584,"h":636}
+},
+{
+	"filename": "archange-2.png",
+	"frame": {"x":1485,"y":2,"w":485,"h":560},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":44,"y":60,"w":485,"h":560},
+	"sourceSize": {"w":584,"h":636}
+},
+{
+	"filename": "archange-3.png",
+	"frame": {"x":497,"y":2,"w":527,"h":606},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":14,"w":527,"h":606},
+	"sourceSize": {"w":584,"h":636}
+},
+{
+	"filename": "archange-4.png",
+	"frame": {"x":2,"y":625,"w":515,"h":608},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":16,"w":515,"h":608},
+	"sourceSize": {"w":584,"h":636}
+},
+{
+	"filename": "archange-5.png",
+	"frame": {"x":519,"y":610,"w":487,"h":604},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":74,"y":16,"w":487,"h":604},
+	"sourceSize": {"w":584,"h":636}
+},
+{
+	"filename": "archange-6.png",
+	"frame": {"x":2,"y":2,"w":493,"h":621},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":3,"w":493,"h":621},
+	"sourceSize": {"w":584,"h":636}
+},
+{
+	"filename": "archange-7.png",
+	"frame": {"x":1008,"y":610,"w":536,"h":600},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":26,"w":536,"h":600},
+	"sourceSize": {"w":584,"h":636}
+},
+{
+	"filename": "archange-8.png",
+	"frame": {"x":1026,"y":2,"w":457,"h":597},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":110,"y":27,"w":457,"h":597},
+	"sourceSize": {"w":584,"h":636}
+},
+{
+	"filename": "archange-9.png",
+	"frame": {"x":566,"y":1216,"w":563,"h":544},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":78,"w":563,"h":544},
+	"sourceSize": {"w":584,"h":636}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "bossAnimation.png",
+	"format": "RGBA8888",
+	"size": {"w":1972,"h":1770},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:deb90b5b860ff1a70efa98859a4865b2:f915794991d69e3c3dfb68b600e08040:6c466d554d338ab47b29d065c6904e69$"
+}
+}
