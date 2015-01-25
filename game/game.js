@@ -19,6 +19,7 @@ var preloadRessource = function(game) {
   game.load.image('credit','ressources/menu/credits.png');
   game.load.image('fleche','ressources/menu/fleche.png');
   game.load.image('button1','ressources/menu/button1.png');
+  game.load.image('projectile','ressources/monster/boss/projectile.png');
   game.load.image('button2','ressources/menu/button2.png');
   game.load.image('fleche','ressources/menu/fleche.png');
   game.load.image('frontBack1','ressources/frontBack1.png');

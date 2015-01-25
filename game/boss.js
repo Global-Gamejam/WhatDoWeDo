@@ -1,5 +1,8 @@
 var boss;
 var sensBoss;
+var power;
+var timerBoss;
+var projectils;
 
 var initBoss = function(game) {
   boss = game.add.sprite(1920 - 500, 1080 - (1080 /3), 'boss');
@@ -16,30 +19,81 @@ var initBoss = function(game) {
   boss.animations.add('runBoss');
   boss.animations.play('runBoss', 6, true);
 
-  console.log(boss.scale.x);
+  projectils = game.add.group();
+  projectils.enableBody = true;
+  projectils.physicsBodyType = Phaser.Physics.P2JS;
+
+  projectils.createMultiple(100, 'projectile');
+  projectils.setAll('checkWorldBounds', true);
+  projectils.setAll('outOfBoundsKill', true);
+
+  power = 0;
 }
 
-var updateMovementBoss = function(game, player) {
-  console.log(boss);
+var generatePower = function(game) {
+  var bullet = projectils.getFirstExists(false);
 
-  boss.body.setZeroVelocity();
+  if (bullet) {
+    bullet.revive();
+  }
   if (boss.scale.x == 1) {
+    bullet.reset(1800, 1080 - Math.floor(Math.random() * (1080 / 2) - 20));
+    bullet.body.moveLeft(Math.floor(Math.random() * 400) + 900);
+  }
+  else {
+    bullet.reset(100, 1080 - Math.floor(Math.random() * (1080 / 2) - 20));
+    bullet.body.moveRight(Math.floor(Math.random() * 400) + 900);
+  }
+  bullet.body.clearShapes();
+  bullet.body.move
+}
+
+var powerFunction = function(game) {
+  timerBoss = game.time.create(false);
+  timerBoss.start();
+  timerBoss.loop(2500, resetPower, this);
+
+  generatePower(game);
+  generatePower(game);
+  generatePower(game);
+  generatePower(game);
+  generatePower(game);
+
+  //bullet.body.setCircle(100);
+}
+
+var resetPower = function() {
+  power = 0;
+  timerBoss.stop();
+}
+
+
+var updateMovementBoss = function(game, player) {
+  boss.body.setZeroVelocity();
+  if (power == 0 && boss.scale.x == 1) {
     boss.body.moveLeft(500);
     if (boss.position.x - 100 <= 0) {
       boss.scale.x = -1;
+      power = 1;
+      powerFunction(game);
+      console.log("power left");
     }
   }
-  if (boss.scale.x == -1) {
+  if (power == 0 && boss.scale.x == -1) {
     boss.body.moveRight(500);
     if (boss.position.x + 100 >= 1920) {
       boss.scale.x = 1;
+      power = 1;
+      powerFunction(game);
+      console.log("power right");
     }
   }
-
-  if (player.position.y < boss.position.y) {
-    boss.body.moveDown(player.position.y - boss.position.y);
-  }
-  else {
-    boss.body.moveUp(boss.position.y - player.position.y);
+  if (power == 0) {
+    if (player.position.y < boss.position.y) {
+      boss.body.moveDown(player.position.y - boss.position.y);
+    }
+    else {
+      boss.body.moveUp(boss.position.y - player.position.y);
+    }
   }
 }
