@@ -34,9 +34,9 @@ var initWindow = function() {
 
       hit = 0;
       background1 = game.add.sprite(0, 0, 'background');
-      tuto = game.add.sprite(0, 0, 'tuto');
+      tuto = game.add.sprite(0, 110, 'tuto');
 
-      tuto = game.add.sprite(0, 0, 'tuto');
+      //tuto = game.add.sprite(0, 0, 'tuto');
       game.world.setBounds(0, 0, 10000, 1080 / 2);
       game.physics.startSystem(Phaser.Physics.P2JS);
       game.physics.p2.setImpactEvents(true);
