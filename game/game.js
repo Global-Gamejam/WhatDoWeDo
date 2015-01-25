@@ -25,7 +25,7 @@ var preloadRessource = function(game) {
   game.load.image('animal2','ressources/animals/sanglier.png');
   game.load.image('animal3','ressources/animals/pangolin.png');
   game.load.image('animal4','ressources/animals/pangolin.png');
-  game.load.physics('physicsData', 'ressources/sprites.json');
+  game.load.physics('physicsData', 'ressources/lapin.json');
 }
 
 var initFront = function(game) {

@@ -23,9 +23,9 @@ var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
       y = 700;
 
 
-    enemie[i] = enemies.create(enemiepos[i], y, 'monster1');
+    enemie[i] = enemies.create(enemiepos[i], y, 'monster' + String(enemiekind[i]));
     enemie[i].body.clearShapes();
-    enemie[i].body.loadPolygon('physicsData', 'monster1');
+    enemie[i].body.loadPolygon('physicsData', 'monster' + String(enemiekind[i] + 1));
     enemie[i].body.mass = 1;
     enemie[i].body.fixedRotation = true;
     enemie[i].body.collideWorldBounds = true;
