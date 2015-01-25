@@ -11,7 +11,7 @@ var timer;
 
 var speedX = 1000, speedY = 700;
 
-var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
+var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup) {
   player = game.add.sprite(200, game.world.height - 200, 'player');
 
   game.physics.p2.enable(player, false);
@@ -20,6 +20,7 @@ var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   //player.enableBody = true;
   player.body.fixedRotation = true;
   player.body.setCollisionGroup(playerCollisionGroup);
+  player.body.collides([obstacleCollisionGroup]);
   // player.body.allowGravity = true;
   bullets = game.add.group();
   bullets.enableBody = true;
@@ -54,7 +55,7 @@ var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
       bullet.reset(player.x - 8, player.y - 8);
       bullet.body.clearShapes();
       game.physics.arcade.moveToPointer(bullet, 1200);
-      bullet.body.setCircle(30);
+      bullet.body.setCircle(100);
       bullet.body.setCollisionGroup(bulletCollisionGroup);
       bullet.body.collides(animalCollisionGroup, collidesSpiritAnimal, this);
     }
@@ -96,11 +97,15 @@ var resetStatSpec = function() {
 }
 
 var collidesSpiritAnimal = function(b1, b2) {
+  speedX = 1000;
+  speedY = 700;
   player.body.reset(b2.sprite.x, b2.sprite.y);
   if (b2.sprite.key == "animal0") {
     kindAnimal = 0;
   }
   else if (b2.sprite.key == "animal1") {
+    speedX = 2000;
+    speedY = 1400;
     kindAnimal = 1;
   }
   else if (b2.sprite.key == "animal2") {

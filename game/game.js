@@ -1,30 +1,80 @@
 var preloadRessource = function(game) {
   game.load.image('player','ressources/player/player1.png');
   game.load.atlasJSONHash('playerAnimation', 'ressources/player/playerAnimation.png', 'ressources/player/playerAnimation.json');
-  game.load.atlasJSONHash('monster1Animation', 'ressources/monster/monster1Animation.png', 'ressources/monster/monster1Animation.json');
-  game.load.atlasJSONHash('monster2Animation', 'ressources/monster/monster2Animation.png', 'ressources/monster/monster2Animation.json');
+  game.load.atlasJSONHash('monsterAnimation0', 'ressources/monster/monster1Animation.png', 'ressources/monster/monster1Animation.json');
+  game.load.atlasJSONHash('monsterAnimation1', 'ressources/monster/monster2Animation.png', 'ressources/monster/monster2Animation.json');
+  game.load.atlasJSONHash('monsterAnimation2', 'ressources/monster/monster3Animation.png', 'ressources/monster/monster3Animation.json');
   game.load.atlasJSONHash('animal0Animation', 'ressources/animals/animal1Animation.png', 'ressources/animals/animal1Animation.json');
   game.load.atlasJSONHash('animal1Animation', 'ressources/animals/lapinAnimation.png', 'ressources/animals/lapinAnimation.json');
   game.load.atlasJSONHash('animal2Animation', 'ressources/animals/sanglierAnimation.png', 'ressources/animals/sanglierAnimation.json');
   game.load.atlasJSONHash('rouladeAnimation', 'ressources/animals/rouladeAnimation.png', 'ressources/animals/rouladeAnimation.json');
   game.load.atlasJSONHash('deadmonster1', 'ressources/monster/deadmonster.png', 'ressources/monster/deadmonster.json');
-
-  game.load.image('bullet','ressources/t.png');
+  game.load.image('bullet','ressources/spirit.png');
   game.load.image('front1','ressources/front1.png');
   game.load.image('front2','ressources/front2.png');
   game.load.image('background','ressources/background.png');
+  game.load.image('menu','ressources/menu/menu.png');
+  game.load.image('credit','ressources/menu/credits.png');
+  game.load.image('fleche','ressources/menu/fleche.png');
+
+
+  game.load.image('button1','ressources/menu/button1.png');
+  game.load.image('button2','ressources/menu/button2.png');
+
+  game.load.image('fleche','ressources/menu/fleche.png');
+
+
   game.load.image('frog1','ressources/frog/frog1.png');
   game.load.image('frog2','ressources/frog/frog2.png');
   game.load.image('frog3','ressources/frog/frog3.png');
   game.load.image('sol','ressources/sol.png');
+  game.load.image('obstacle1','ressources/obstacle/barrières.png');
+  game.load.image('obstacle2','ressources/obstacle/carton fermé.png');
+  game.load.image('obstacle3','ressources/obstacle/carton.png');
+  game.load.image('obstacle4','ressources/obstacle/tonneaux.png');
   game.load.image('monster1','ressources/monster/monster1.png');
   game.load.image('monster2','ressources/monster/monster2.png');
+  game.load.image('monster3','ressources/monster/monster3.png');
   game.load.image('animal0','ressources/animals/pangolin.png');
   game.load.image('animal1','ressources/animals/lapin.png');
   game.load.image('animal2','ressources/animals/sanglier.png');
   game.load.image('animal3','ressources/animals/pangolin.png');
   game.load.image('animal4','ressources/animals/pangolin.png');
-  game.load.physics('physicsData', 'ressources/sprites.json');
+  game.load.image('gameOver','ressources/gameOver.png');
+  game.load.image('tuto','ressources/tuto.png');
+  game.load.image('croiss','ressources/croise.png');
+  game.load.image('sprite','ressources/spirit.png');
+  game.load.physics('physicsData', 'ressources/lapin.json');
+}
+
+var obstacles = [];
+var initObstacle = function(game, obstacleCollisionGroup, playerCollisionGroup, enemiesCollisionGroup) {
+  indexObstacle = 0;
+  for (var index = game.width; index < game.world.bounds.width; index += game.width) {
+    //if (Math.floor(Math.random() * 2) == 0) {
+      ob = Math.floor(Math.random() * 3);
+
+      currentObstacle = game.add.sprite(index, 800, 'obstacle' + (ob + 1));
+      game.physics.p2.enableBody(currentObstacle, true);
+      currentObstacle.body.fixedRotation = true;
+      currentObstacle.body.setCollisionGroup(obstacleCollisionGroup);
+      console.log(currentObstacle.body);
+      currentObstacle.body.mass = 100;
+      currentObstacle.body.allowGravity = false;
+
+      currentObstacle.body.collides([playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup]);
+      obstacles[indexObstacle] = currentObstacle;
+      indexObstacle += 1;
+          //}
+  }
+}
+
+var checkObstacles = function() {
+  obstacles.forEach(function(currentObstacle) {
+    if (currentObstacle.position.y < 500) {
+      currentObstacle.destroy();
+    }
+  });
 }
 
 var initFront = function(game) {

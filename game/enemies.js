@@ -1,8 +1,9 @@
 var enemies;
 var enemie = new Array;
 var enemiepos = new Array;
+var enemiekind = new Array;
 
-var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
+var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup) {
 
   enemies = game.add.group();
 
@@ -16,20 +17,29 @@ var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   {
     enemiepos[i] = (i * 1000) + 3000;
 
-    enemie[i] = enemies.create(enemiepos[i], 400, 'monster1');
+    enemiekind[i] = Math.floor(Math.random() * 2);
+
+    //
+    console.log(enemiekind[i]);
+    var y = 1200;
+    if (enemiekind[i] == 0)
+      y = 700;
+
+    console.log(y);
+
+    enemie[i] = enemies.create(enemiepos[i], y, 'monster1');
     enemie[i].body.clearShapes();
     enemie[i].body.loadPolygon('physicsData', 'monster1');
     enemie[i].body.mass = 1;
     enemie[i].body.fixedRotation = true;
     enemie[i].body.collideWorldBounds = true;
     enemie[i].body.setCollisionGroup(enemiesCollisionGroup);
-    enemie[i].body.collides(playerCollisionGroup);
+    enemie[i].body.collides([playerCollisionGroup, obstacleCollisionGroup]);
     enemie[i].body.allowGravity = false;
 
-    enemie[i].loadTexture('monster2Animation');
+    enemie[i].loadTexture('monsterAnimation' + String(enemiekind[i]));
     enemie[i].animations.add('run');
     enemie[i].animations.play('run', 6, true);
-
   }
 }
 
@@ -38,7 +48,7 @@ var moveEnemies = function(game, cursors, player) {
 
  for (var i = 0; i < enemie.length; i++)
  {
-   if ( (Math.floor(Math.random() * 10)) == 1)
+   if ( (Math.floor(Math.random() * 20)) == 1)
    {
 
 //     console.log(enemie[i] );

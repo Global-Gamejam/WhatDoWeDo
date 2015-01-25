@@ -1,0 +1,72 @@
+	{
+
+		"monster2": [
+
+				{
+					"density": 2, "friction": 0, "bounce": 0,
+					"filter": { "categoryBits": 1, "maskBits": 65535 },
+					"shape": [   196, 84  ,  21, 74  ,  195, 40  ]
+				}
+		]
+
+		,
+		"monster3": [
+
+				{
+					"density": 2, "friction": 0, "bounce": 0,
+					"filter": { "categoryBits": 1, "maskBits": 65535 },
+					"shape": [   88, 48  ,  111, 145  ,  67, 143  ,  22, 59  ]
+				}
+		]
+
+		,
+		"animal0": [
+
+				{
+					"density": 2, "friction": 0, "bounce": 0,
+					"filter": { "categoryBits": 1, "maskBits": 65535 },
+					"shape": [   212, 132  ,  112, 121  ,  110, 60  ,  224, 33  ]
+				}
+		]
+
+		,
+		"animal1": [
+
+				{
+					"density": 2, "friction": 0, "bounce": 0,
+					"filter": { "categoryBits": 1, "maskBits": 65535 },
+					"shape": [   79, 190  ,  39, 190  ,  25, 76  ]
+				}
+		]
+
+		,
+		"animal2": [
+
+				{
+					"density": 2, "friction": 0, "bounce": 0,
+					"filter": { "categoryBits": 1, "maskBits": 65535 },
+					"shape": [   181, 47  ,  136, 158  ,  25, 50  ]
+				}
+		]
+
+		,
+		"player1": [
+
+				{
+					"density": 2, "friction": 0, "bounce": 0,
+					"filter": { "categoryBits": 1, "maskBits": 65535 },
+					"shape": [   115, 125  ,  68, 196  ,  77, 52  ,  137, 86  ]
+				}
+		]
+
+		,
+		"monster1": [
+
+				{
+					"density": 2, "friction": 0, "bounce": 0,
+					"filter": { "categoryBits": 1, "maskBits": 65535 },
+					"shape": [   172, 183  ,  87, 150  ,  90, 118  ,  215, 153  ]
+				}
+		]
+
+	}

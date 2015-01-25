@@ -14,10 +14,11 @@ var initAnimals = function(game, bulletCollisionGroup, animalCollisionGroup) {
   animals.setAll('outOfBoundsKill', true);
   for (var i = 0; i < 1; i++)
   {
-    animal[i] = animals.create(1500, game.world.bounds.height / 2 + 50 + (i * 80) , 'animal' + Math.floor(Math.random() * 3));
+    var randItem = Math.floor(Math.random() * 3);
+    animal[i] = animals.create(1500, game.world.bounds.height / 2 + 50 + (i * 80) , 'animal' + randItem);
     animal[i].body.fixedRotation = true;
     animal[i].body.clearShapes();
-    animal[i].body.setRectangle(100, 100);
+    animal[i].body.loadPolygon('physicsData', 'animal' + randItem);
     animal[i].body.setCollisionGroup(animalCollisionGroup);
     animal[i].body.collides(bulletCollisionGroup);
     animal[i].body.mass = 1000000;
