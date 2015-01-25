@@ -47,6 +47,8 @@ var initWindow = function() {
         initPLayer(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
         initBoss(game, playerCollisionGroup, powerupCollisionGroup, powerBossCollisionGroup);
         player.body.collides([powerupCollisionGroup, powerBossCollisionGroup], hitBoss, this);
+        isBoss = true;
+        game.input.onDown.add(gofull, this);
       },
 
       update: function () {
