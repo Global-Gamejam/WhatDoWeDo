@@ -17,7 +17,7 @@ var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   game.physics.p2.enable(player, false);
   player.body.clearShapes();
   player.body.loadPolygon('physicsData', 'player1');
-  player.enableBody = true;
+  //player.enableBody = true;
   player.body.fixedRotation = true;
   player.body.setCollisionGroup(playerCollisionGroup);
   // player.body.allowGravity = true;
@@ -134,6 +134,7 @@ var catchDeplacementPlayer = function(game, cursors) {
     return ;
   }
   player.body.setZeroVelocity();
+
   if (cursors.up.isDown &&
      game.world.height - (player.position.y + player.height / 2) <= game.world.height / 2 - 100) {
     movePlayerUp();

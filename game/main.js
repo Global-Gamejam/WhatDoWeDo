@@ -73,7 +73,7 @@ var initWindow = function() {
     },
 
     update: function () {
-            updateBullet(game);
+      updateBullet(game);
       moveFrog(player, game);
       catchDeplacementPlayer(game, cursors);
       moveEnemies(game, cursors, player);
