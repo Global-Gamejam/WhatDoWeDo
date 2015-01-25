@@ -8,6 +8,7 @@ var isJumping;
 var fireRate = 750;
 var nextFire = 500;
 var timer;
+var isBoss;
 
 var speedX = 1000, speedY = 700;
 
@@ -30,6 +31,7 @@ var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   bullets.setAll('outOfBoundsKill', true);
   isAnimal = false;
   isJumping = false;
+  isBoss = false;
 }
 
 var updateBullet = function(game) {
@@ -131,7 +133,12 @@ var movePlayerRight = function() {player.body.moveRight(speedX);}
 var animationPlayer = function() {
   if (!isAnimated) {
     if (isAnimal == false) {
-      player.loadTexture('playerAnimation');
+      if (isBoss == false) {
+        player.loadTexture('playerAnimation');
+      }
+      else {
+        player.loadTexture('heroAnimation');
+      }
       player.animations.add('run');
       player.animations.play('run', 6, true);
     }
@@ -180,7 +187,12 @@ var catchDeplacementPlayer = function(game, cursors) {
   if (!cursors.up.isDown && !cursors.down.isDown &&
      !cursors.left.isDown && !cursors.right.isDown) {
        if (!isAnimal) {
-         player.loadTexture('player');
+         if (isBoss == false) {
+           player.loadTexture('player');
+         }
+         else {
+           player.loadTexture('hero');
+         }
        }
        else {
          player.loadTexture('animal' + kindAnimal);

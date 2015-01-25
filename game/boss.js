@@ -6,14 +6,14 @@ var projectils;
 var powerup;
 var gameCut;
 
-var initBoss = function(game, playerCollisionGroup, powerupCollisionGroup, powerBossCollisionGroup) {
+var initBoss = function(game, playerCollisionGroup, powerupCollisionGroup, powerBossCollisionGroup, bulletCollision) {
   boss = game.add.sprite(1920 - 500, 1080 - (1080 /3), 'boss');
-  game.physics.p2.enableBody(boss, false);
-
+  game.physics.p2.enableBody(boss, true);
   boss.body.fixedRotation = true;
   boss.body.mass = 100;
   boss.body.allowGravity = false;
 
+  boss.body.setCircle(100);
   boss.loadTexture('bossAnimation');
   boss.animations.add('runBoss');
   boss.animations.play('runBoss', 6, true);
@@ -26,7 +26,7 @@ var initBoss = function(game, playerCollisionGroup, powerupCollisionGroup, power
   projectils.setAll('checkWorldBounds', false);
   projectils.setAll('outOfBoundsKill', true);
 
-
+  
   power = 0;
   gameCut = game;
 }
