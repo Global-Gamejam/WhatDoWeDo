@@ -22,6 +22,7 @@ var preloadRessource = function(game) {
   game.load.image('button2','ressources/menu/button2.png');
 
   game.load.image('fleche','ressources/menu/fleche.png');
+  game.load.image('frontBack1','ressources/frontBack1.png');
 
 
   game.load.image('frog1','ressources/frog/frog1.png');
@@ -91,6 +92,13 @@ var initFloor = function(game) {
   floors = game.add.group();
   for (var index = 0; index < game.world.bounds.width; index += game.width) {
     floors.create(index, game.world.bounds.height / 2, 'sol');
+  }
+}
+
+var initFrontBack = function(game) {
+  front = game.add.group();
+  for (var index = 0; index < game.world.bounds.width; index += game.width) {
+    front.create(index, 0, 'frontBack1');
   }
 }
 
