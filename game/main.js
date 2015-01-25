@@ -75,7 +75,7 @@ var initWindow = function() {
       initObstacle(game, obstacleCollisionGroup, playerCollisionGroup, enemiesCollisionGroup);
       initFront(game);
     },
-    
+
       spiritHitsAnimal: function (body1, body2) {
         console.log("hit spirit");
       },
@@ -90,6 +90,7 @@ var initWindow = function() {
         catchDeplacementPlayer(game, cursors);
         moveEnemies(game, cursors, player);
         moveAnimals(game, player);
+        checkObstacles();
 
         if ( rkey.justPressed(/*optional duration*/))
         {
