@@ -17,6 +17,10 @@ var preloadRessource = function(game) {
   game.load.image('frog2','ressources/frog/frog2.png');
   game.load.image('frog3','ressources/frog/frog3.png');
   game.load.image('sol','ressources/sol.png');
+  game.load.image('obstacle1','ressources/obstacle/barrières.png');
+  game.load.image('obstacle2','ressources/obstacle/carton fermé.png');
+  game.load.image('obstacle3','ressources/obstacle/carton.png');
+  game.load.image('obstacle4','ressources/obstacle/tonneaux.png');
   game.load.image('monster1','ressources/monster/monster1.png');
   game.load.image('monster2','ressources/monster/monster2.png');
   game.load.image('monster3','ressources/monster/monster3.png');
