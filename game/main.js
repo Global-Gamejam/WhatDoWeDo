@@ -12,12 +12,12 @@ var initWindow = function() {
       var rkey;
       var tuto;
 
-
-      var enemiesCollisionGroup;
-      var playerCollisionGroup;
-      var bulletCollisionGroup;
-      var animalCollisionGroup;
-    };
+    var enemiesCollisionGroup;
+    var playerCollisionGroup;
+    var bulletCollisionGroup;
+    var animalCollisionGroup;
+    var obstacleCollisionGroup;
+  };
 
     P2Game.StateA.prototype = {
 
@@ -45,10 +45,12 @@ var initWindow = function() {
         game.physics.arcade.enableBody(this);
         game.physics.arcade.gravity.y = 500;
 
-        enemiesCollisionGroup = game.physics.p2.createCollisionGroup();
-        playerCollisionGroup = game.physics.p2.createCollisionGroup();
-        bulletCollisionGroup = game.physics.p2.createCollisionGroup();
-        animalCollisionGroup = game.physics.p2.createCollisionGroup();
+
+      enemiesCollisionGroup = game.physics.p2.createCollisionGroup();
+      playerCollisionGroup = game.physics.p2.createCollisionGroup();
+      bulletCollisionGroup = game.physics.p2.createCollisionGroup();
+      animalCollisionGroup = game.physics.p2.createCollisionGroup();
+      obstacleCollisionGroup = game.physics.p2.createCollisionGroup();
 
         initFrog(game);
         initFloor(game);
@@ -56,9 +58,10 @@ var initWindow = function() {
 
         rkey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-        initPLayer(game, playerCollisionGroup, enemiesCollisionGroup);
-        initEnemies(game, playerCollisionGroup, enemiesCollisionGroup);
-        player.body.collides(enemiesCollisionGroup, hitEnemies, this);
+
+      initPLayer(game, playerCollisionGroup, enemiesCollisionGroup);
+      initEnemies(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
+      player.body.collides(enemiesCollisionGroup, hitEnemies, this);
 
         game.physics.p2.enable(player);
 
@@ -66,11 +69,13 @@ var initWindow = function() {
         background1.fixedToCamera = true;
         game.camera.follow(player);
 
-        game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-        game.input.onDown.add(gofull, this);
-        initFront(game);
-      },
 
+      game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+      game.input.onDown.add(gofull, this);
+      initObstacle(game, obstacleCollisionGroup, playerCollisionGroup, enemiesCollisionGroup);
+      initFront(game);
+    },
+    
       spiritHitsAnimal: function (body1, body2) {
         console.log("hit spirit");
       },
