@@ -4,6 +4,7 @@ var initWindow = function() {
     var P2Game = {};
     var hit = 0;
     var credit = true;
+    var killed = 0;
 
 
     P2Game.StateB = function (game) {
@@ -17,6 +18,7 @@ var initWindow = function() {
       },
 
       create: function () {
+        killed = 0;
         background1 = game.add.sprite(0, 0, 'background');
         game.world.setBounds(0, 0, 1920, 1080 / 2);
         game.physics.startSystem(Phaser.Physics.P2JS);
@@ -141,6 +143,10 @@ var initWindow = function() {
         moveAnimals(game, player);
         checkObstacles(game);
 
+
+        if (killed == 5 )
+          this.state.start('StateB');
+
         if ( rkey.justPressed(/*optional duration*/))
         {
           this.state.start('StateA');
@@ -210,6 +216,7 @@ var initWindow = function() {
 
 
     var game = new Phaser.Game(1920, 1080, Phaser.CANVAS, 'phaser-example');
+    game.state.add('StateA', P2Game.StateA);
     game.state.add('StateB', P2Game.StateB);
     game.state.add('StateA', P2Game.StateA);
     game.state.add('MENU', P2Game.MENU);
@@ -253,8 +260,6 @@ var initWindow = function() {
       intro.events.onInputDown.add(introfunc, event);
       // game.scale.startFullScreen(false);
       // game.state.start('StateB');
-
-
     }
 
 
@@ -282,14 +287,15 @@ var initWindow = function() {
       hit += 1;
       console.log(hit);
 
-      if (hit == 6)
+      if (hit == 8)
       {
         game.add.sprite(player.position.x - 1920 / 2, 0, 'gameOver');
         // var text = "-Tu est MORT !-\n";
         // var style = { font: "120px Arial", fill: "#ff0044", align: "center" };
         // var t = game.add.text(player.x - 300,player.y - 500, text, style);
+        killed = 0;
         setTimeout(function () {
-          game.state.start('StateB');
+          game.state.start('StateA');
         }, 1000);
 
       }
@@ -318,6 +324,7 @@ var initWindow = function() {
         //
         setTimeout(function () {
           body2.sprite.kill();
+          killed += 1;
         }, 900);
 }
     }
