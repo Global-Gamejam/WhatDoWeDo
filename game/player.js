@@ -148,11 +148,21 @@ var catchDeplacementPlayer = function(game, cursors) {
   }
   if (cursors.left.isDown) {
     movePlayerLeft();
-    player.scale.x = -1;
+    if (isAnimal && (kindAnimal == 1 || kindAnimal == 2)) {
+      player.scale.x = 1;
+    }
+    else {
+      player.scale.x = -1;
+    }
   }
   else if (cursors.right.isDown) {
     movePlayerRight();
-    player.scale.x = 1;
+    if (isAnimal && (kindAnimal == 1 || kindAnimal == 2)) {
+      player.scale.x = -1;
+    }
+    else {
+      player.scale.x = 1;
+    }
   }
 
   if (!cursors.up.isDown && !cursors.down.isDown &&
