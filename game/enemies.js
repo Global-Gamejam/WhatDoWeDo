@@ -48,7 +48,7 @@ var moveEnemies = function(game, cursors, player) {
 
  for (var i = 0; i < enemie.length; i++)
  {
-   if ( (Math.floor(Math.random() * 10)) == 1)
+   if ( (Math.floor(Math.random() * 20)) == 1)
    {
 
 //     console.log(enemie[i] );

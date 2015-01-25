@@ -75,7 +75,7 @@ var initWindow = function() {
       initObstacle(game, obstacleCollisionGroup, playerCollisionGroup, enemiesCollisionGroup);
       initFront(game);
     },
-    
+
       spiritHitsAnimal: function (body1, body2) {
         console.log("hit spirit");
       },
@@ -119,6 +119,13 @@ var initWindow = function() {
 
           back = game.add.sprite(0, 0, 'menu');
 
+
+          emitter = game.add.emitter(1000, 600, 3000);
+
+          //  Here we're passing an array of image keys. It will pick one at random when emitting a new particle.
+          emitter.makeParticles(['croiss', 'croiss', 'croiss']);
+
+          emitter.start(false, 5000, 20);
 
 
           var start = game.add.sprite(247, 415, 'button2');

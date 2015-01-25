@@ -47,15 +47,6 @@ var preloadRessource = function(game) {
   game.load.physics('physicsData', 'ressources/lapin.json');
 }
 
-var initObstacle = function(game) {
-  for (var index = game.width; index < game.world.bounds.width; index += game.width) {
-    if (Math.floor(Math.random() * 2) == 0) {
-      ob = Math.floor(Math.random() * 3);
-      game.add.sprite(index, game.world.centerY, 'obstacle' + (ob + 1));
-    }
-  }
-}
-
 var initFront = function(game) {
   front = game.add.group();
   var i = 0;
