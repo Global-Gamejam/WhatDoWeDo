@@ -65,6 +65,7 @@ var initWindow = function() {
 
       game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
       game.input.onDown.add(gofull, this);
+      initFront(game);
     },
 
     spiritHitsAnimal: function (body1, body2) {
@@ -72,7 +73,7 @@ var initWindow = function() {
     },
 
     update: function () {
-            updateBullet(game);
+      updateBullet(game);
       moveFrog(player, game);
       catchDeplacementPlayer(game, cursors);
       moveEnemies(game, cursors, player);
@@ -102,34 +103,32 @@ var initWindow = function() {
       hit += 1;
       console.log(hit);
 
-      // if (hit == 3)
-      // {
-      //   var text = "-Tu est MORT !-\n";
-      //   var style = { font: "120px Arial", fill: "#ff0044", align: "center" };
-      //   var t = game.add.text(player.x - 300,player.y - 500, text, style);
-      //   setTimeout(function () {
-      //     game.state.start('StateA');
-      //   }, 1000);
-      //
-      // }
+      if (hit == 3)
+      {
+        var text = "-Tu est MORT !-\n";
+        var style = { font: "120px Arial", fill: "#ff0044", align: "center" };
+        var t = game.add.text(player.x - 300,player.y - 500, text, style);
+        setTimeout(function () {
+          game.state.start('StateA');
+        }, 1000);
 
-      body2.sprite.kill();
+      }
 
-      // enemies.forEach(function(i) {
-      //   if (i.x == body2.x && i.y == body2.y) {
-      //     console.log("find");
-      //     //i.kill();
-      //     return ;
-      //   }
-      // });
 
-      //body2.kill();
-      // body2.x = -10000;
-      // body2.y = -10000;
-      // body2.static = true;
-      //body2.sprite.alpha = 0;
-      //body2.y = 0;
+      if (isAnimal && isJumping) {
+
+        // body2.body.reset(player.position.x, player.position.y);
+        body2.sprite.loadTexture('deadmonster1');
+        body2.sprite.animations.add('runAni1');
+        body2.sprite.animations.play('runAni1', 4, true);
+
+        setTimeout(function () {
+          body2.sprite.kill();
+        }, 900);
+      }
     }
+
+
 
     function gofull() {
       game.scale.startFullScreen(false);
