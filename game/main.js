@@ -102,33 +102,21 @@ var initWindow = function() {
       hit += 1;
       console.log(hit);
 
-      // if (hit == 3)
-      // {
-      //   var text = "-Tu est MORT !-\n";
-      //   var style = { font: "120px Arial", fill: "#ff0044", align: "center" };
-      //   var t = game.add.text(player.x - 300,player.y - 500, text, style);
-      //   setTimeout(function () {
-      //     game.state.start('StateA');
-      //   }, 1000);
-      //
-      // }
+      if (hit == 3)
+      {
+        var text = "-Tu est MORT !-\n";
+        var style = { font: "120px Arial", fill: "#ff0044", align: "center" };
+        var t = game.add.text(player.x - 300,player.y - 500, text, style);
+        setTimeout(function () {
+          game.state.start('StateA');
+        }, 1000);
 
-      body2.sprite.kill();
+      }
 
-      // enemies.forEach(function(i) {
-      //   if (i.x == body2.x && i.y == body2.y) {
-      //     console.log("find");
-      //     //i.kill();
-      //     return ;
-      //   }
-      // });
 
-      //body2.kill();
-      // body2.x = -10000;
-      // body2.y = -10000;
-      // body2.static = true;
-      //body2.sprite.alpha = 0;
-      //body2.y = 0;
+      if (isAnimal && isJumping) {
+        body2.sprite.kill();
+      }
     }
 
     function gofull() {
