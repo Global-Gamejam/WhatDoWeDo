@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "marche-1.png",
+	"frame": {"x":253,"y":253,"w":238,"h":253},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":2,"w":238,"h":253},
+	"sourceSize": {"w":262,"h":256}
+},
+{
+	"filename": "marche-2.png",
+	"frame": {"x":2,"y":253,"w":249,"h":253},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":2,"w":249,"h":253},
+	"sourceSize": {"w":262,"h":256}
+},
+{
+	"filename": "marche-3.png",
+	"frame": {"x":2,"y":2,"w":257,"h":249},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":7,"w":257,"h":249},
+	"sourceSize": {"w":262,"h":256}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "heroAnimation.png",
+	"format": "RGBA8888",
+	"size": {"w":493,"h":508},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:67c97fa39dbee6648f74ce2606cf5d4e:3fb25062454dc22a66de12323f1dfda0:ad04bca41ff063b5cfb2cc9f936c5220$"
+}
+}

@@ -11,6 +11,7 @@ var preloadRessource = function(game) {
   game.load.atlasJSONHash('animal1Animation', 'ressources/animals/lapinAnimation.png', 'ressources/animals/lapinAnimation.json');
   game.load.atlasJSONHash('animal2Animation', 'ressources/animals/sanglierAnimation.png', 'ressources/animals/sanglierAnimation.json');
   game.load.atlasJSONHash('rouladeAnimation', 'ressources/animals/rouladeAnimation.png', 'ressources/animals/rouladeAnimation.json');
+  game.load.atlasJSONHash('heroAnimation', 'ressources/player/heroAnimation.png', 'ressources/player/heroAnimation.json');
 
   game.load.atlasJSONHash('deadmonster0', 'ressources/monster/deadmonster0.png', 'ressources/monster/deadmonster0.json');
   game.load.atlasJSONHash('deadmonster1', 'ressources/monster/deadmonster1.png', 'ressources/monster/deadmonster1.json');
@@ -19,7 +20,7 @@ var preloadRessource = function(game) {
 
   game.load.atlasJSONHash('powerupAnimation', 'ressources/monster/boss/powerupAnimation.png', 'ressources/monster/boss/powerupAnimation.json');
 
-
+  game.load.image('hero','ressources/player/hero.png');
   game.load.image('bullet','ressources/spirit.png');
   game.load.image('front1','ressources/front1.png');
   game.load.image('front2','ressources/front2.png');
