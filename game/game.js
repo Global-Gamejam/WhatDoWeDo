@@ -36,12 +36,21 @@ var preloadRessource = function(game) {
   game.load.physics('physicsData', 'ressources/lapin.json');
 }
 
-var initObstacle = function(game) {
+var initObstacle = function(game, obstacleCollisionGroup, playerCollisionGroup, enemiesCollisionGroup) {
   for (var index = game.width; index < game.world.bounds.width; index += game.width) {
-    if (Math.floor(Math.random() * 2) == 0) {
+    //if (Math.floor(Math.random() * 2) == 0) {
       ob = Math.floor(Math.random() * 3);
-      game.add.sprite(index, game.world.centerY, 'obstacle' + (ob + 1));
-    }
+      currentObstacle = game.add.sprite(index, game.world.centerY, 'obstacle' + (ob + 1));
+      game.physics.p2.enableBody(currentObstacle, true);
+      currentObstacle.body.fixedRotation = true;
+      currentObstacle.body.setCollisionGroup(obstacleCollisionGroup);
+      console.log(currentObstacle.body);
+      var scaleX = 0.5;
+      var scaleY = 0.5;
+      currentObstacle.body.mass = 30;
+      currentObstacle.scale.set(scaleX , scaleY );
+      currentObstacle.body.collides([playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup]);
+    //}
   }
 }
 
