@@ -90,7 +90,7 @@ var initWindow = function() {
         catchDeplacementPlayer(game, cursors);
         moveEnemies(game, cursors, player);
         moveAnimals(game, player);
-        checkObstacles();
+        checkObstacles(game);
 
         if ( rkey.justPressed(/*optional duration*/))
         {
@@ -230,7 +230,7 @@ var initWindow = function() {
       hit += 1;
       console.log(hit);
 
-      if (hit == 3)
+      if (hit == 6)
       {
         game.add.sprite(player.position.x - 1920 / 2, 0, 'gameOver');
         // var text = "-Tu est MORT !-\n";
@@ -241,6 +241,7 @@ var initWindow = function() {
         }, 1000);
 
       }
+      console.log(body2.sprite.key);
 
 
       if (isAnimal && isJumping) {
@@ -250,15 +251,23 @@ var initWindow = function() {
         console.log(body2.sprite.key);
         // console.log(body2.kind);
 
-        if (body2.sprite.key = "monster1Animation")
-        body2.sprite.loadTexture('deadmonster1');
+        if (body2.sprite.key == "monsterAnimation0")
+          body2.sprite.loadTexture('deadmonster0');
+        else if (body2.sprite.key == "monsterAnimation1")
+          body2.sprite.loadTexture('deadmonster1');
+        else if (body2.sprite.key == "monsterAnimation2")
+          body2.sprite.loadTexture('deadmonster2');
+        else
+          body2.sprite.loadTexture('deadmonster3');
+
         body2.sprite.animations.add('runAni1');
         body2.sprite.animations.play('runAni1', 4, true);
         resetStatSpec();
+        //
         setTimeout(function () {
           body2.sprite.kill();
         }, 900);
-      }
+}
     }
 
 

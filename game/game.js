@@ -4,11 +4,17 @@ var preloadRessource = function(game) {
   game.load.atlasJSONHash('monsterAnimation0', 'ressources/monster/monster1Animation.png', 'ressources/monster/monster1Animation.json');
   game.load.atlasJSONHash('monsterAnimation1', 'ressources/monster/monster2Animation.png', 'ressources/monster/monster2Animation.json');
   game.load.atlasJSONHash('monsterAnimation2', 'ressources/monster/monster3Animation.png', 'ressources/monster/monster3Animation.json');
+  game.load.atlasJSONHash('monsterAnimation3', 'ressources/monster/monster4Animation.png', 'ressources/monster/monster4Animation.json');
+
   game.load.atlasJSONHash('animal0Animation', 'ressources/animals/animal1Animation.png', 'ressources/animals/animal1Animation.json');
   game.load.atlasJSONHash('animal1Animation', 'ressources/animals/lapinAnimation.png', 'ressources/animals/lapinAnimation.json');
   game.load.atlasJSONHash('animal2Animation', 'ressources/animals/sanglierAnimation.png', 'ressources/animals/sanglierAnimation.json');
   game.load.atlasJSONHash('rouladeAnimation', 'ressources/animals/rouladeAnimation.png', 'ressources/animals/rouladeAnimation.json');
-  game.load.atlasJSONHash('deadmonster1', 'ressources/monster/deadmonster.png', 'ressources/monster/deadmonster.json');
+  game.load.atlasJSONHash('deadmonster0', 'ressources/monster/deadmonster0.png', 'ressources/monster/deadmonster0.json');
+  game.load.atlasJSONHash('deadmonster1', 'ressources/monster/deadmonster1.png', 'ressources/monster/deadmonster1.json');
+  game.load.atlasJSONHash('deadmonster2', 'ressources/monster/deadmonster2.png', 'ressources/monster/deadmonster2.json');
+  game.load.atlasJSONHash('deadmonster3', 'ressources/monster/deadmonster3.png', 'ressources/monster/deadmonster3.json');
+
   game.load.image('bullet','ressources/spirit.png');
   game.load.image('front1','ressources/front1.png');
   game.load.image('front2','ressources/front2.png');
@@ -26,6 +32,9 @@ var preloadRessource = function(game) {
   // game.load.audio('menu', ['ressources/audio/menu.mp3']);
 
 
+  game.load.image('fiss1','ressources/obstacle/fiss1.png');
+  game.load.image('fiss2','ressources/obstacle/fiss2.png');
+  game.load.image('fiss3','ressources/obstacle/fiss3.png');
 
   game.load.image('frog1','ressources/frog/frog1.png');
   game.load.image('frog2','ressources/frog/frog2.png');
@@ -68,14 +77,26 @@ var initObstacle = function(game, obstacleCollisionGroup, playerCollisionGroup, 
     currentObstacle.body.collides([playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup]);
     obstacles[indexObstacle] = currentObstacle;
     indexObstacle += 1;
-    //}
+
   }
 }
 
-var checkObstacles = function() {
+var emitter;
+var checkObstacles = function(game) {
+  index = 0;
   obstacles.forEach(function(currentObstacle) {
     if (currentObstacle.position.y < 500) {
-      currentObstacle.destroy();
+      if (currentObstacle.body) {
+        console.log("add particule ok");
+        emitter = game.add.emitter(currentObstacle.position.x, currentObstacle.position.y, 50);
+        emitter.makeParticles('fiss1');
+        emitter.lifespan = 1400;
+        emitter.start(true, 700, null, 15);
+      }
+      //currentObstacle.position.x = currentObstacle.position.y = -1000;
+      currentObstacle.kill();
+      obstacles.splice(index,index + 1);
+      index++;
     }
   });
 }
