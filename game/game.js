@@ -32,7 +32,14 @@ var preloadRessource = function(game) {
   game.load.image('fleche','ressources/menu/fleche.png');
   game.load.image('fleche2','ressources/menu/fleche2.png');
 
-  // game.load.audio('menu', ['ressources/audio/menu.mp3']);
+  game.load.audio('menu', ['ressources/sounds/menu/senilek.mp3','ressources/sounds/menu/senilek.ogg']);
+  game.load.audio('angel', ['ressources/sounds/game/angel.mp3','ressources/sounds/game/angel.ogg']);
+  game.load.audio('boss', ['ressources/sounds/boss/boss.mp3','ressources/sounds/boss/boss.ogg']);
+
+
+  game.load.audio('snd1', ['ressources/sounds/ann/lapin.ogg']);
+  game.load.audio('snd2', ['ressources/sounds/game/lapin.ogg']);
+  game.load.audio('snd3', ['ressources/sounds/boss/pangolin.ogg']);
 
 
   game.load.image('fiss1','ressources/obstacle/fiss1.png');

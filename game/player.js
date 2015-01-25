@@ -11,7 +11,7 @@ var timer;
 
 var speedX = 1000, speedY = 700;
 
-var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup) {
+var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   player = game.add.sprite(200, game.world.height - 200, 'player');
 
   game.physics.p2.enable(player, false);
@@ -20,7 +20,6 @@ var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup, obs
   //player.enableBody = true;
   player.body.fixedRotation = true;
   player.body.setCollisionGroup(playerCollisionGroup);
-  player.body.collides([obstacleCollisionGroup]);
   // player.body.allowGravity = true;
   bullets = game.add.group();
   bullets.enableBody = true;
@@ -49,6 +48,7 @@ var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
       nextFire = game.time.now + fireRate;
       var bullet = bullets.getFirstExists(false);
 
+
       if (bullet) {
         bullet.revive();
       }
@@ -64,6 +64,13 @@ var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
     if (kindAnimal == 0) {
       player.body.reset(player.position.x, player.position.y);
 
+      var music = game.add.audio('snd3');
+      music.play();
+      music.volume = 1;
+
+
+
+      console.log("saut");
       timer = game.time.create(false);
       timer.start();
       timer.loop(2500, resetStatSpec, this);
