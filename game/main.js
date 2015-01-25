@@ -178,13 +178,13 @@ var initWindow = function() {
           emitter.start(false, 5000, 20);
 
 
-          var start = game.add.sprite(247, 415, 'button2');
+          var start = game.add.sprite(250, 415, 'button2');
           start.anchor.set(0.5);
           start.inputEnabled = true;
           start.events.onInputDown.add(startgame, this);
 
 
-          var credits = game.add.sprite(278, 500, 'button1');
+          var credits = game.add.sprite(280, 500, 'button1');
           credits.anchor.set(0.5);
           credits.inputEnabled = true;
           credits.events.onInputDown.add(startcredit, this);
@@ -231,25 +231,37 @@ var initWindow = function() {
       back = game.add.sprite(0, 0, 'menu');
 
 
-      var start = game.add.sprite(247, 415, 'button2');
+      var start = game.add.sprite(250, 415, 'button2');
       start.anchor.set(0.5);
       start.inputEnabled = true;
       start.events.onInputDown.add(startgame, this);
 
 
-      var credits = game.add.sprite(278, 500, 'button1');
+      var credits = game.add.sprite(280, 500, 'button1');
       credits.anchor.set(0.5);
       credits.inputEnabled = true;
       credits.events.onInputDown.add(startcredit, this);
     }
 
     function startgame (event) {
-      game.scale.startFullScreen(false);
-      game.state.start('StateB');
+      game.add.sprite(0, 0, 'intro');
+
+      var intro = game.add.sprite(1770, 960, 'fleche2');
+      intro.anchor.set(0.5);
+      intro.inputEnabled = true;
+      intro.events.onInputDown.add(introfunc, event);
+      // game.scale.startFullScreen(false);
+      // game.state.start('StateB');
 
 
     }
 
+
+    function introfunc (event) {
+      game.scale.startFullScreen(false);
+
+      game.state.start('StateA');
+    }
 
     // function credits (event) {
     //   game.state.start('StateA');
@@ -269,7 +281,7 @@ var initWindow = function() {
       hit += 1;
       console.log(hit);
 
-      if (hit == 3)
+      if (hit == 6)
       {
         game.add.sprite(player.position.x - 1920 / 2, 0, 'gameOver');
         // var text = "-Tu est MORT !-\n";
@@ -280,6 +292,7 @@ var initWindow = function() {
         }, 1000);
 
       }
+      console.log(body2.sprite.key);
 
 
       if (isAnimal && isJumping) {
@@ -289,15 +302,23 @@ var initWindow = function() {
         console.log(body2.sprite.key);
         // console.log(body2.kind);
 
-        if (body2.sprite.key = "monster1Animation")
-        body2.sprite.loadTexture('deadmonster1');
+        if (body2.sprite.key == "monsterAnimation0")
+          body2.sprite.loadTexture('deadmonster0');
+        else if (body2.sprite.key == "monsterAnimation1")
+          body2.sprite.loadTexture('deadmonster1');
+        else if (body2.sprite.key == "monsterAnimation2")
+          body2.sprite.loadTexture('deadmonster2');
+        else
+          body2.sprite.loadTexture('deadmonster3');
+
         body2.sprite.animations.add('runAni1');
         body2.sprite.animations.play('runAni1', 4, true);
         resetStatSpec();
+        //
         setTimeout(function () {
           body2.sprite.kill();
         }, 900);
-      }
+}
     }
 
 

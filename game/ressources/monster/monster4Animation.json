@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "vol-1.png",
+	"frame": {"x":526,"y":2,"w":262,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":15,"w":262,"h":199},
+	"sourceSize": {"w":289,"h":223}
+},
+{
+	"filename": "vol-2.png",
+	"frame": {"x":2,"y":2,"w":251,"h":215},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":4,"w":251,"h":215},
+	"sourceSize": {"w":289,"h":223}
+},
+{
+	"filename": "vol-3.png",
+	"frame": {"x":790,"y":2,"w":276,"h":194},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":16,"w":276,"h":194},
+	"sourceSize": {"w":289,"h":223}
+},
+{
+	"filename": "vol-4.png",
+	"frame": {"x":255,"y":2,"w":269,"h":204},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":16,"w":269,"h":204},
+	"sourceSize": {"w":289,"h":223}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "monster3Animation.png",
+	"format": "RGBA8888",
+	"size": {"w":1068,"h":219},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d8a4dc10b29148ef21643b7f024feb87:7be61b1c328cec372be711e2f97b0348:24a3da257c21a7db475ae25acf215de5$"
+}
+}

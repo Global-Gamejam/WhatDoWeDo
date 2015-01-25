@@ -17,7 +17,7 @@ var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup, ob
   {
     enemiepos[i] = (i * 1000) + 3000;
 
-    enemiekind[i] = Math.floor(Math.random() * 2);
+    enemiekind[i] = Math.floor(Math.random() * 4);
 
     //
     console.log(enemiekind[i]);

@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "mort-1.png",
+	"frame": {"x":504,"y":249,"w":262,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":76,"y":27,"w":262,"h":200},
+	"sourceSize": {"w":390,"h":371}
+},
+{
+	"filename": "mort-2.png",
+	"frame": {"x":803,"y":2,"w":272,"h":228},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":97,"y":4,"w":272,"h":228},
+	"sourceSize": {"w":390,"h":371}
+},
+{
+	"filename": "mort-3.png",
+	"frame": {"x":504,"y":2,"w":297,"h":245},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":4,"w":297,"h":245},
+	"sourceSize": {"w":390,"h":371}
+},
+{
+	"filename": "mort-4.png",
+	"frame": {"x":2,"y":2,"w":500,"h":452},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":38,"w":500,"h":452},
+	"sourceSize": {"w":520,"h":494}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "deadmonster3.png",
+	"format": "RGBA8888",
+	"size": {"w":1077,"h":456},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:720c51b90a31cf4fd8c7d688e991540e:e8963fe613e2c3f4c7e40629b0eaac34:77e3e868ce57d4a8f9d415714193b8ae$"
+}
+}
