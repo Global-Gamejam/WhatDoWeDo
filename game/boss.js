@@ -3,17 +3,15 @@ var sensBoss;
 var power;
 var timerBoss;
 var projectils;
+var powerup;
 
-var initBoss = function(game) {
+var initBoss = function(game, playerCollisionGroup, powerupCollisionGroup) {
   boss = game.add.sprite(1920 - 500, 1080 - (1080 /3), 'boss');
-
-
   game.physics.p2.enableBody(boss, false);
 
   boss.body.fixedRotation = true;
   boss.body.mass = 100;
   boss.body.allowGravity = false;
-
 
   boss.loadTexture('bossAnimation');
   boss.animations.add('runBoss');
@@ -27,7 +25,23 @@ var initBoss = function(game) {
   projectils.setAll('checkWorldBounds', true);
   projectils.setAll('outOfBoundsKill', true);
 
+  powerup = game.add.sprite(1920 - 500, 1080 - (1080 /3), 't');
+  powerup.loadTexture('powerupAnimation');
+  powerup.animations.add('runBossUP');
+  powerup.animations.play('runBossUP', 6, true);
+  powerup.enableBody = true;
+  game.physics.p2.enableBody(powerup, false);
+  
+  powerup.physicsBodyType = Phaser.Physics.P2JS;
+  powerup.body.setCircle(100);
+  powerup.body.setCollisionGroup(powerupCollisionGroup);
+  powerup.body.collides([powerupCollisionGroup, playerCollisionGroup], collisionPowerUp, this);
+
   power = 0;
+}
+
+var collisionPowerUp = function(b1, b2) {
+  console.log("ok");
 }
 
 var generatePower = function(game) {
@@ -58,7 +72,6 @@ var powerFunction = function(game) {
   generatePower(game);
   generatePower(game);
   generatePower(game);
-
   //bullet.body.setCircle(100);
 }
 
@@ -90,10 +103,10 @@ var updateMovementBoss = function(game, player) {
   }
   if (power == 0) {
     if (player.position.y < boss.position.y) {
-      boss.body.moveDown(player.position.y - boss.position.y);
+      boss.body.moveDown((player.position.y - boss.position.y) * 2);
     }
     else {
-      boss.body.moveUp(boss.position.y - player.position.y);
+      boss.body.moveUp((boss.position.y - player.position.y) * 2);
     }
   }
 }

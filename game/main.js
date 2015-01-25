@@ -34,14 +34,15 @@ var initWindow = function() {
         bulletCollisionGroup = game.physics.p2.createCollisionGroup();
         animalCollisionGroup = game.physics.p2.createCollisionGroup();
         obstacleCollisionGroup = game.physics.p2.createCollisionGroup();
+        powerupCollisionGroup = game.physics.p2.createCollisionGroup();
 
         cursors = game.input.keyboard.createCursorKeys();
 
         initFrog(game);
         game.add.sprite(0, game.world.bounds.height / 2, 'sol2');
-        //initFloor(game);
         initPLayer(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
-        initBoss(game);
+        player.body.collides([powerupCollisionGroup]);
+        initBoss(game, playerCollisionGroup, powerupCollisionGroup);
       },
 
       update: function () {

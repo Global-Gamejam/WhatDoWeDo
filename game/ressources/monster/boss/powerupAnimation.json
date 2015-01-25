@@ -1,0 +1,28 @@
+{"frames": [
+
+{
+	"filename": "power-up 1.png",
+	"frame": {"x":2,"y":2,"w":152,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":152,"h":222},
+	"sourceSize": {"w":152,"h":222}
+},
+{
+	"filename": "power-up 2.png",
+	"frame": {"x":156,"y":2,"w":152,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":152,"h":222},
+	"sourceSize": {"w":152,"h":222}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "powerupAnimation.png",
+	"format": "RGBA8888",
+	"size": {"w":310,"h":226},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:760624cf2fe65aa2f07d90e6008ed20f:b4524a809e9720f98679371a7b27531a:2bb364d76a61a67298396b6e758402d0$"
+}
+}
