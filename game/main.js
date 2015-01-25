@@ -17,6 +17,7 @@ var initWindow = function() {
     var playerCollisionGroup;
     var bulletCollisionGroup;
     var animalCollisionGroup;
+    var obstacleCollisionGroup;
   };
 
   P2Game.StateA.prototype = {
@@ -49,6 +50,7 @@ var initWindow = function() {
       playerCollisionGroup = game.physics.p2.createCollisionGroup();
       bulletCollisionGroup = game.physics.p2.createCollisionGroup();
       animalCollisionGroup = game.physics.p2.createCollisionGroup();
+      obstacleCollisionGroup = game.physics.p2.createCollisionGroup();
 
       initFrog(game);
       initFloor(game);
@@ -57,7 +59,7 @@ var initWindow = function() {
       rkey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
       initPLayer(game, playerCollisionGroup, enemiesCollisionGroup);
-      initEnemies(game, playerCollisionGroup, enemiesCollisionGroup);
+      initEnemies(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
       player.body.collides(enemiesCollisionGroup, hitEnemies, this);
 
       game.physics.p2.enable(player);
@@ -68,6 +70,7 @@ var initWindow = function() {
 
       game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
       game.input.onDown.add(gofull, this);
+      initObstacle(game, obstacleCollisionGroup, playerCollisionGroup, enemiesCollisionGroup);
       initFront(game);
     },
 

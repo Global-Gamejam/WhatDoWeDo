@@ -3,7 +3,7 @@ var enemie = new Array;
 var enemiepos = new Array;
 var enemiekind = new Array;
 
-var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
+var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup) {
 
   enemies = game.add.group();
 
@@ -30,7 +30,7 @@ var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
     enemie[i].body.fixedRotation = true;
     enemie[i].body.collideWorldBounds = true;
     enemie[i].body.setCollisionGroup(enemiesCollisionGroup);
-    enemie[i].body.collides(playerCollisionGroup);
+    enemie[i].body.collides([playerCollisionGroup, obstacleCollisionGroup]);
     enemie[i].body.allowGravity = false;
 
     enemie[i].loadTexture('monsterAnimation' + String(enemiekind[i]));
