@@ -117,7 +117,7 @@ var initWindow = function() {
         body2.sprite.loadTexture('deadmonster1');
         body2.sprite.animations.add('runAni1');
         body2.sprite.animations.play('runAni1', 4, true);
-
+        resetStatSpec();
         setTimeout(function () {
           body2.sprite.kill();
         }, 900);
