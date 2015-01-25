@@ -5,7 +5,8 @@ var initWindow = function() {
     var hit = 0;
     var credit = true;
     var killed = 0;
-
+    var music;
+    var text;
 
     P2Game.StateB = function (game) {
       var cursors;
@@ -28,6 +29,8 @@ var initWindow = function() {
         game.physics.arcade.enableBody(this);
         game.physics.arcade.gravity.y = 500;
 
+        music = game.add.audio('boss');
+        music.play();
 
         enemiesCollisionGroup = game.physics.p2.createCollisionGroup();
         playerCollisionGroup = game.physics.p2.createCollisionGroup();
@@ -91,6 +94,11 @@ var initWindow = function() {
 
         killed = 0;
 
+        music = game.add.audio('angel');
+        music.play();
+        music.volume = 1;
+
+
         //tuto = game.add.sprite(0, 0, 'tuto');
         game.world.setBounds(0, 0, 10000, 1080 / 2);
         game.physics.startSystem(Phaser.Physics.P2JS);
@@ -114,6 +122,8 @@ var initWindow = function() {
         rkey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
 
+
+
         initPLayer(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
         initEnemies(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
         player.body.collides(enemiesCollisionGroup, hitEnemies, this);
@@ -129,6 +139,15 @@ var initWindow = function() {
         game.input.onDown.add(gofull, this);
         initObstacle(game, obstacleCollisionGroup, playerCollisionGroup, enemiesCollisionGroup);
         initFront(game);
+
+        text = game.add.text(player.position.x - 1920 / 3, 0, "- You have clicked -\n0 times !", {
+          font: "65px Arial",
+          fill: "#ff0044",
+          align: "center"
+        });
+
+        text.anchor.setTo(0.5, 0.5);
+
       },
 
       spiritHitsAnimal: function (body1, body2) {
@@ -148,17 +167,30 @@ var initWindow = function() {
         moveAnimals(game, player);
         checkObstacles(game);
 
+        text.x = player.position.x - 1920 / 2.5;
+        text.y = 50;
+
+        var live = 10 - hit;
+        if (live > 0)
+          text.setText(live + "  vies");
+        else
+          text.setText("");
+
 
         if (killed == 5 )
+        {
+          music.pause();
           this.state.start('StateB');
-
+        }
         if ( rkey.justPressed(/*optional duration*/))
         {
+          music.pause();
           this.state.start('StateA');
         }
       },
 
       render: function () {
+
       }
     };
 
@@ -180,13 +212,9 @@ var initWindow = function() {
 
           back = game.add.sprite(0, 0, 'menu');
 
-
-          emitter = game.add.emitter(1000, 600, 3000);
-
-          //  Here we're passing an array of image keys. It will pick one at random when emitting a new particle.
-          emitter.makeParticles(['croiss', 'croiss', 'croiss']);
-
-          emitter.start(false, 5000, 20);
+          music = game.add.audio('menu');
+          music.play();
+          music.volume = 1;
 
 
           var start = game.add.sprite(250, 415, 'button2');
@@ -201,6 +229,9 @@ var initWindow = function() {
           credits.events.onInputDown.add(startcredit, this);
 
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+
+
+
         // game.input.onDown.add(menuclick, this);
         //initFront(game);
 
@@ -269,7 +300,7 @@ var initWindow = function() {
 
     function introfunc (event) {
       game.scale.startFullScreen(false);
-
+      music.pause();
       game.state.start('StateA');
     }
 
@@ -298,7 +329,10 @@ var initWindow = function() {
         // var style = { font: "120px Arial", fill: "#ff0044", align: "center" };
         // var t = game.add.text(player.x - 300,player.y - 500, text, style);
         killed = 100;
+        music.pause();
+
         setTimeout(function () {
+          music.pause();
           game.state.start('StateA');
         }, 1000);
 
