@@ -301,7 +301,7 @@ var initWindow = function() {
     function introfunc (event) {
       game.scale.startFullScreen(false);
       music.pause();
-      game.state.start('StateA');
+      game.state.start('StateB');
     }
 
     // function credits (event) {
@@ -364,11 +364,8 @@ var initWindow = function() {
           body2.sprite.kill();
           killed += 1;
         }, 900);
-}
+      }
     }
-
-
-
 
     function gofull() {
       targetPlayer(game, animalCollisionGroup, bulletCollisionGroup);

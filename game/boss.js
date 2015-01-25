@@ -4,6 +4,7 @@ var power;
 var timerBoss;
 var projectils;
 var powerup;
+var gameCut;
 
 var initBoss = function(game, playerCollisionGroup, powerupCollisionGroup, powerBossCollisionGroup) {
   boss = game.add.sprite(1920 - 500, 1080 - (1080 /3), 'boss');
@@ -38,6 +39,7 @@ var initBoss = function(game, playerCollisionGroup, powerupCollisionGroup, power
   powerup.body.collides([powerupCollisionGroup, playerCollisionGroup], collisionPowerUp, this);
 
   power = 0;
+  gameCut = game;
 }
 
 var collisionPowerPlayer = function(b1, b2) {
