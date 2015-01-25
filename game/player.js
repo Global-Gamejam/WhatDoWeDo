@@ -44,7 +44,7 @@ var updateBullet = function(game) {
   });
 }
 
-var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
+var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup, bossCollisionGroup) {
   if (!isAnimal) {
     if (game.time.now > nextFire && bullets.countDead() > 0) {
       nextFire = game.time.now + fireRate;
@@ -59,7 +59,12 @@ var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
       game.physics.arcade.moveToPointer(bullet, 1200);
       bullet.body.setCircle(100);
       bullet.body.setCollisionGroup(bulletCollisionGroup);
-      bullet.body.collides(animalCollisionGroup, collidesSpiritAnimal, this);
+      if (isBoss == false) {
+        bullet.body.collides(animalCollisionGroup, collidesSpiritAnimal, this);
+      }
+      else {
+        bullet.body.collides(bossCollisionGroup, collidesSpiritAnimal, this);
+      }
     }
   }
   else {
