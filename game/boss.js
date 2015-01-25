@@ -45,6 +45,7 @@ var collisionPowerPlayer = function(b1, b2) {
 }
 
 var collisionPowerUp = function(b1, b2) {
+  console.log("powerup");
 }
 
 var generatePower = function(game,  powerBossCollisionGroup, collisionPowerPlayer) {
@@ -61,7 +62,9 @@ var generatePower = function(game,  powerBossCollisionGroup, collisionPowerPlaye
     bullet.reset(100, 1080 - Math.floor(Math.random() * (1080 / 2) - 20));
     bullet.body.moveRight(Math.floor(Math.random() * 400) + 900);
   }
+  game.physics.p2.enableBody(bullet, false);
   bullet.body.clearShapes();
+  bullet.body.setCircle(100);
   bullet.body.setCollisionGroup(powerBossCollisionGroup);
   bullet.body.collides(playerCollisionGroup, collisionPowerPlayer, this);
   bullet.body.move

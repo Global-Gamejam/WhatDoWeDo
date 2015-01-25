@@ -42,10 +42,10 @@ var initWindow = function() {
         initFrog(game);
         game.add.sprite(0, game.world.bounds.height / 2, 'sol2');
         initPLayer(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
-        player.body.collides([powerupCollisionGroup, powerBossCollisionGroup]);
         initBoss(game, playerCollisionGroup, powerupCollisionGroup, powerBossCollisionGroup);
+        player.body.collides([powerupCollisionGroup, powerBossCollisionGroup]);
       },
-
+      
       update: function () {
         // updateBullet(game);
         moveFrog(player, game);
