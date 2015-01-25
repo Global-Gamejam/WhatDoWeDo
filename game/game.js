@@ -1,9 +1,9 @@
 var preloadRessource = function(game) {
   game.load.image('player','ressources/player/player1.png');
   game.load.atlasJSONHash('playerAnimation', 'ressources/player/playerAnimation.png', 'ressources/player/playerAnimation.json');
-  game.load.atlasJSONHash('monster1Animation', 'ressources/monster/monster1Animation.png', 'ressources/monster/monster1Animation.json');
-  game.load.atlasJSONHash('monster2Animation', 'ressources/monster/monster2Animation.png', 'ressources/monster/monster2Animation.json');
-  game.load.atlasJSONHash('monster3Animation', 'ressources/monster/monster3Animation.png', 'ressources/monster/monster3Animation.json');
+  game.load.atlasJSONHash('monsterAnimation0', 'ressources/monster/monster1Animation.png', 'ressources/monster/monster1Animation.json');
+  game.load.atlasJSONHash('monsterAnimation1', 'ressources/monster/monster2Animation.png', 'ressources/monster/monster2Animation.json');
+  game.load.atlasJSONHash('monsterAnimation2', 'ressources/monster/monster3Animation.png', 'ressources/monster/monster3Animation.json');
   game.load.atlasJSONHash('animal0Animation', 'ressources/animals/animal1Animation.png', 'ressources/animals/animal1Animation.json');
   game.load.atlasJSONHash('animal1Animation', 'ressources/animals/lapinAnimation.png', 'ressources/animals/lapinAnimation.json');
   game.load.atlasJSONHash('animal2Animation', 'ressources/animals/sanglierAnimation.png', 'ressources/animals/sanglierAnimation.json');
