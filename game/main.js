@@ -89,6 +89,8 @@ var initWindow = function() {
         background1 = game.add.sprite(0, 0, 'background');
         tuto = game.add.sprite(0, 110, 'tuto');
 
+        killed = 0;
+
         //tuto = game.add.sprite(0, 0, 'tuto');
         game.world.setBounds(0, 0, 10000, 1080 / 2);
         game.physics.startSystem(Phaser.Physics.P2JS);
@@ -140,7 +142,8 @@ var initWindow = function() {
       update: function () {
         updateBullet(game);
         moveFrog(player, game);
-        catchDeplacementPlayer(game, cursors);
+        if (killed != 100)
+          catchDeplacementPlayer(game, cursors);
         moveEnemies(game, cursors, player);
         moveAnimals(game, player);
         checkObstacles(game);
@@ -220,7 +223,6 @@ var initWindow = function() {
     var game = new Phaser.Game(1920, 1080, Phaser.CANVAS, 'phaser-example');
     game.state.add('StateA', P2Game.StateA);
     game.state.add('StateB', P2Game.StateB);
-    game.state.add('StateA', P2Game.StateA);
     game.state.add('MENU', P2Game.MENU);
 
     game.state.start('MENU');
@@ -268,7 +270,7 @@ var initWindow = function() {
     function introfunc (event) {
       game.scale.startFullScreen(false);
 
-      game.state.start('StateB');
+      game.state.start('StateA');
     }
 
     // function credits (event) {
@@ -289,13 +291,13 @@ var initWindow = function() {
       hit += 1;
       console.log(hit);
 
-      if (hit == 8)
+      if (hit == 10)
       {
         game.add.sprite(player.position.x - 1920 / 2, 0, 'gameOver');
         // var text = "-Tu est MORT !-\n";
         // var style = { font: "120px Arial", fill: "#ff0044", align: "center" };
         // var t = game.add.text(player.x - 300,player.y - 500, text, style);
-        killed = 0;
+        killed = 100;
         setTimeout(function () {
           game.state.start('StateA');
         }, 1000);
