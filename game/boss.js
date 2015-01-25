@@ -42,6 +42,11 @@ var initBoss = function(game, playerCollisionGroup, powerupCollisionGroup, power
 
 var collisionPowerPlayer = function(b1, b2) {
   console.log("collision");
+  game.add.sprite(player.position.x - 1920 / 2, 0, 'ver');
+  killed = 100;
+  setTimeout(function () {
+    game.state.start('StateA');
+  }, 1000);
 }
 
 var collisionPowerUp = function(b1, b2) {

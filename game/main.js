@@ -45,7 +45,7 @@ var initWindow = function() {
         initBoss(game, playerCollisionGroup, powerupCollisionGroup, powerBossCollisionGroup);
         player.body.collides([powerupCollisionGroup, powerBossCollisionGroup]);
       },
-      
+
       update: function () {
         // updateBullet(game);
         moveFrog(player, game);
@@ -293,7 +293,7 @@ var initWindow = function() {
 
       if (hit == 10)
       {
-        game.add.sprite(player.position.x - 1920 / 2, 0, 'gameOver');
+        game.add.sprite(player.position.x - 1920 / 2, 0, 'ver');
         // var text = "-Tu est MORT !-\n";
         // var style = { font: "120px Arial", fill: "#ff0044", align: "center" };
         // var t = game.add.text(player.x - 300,player.y - 500, text, style);
