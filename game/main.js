@@ -46,7 +46,7 @@ var initWindow = function() {
         game.add.sprite(0, game.world.bounds.height / 2, 'sol2');
         initPLayer(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
         initBoss(game, playerCollisionGroup, powerupCollisionGroup, powerBossCollisionGroup);
-        player.body.collides([powerupCollisionGroup, powerBossCollisionGroup]);
+        player.body.collides([powerupCollisionGroup, powerBossCollisionGroup], hitBoss, this);
       },
 
       update: function () {
@@ -316,6 +316,15 @@ var initWindow = function() {
     //   game.scale.startFullScreen(false);
     //
     // }
+
+    function hitBoss (body1, body2) {
+      if (body2.sprite.key == "projectile") {
+        setTimeout(function () {
+          music.pause();
+          game.state.start('StateA');
+        }, 500);        
+      }
+    }
 
     function hitEnemies (body1, body2) {
       console.log("hit hitEnemies");

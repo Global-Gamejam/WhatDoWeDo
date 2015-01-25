@@ -73,7 +73,7 @@ var generatePower = function(game,  powerBossCollisionGroup, collisionPowerPlaye
   bullet.body.clearShapes();
   bullet.body.setCircle(100);
   bullet.body.setCollisionGroup(powerBossCollisionGroup);
-  bullet.body.collides(playerCollisionGroup, collisionPowerPlayer, this);
+  bullet.body.collides(playerCollisionGroup);
   bullet.body.move
 }
 
