@@ -88,6 +88,7 @@ var initWindow = function() {
         tuto = game.add.sprite(0, 110, 'tuto');
 
         killed = 0;
+
         //tuto = game.add.sprite(0, 0, 'tuto');
         game.world.setBounds(0, 0, 10000, 1080 / 2);
         game.physics.startSystem(Phaser.Physics.P2JS);
