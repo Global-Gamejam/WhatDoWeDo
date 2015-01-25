@@ -26,17 +26,6 @@ var initBoss = function(game, playerCollisionGroup, powerupCollisionGroup, power
   projectils.setAll('checkWorldBounds', false);
   projectils.setAll('outOfBoundsKill', true);
 
-  powerup = game.add.sprite(1920 - 500, 1080 - (1080 /3), 't');
-  powerup.loadTexture('powerupAnimation');
-  powerup.animations.add('runBossUP');
-  powerup.animations.play('runBossUP', 6, true);
-  powerup.enableBody = true;
-  game.physics.p2.enableBody(powerup, false);
-
-  powerup.physicsBodyType = Phaser.Physics.P2JS;
-  powerup.body.setCircle(100);
-  powerup.body.setCollisionGroup(powerupCollisionGroup);
-  powerup.body.collides([powerupCollisionGroup, playerCollisionGroup], collisionPowerUp, this);
 
   power = 0;
   gameCut = game;
@@ -83,10 +72,6 @@ var powerFunction = function(game, powerBossCollisionGroup, collisionPowerPlayer
   timerBoss.loop(2500, resetPower, this);
 
   generatePower(game,  powerBossCollisionGroup, collisionPowerPlayer);
-  generatePower(game,  powerBossCollisionGroup, collisionPowerPlayer);
-  generatePower(game,  powerBossCollisionGroup, collisionPowerPlayer);
-  generatePower(game,  powerBossCollisionGroup, collisionPowerPlayer);
-  generatePower(game,  powerBossCollisionGroup, collisionPowerPlayer);
   //bullet.body.setCircle(100);
 }
 
@@ -94,7 +79,6 @@ var resetPower = function() {
   power = 0;
   timerBoss.stop();
 }
-
 
 var updateMovementBoss = function(game, player, powerBossCollisionGroup, collisionPowerPlayer) {
   boss.body.setZeroVelocity();
