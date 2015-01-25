@@ -17,7 +17,7 @@ var initPLayer = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   game.physics.p2.enable(player, false);
   player.body.clearShapes();
   player.body.loadPolygon('physicsData', 'player1');
-  player.enableBody = true;
+  //player.enableBody = true;
   player.body.fixedRotation = true;
   player.body.setCollisionGroup(playerCollisionGroup);
   // player.body.allowGravity = true;
@@ -60,8 +60,7 @@ var targetPlayer = function(game, animalCollisionGroup, bulletCollisionGroup) {
     }
   }
   else {
-    if (kindAnimal == 1) {
-      console.log("animal 1");
+    if (kindAnimal == 0) {
       player.body.reset(player.position.x, player.position.y);
 
       timer = game.time.create(false);
@@ -99,10 +98,16 @@ var resetStatSpec = function() {
 var collidesSpiritAnimal = function(b1, b2) {
   player.body.reset(b2.sprite.x, b2.sprite.y);
   if (b2.sprite.key == "animal0") {
+    kindAnimal = 0;
+  }
+  else if (b2.sprite.key == "animal1") {
     kindAnimal = 1;
   }
+  else if (b2.sprite.key == "animal2") {
+    kindAnimal = 2;
+  }
   b2.sprite.kill();
-  player.loadTexture('animal0');
+  player.loadTexture('animal' + kindAnimal);
   isAnimal = true;
 }
 
@@ -119,9 +124,8 @@ var animationPlayer = function() {
       player.animations.play('run', 6, true);
     }
     else {
-      console.log("animal");
       player.body.reset(player.position.x, player.position.y);
-      player.loadTexture('animal1Animation');
+      player.loadTexture('animal' + kindAnimal + 'Animation');
       player.animations.add('runAni');
       player.animations.play('runAni', 6, true);
     }
@@ -134,6 +138,7 @@ var catchDeplacementPlayer = function(game, cursors) {
     return ;
   }
   player.body.setZeroVelocity();
+
   if (cursors.up.isDown &&
      game.world.height - (player.position.y + player.height / 2) <= game.world.height / 2 - 100) {
     movePlayerUp();
@@ -143,11 +148,21 @@ var catchDeplacementPlayer = function(game, cursors) {
   }
   if (cursors.left.isDown) {
     movePlayerLeft();
-    player.scale.x = -1;
+    if (isAnimal && (kindAnimal == 1 || kindAnimal == 2)) {
+      player.scale.x = 1;
+    }
+    else {
+      player.scale.x = -1;
+    }
   }
   else if (cursors.right.isDown) {
     movePlayerRight();
-    player.scale.x = 1;
+    if (isAnimal && (kindAnimal == 1 || kindAnimal == 2)) {
+      player.scale.x = -1;
+    }
+    else {
+      player.scale.x = 1;
+    }
   }
 
   if (!cursors.up.isDown && !cursors.down.isDown &&
@@ -156,7 +171,7 @@ var catchDeplacementPlayer = function(game, cursors) {
          player.loadTexture('player');
        }
        else {
-         player.loadTexture('animal1');
+         player.loadTexture('animal' + kindAnimal);
        }
        isAnimated = false;
   }

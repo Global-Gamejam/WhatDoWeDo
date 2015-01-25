@@ -16,17 +16,17 @@ var initEnemies = function(game, playerCollisionGroup, enemiesCollisionGroup) {
   {
     enemiepos[i] = (i * 1000) + 3000;
 
-    enemie[i] = enemies.create(enemiepos[i], game.world.height - 200, 'monster1');
+    enemie[i] = enemies.create(enemiepos[i], 400, 'monster1');
     enemie[i].body.clearShapes();
     enemie[i].body.loadPolygon('physicsData', 'monster1');
-    enemie[i].body.mass = 10000;
+    enemie[i].body.mass = 1;
     enemie[i].body.fixedRotation = true;
     enemie[i].body.collideWorldBounds = true;
     enemie[i].body.setCollisionGroup(enemiesCollisionGroup);
     enemie[i].body.collides(playerCollisionGroup);
     enemie[i].body.allowGravity = false;
 
-    enemie[i].loadTexture('monster1Animation');
+    enemie[i].loadTexture('monster2Animation');
     enemie[i].animations.add('run');
     enemie[i].animations.play('run', 6, true);
 
