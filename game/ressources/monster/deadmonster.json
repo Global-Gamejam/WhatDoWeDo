@@ -1,0 +1,60 @@
+{"frames": [
+
+{
+	"filename": "mort-1.png",
+	"frame": {"x":396,"y":2,"w":319,"h":184},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":75,"y":24,"w":319,"h":184},
+	"sourceSize": {"w":394,"h":224}
+},
+{
+	"filename": "mort-2.png",
+	"frame": {"x":379,"y":215,"w":365,"h":184},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":28,"y":25,"w":365,"h":184},
+	"sourceSize": {"w":394,"h":224}
+},
+{
+	"filename": "mort-3.png",
+	"frame": {"x":2,"y":2,"w":392,"h":211},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":2,"w":392,"h":211},
+	"sourceSize": {"w":394,"h":224}
+},
+{
+	"filename": "mort-4.png",
+	"frame": {"x":2,"y":215,"w":375,"h":211},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":2,"w":375,"h":211},
+	"sourceSize": {"w":394,"h":224}
+},
+{
+	"filename": "mort-6.png",
+	"frame": {"x":746,"y":172,"w":385,"h":155},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":68,"w":385,"h":155},
+	"sourceSize": {"w":394,"h":224}
+},
+{
+	"filename": "mot-5.png",
+	"frame": {"x":746,"y":2,"w":386,"h":168},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":46,"w":386,"h":168},
+	"sourceSize": {"w":394,"h":224}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "deadmonster.png",
+	"format": "RGBA8888",
+	"size": {"w":1134,"h":428},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:2f02b523c3fd3231cea486af640b1e82:4e676db18b1ecd76d1558b5b01b959f5:566ef11c9e075b2768362fc7a28be6c7$"
+}
+}

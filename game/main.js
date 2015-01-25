@@ -116,9 +116,19 @@ var initWindow = function() {
 
 
       if (isAnimal && isJumping) {
-        body2.sprite.kill();
+
+        // body2.body.reset(player.position.x, player.position.y);
+        body2.sprite.loadTexture('deadmonster1');
+        body2.sprite.animations.add('runAni1');
+        body2.sprite.animations.play('runAni1', 4, true);
+
+        setTimeout(function () {
+          body2.sprite.kill();
+        }, 900);
       }
     }
+
+
 
     function gofull() {
       game.scale.startFullScreen(false);
