@@ -52,22 +52,22 @@ var initWindow = function() {
       animalCollisionGroup = game.physics.p2.createCollisionGroup();
       obstacleCollisionGroup = game.physics.p2.createCollisionGroup();
 
-        initFrog(game);
-        initFloor(game);
-        initAnimals(game, bulletCollisionGroup, animalCollisionGroup);
+      initFrog(game);
+      initFloor(game);
+      initAnimals(game, bulletCollisionGroup, animalCollisionGroup);
 
-        rkey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+      rkey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
 
       initPLayer(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
       initEnemies(game, playerCollisionGroup, enemiesCollisionGroup, obstacleCollisionGroup);
       player.body.collides(enemiesCollisionGroup, hitEnemies, this);
 
-        game.physics.p2.enable(player);
+      game.physics.p2.enable(player);
 
-        cursors = game.input.keyboard.createCursorKeys();
-        background1.fixedToCamera = true;
-        game.camera.follow(player);
+      cursors = game.input.keyboard.createCursorKeys();
+      background1.fixedToCamera = true;
+      game.camera.follow(player);
 
 
       game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
